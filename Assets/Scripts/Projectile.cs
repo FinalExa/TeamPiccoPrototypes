@@ -1,7 +1,10 @@
 using UnityEngine;
+using System;
 
 public class Projectile : MonoBehaviour
 {
+    public static Action<int> absorb;
+    [SerializeField] private int rechargeValue;
     [SerializeField] private float lifeTime;
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody thisProjectileRigidbody;
@@ -22,6 +25,16 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Melee"))
+        {
+            this.thisProjectileRigidbody.velocity = Vector3.zero;
+            absorb(rechargeValue);
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.CompareTag("Wall"))
         {
             this.thisProjectileRigidbody.velocity = Vector3.zero;
             Destroy(this.gameObject);
