@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class Melee : MonoBehaviour
 {
-    [SerializeField] private PlayerInputs playerInput;
-    [SerializeField] private float meleeDuration;
-    [SerializeField] private float meleeCooldown;
+    private PlayerReferences playerRef;
+    private float meleeDuration;
+    private float meleeCooldown;
     [SerializeField] GameObject meleeObject;
     private bool meleeOn;
     private bool meleeCooldownOn;
     private float timerAttack;
     private float timerCooldown;
+
+    private void Awake()
+    {
+        playerRef = this.GetComponent<PlayerReferences>();
+    }
+
     private void Start()
     {
         meleeObject.SetActive(false);
         timerAttack = meleeDuration;
         timerCooldown = meleeCooldown;
+        meleeDuration = playerRef.playerData.meleeDuration;
+        meleeCooldown = playerRef.playerData.meleeCooldown;
     }
 
     private void Update()
@@ -28,7 +36,7 @@ public class Melee : MonoBehaviour
 
     private void MeleeCheck()
     {
-        if (playerInput.LeftClickInput == true && !meleeCooldownOn)
+        if (playerRef.playerInputs.LeftClickInput == true && !meleeCooldownOn)
         {
             meleeObject.SetActive(true);
             meleeOn = true;

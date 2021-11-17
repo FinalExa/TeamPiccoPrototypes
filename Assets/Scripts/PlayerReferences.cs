@@ -4,6 +4,7 @@ public class PlayerReferences : MonoBehaviour
 {
     public PlayerData playerData;
     [HideInInspector] public PlayerInputs playerInputs;
+    [HideInInspector] public Melee melee;
     [HideInInspector] public Rigidbody playerRb;
     [HideInInspector] public Camera mainCamera;
 
@@ -13,6 +14,7 @@ public class PlayerReferences : MonoBehaviour
         playerData.currentMovementSpeed = playerData.defaultMovementSpeed;
         playerInputs = this.gameObject.GetComponent<PlayerInputs>();
         playerRb = this.gameObject.GetComponent<Rigidbody>();
-        mainCamera = GameObject.FindObjectOfType<Camera>();
+        melee = this.gameObject.GetComponent<Melee>();
+        mainCamera = FindObjectOfType<Camera>();
     }
 }

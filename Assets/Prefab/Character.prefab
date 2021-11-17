@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4058440074229409874
 Transform:
   m_ObjectHideFlags: 0
@@ -347,6 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: ab9435c57dc07f341a3cb88543733823, type: 2}
   playerInputs: {fileID: 0}
+  melee: {fileID: 0}
   playerRb: {fileID: 0}
   mainCamera: {fileID: 0}
 --- !u!114 &-1009637460361697397
@@ -361,9 +362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58020e32789cf8428a24c1a0f088ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 4479740841726000782}
-  meleeDuration: 0.5
-  meleeCooldown: 0
   meleeObject: {fileID: 1135220798556889091}
 --- !u!114 &434767083574039446
 MonoBehaviour:

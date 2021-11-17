@@ -6,4 +6,7 @@ public class PlayerData : ScriptableObject
     [Header("Movement section")]
     [HideInInspector] public float currentMovementSpeed;
     public float defaultMovementSpeed;
+    [Header("Melee section")]
+    public float meleeDuration;
+    public float meleeCooldown;
 }
