@@ -58,8 +58,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439333442255006852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
-  m_LocalScale: {x: 7, y: 1, z: 3}
+  m_LocalPosition: {x: 0, y: -0, z: 2.75}
+  m_LocalScale: {x: 7, y: 1, z: 4.5}
   m_Children: []
   m_Father: {fileID: 4058440074229409874}
   m_RootOrder: 0
@@ -385,6 +385,7 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: ab9435c57dc07f341a3cb88543733823, type: 2}
   playerInputs: {fileID: 0}
   playerController: {fileID: 0}
+  mousePos: {fileID: 0}
   melee: {fileID: 0}
   playerRb: {fileID: 0}
   mainCamera: {fileID: 0}

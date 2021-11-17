@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 1736656748775647373, guid: 677ab814331b54847a226379a13144ce, type: 3}
     - target: {fileID: -8989108024156747980, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
       propertyPath: shootDelay
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2733700917984062088, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
       propertyPath: m_Name

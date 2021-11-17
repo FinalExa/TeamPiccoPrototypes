@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeValue: 1
   lifeTime: 15
-  speed: 30
+  speed: 17
   thisProjectileRigidbody: {fileID: -3310621872110477516}
   target: {x: 0, y: 0, z: 0}
 --- !u!33 &2318725330408936699
