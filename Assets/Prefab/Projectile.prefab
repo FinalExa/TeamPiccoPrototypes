@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3260b568a9badd74f87bceb18745032a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
+  lifeTime: 15
   speed: 30
   thisProjectileRigidbody: {fileID: -3310621872110477516}
   target: {x: 0, y: 0, z: 0}

@@ -96,7 +96,7 @@ MonoBehaviour:
   projectile: {fileID: 5814666638754323035, guid: f70949fb2ecb1ba448843a39fd41d193, type: 3}
   projectileParent: {fileID: 0}
   projectileStartPosition: {fileID: 1023044744484094521}
-  shootDelay: 1
+  shootDelay: 1.5
 --- !u!33 &2733700917984062091
 MeshFilter:
   m_ObjectHideFlags: 0
