@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    [SerializeField] PlayerInputs playerInput;
+    [SerializeField] PlayerReferences playerRef;
+    [SerializeField] int playerBatteryExpend;
     [SerializeField] bool autoInput;
     [SerializeField] GameObject projectile;
     [SerializeField] GameObject projectileParent;
@@ -12,7 +13,7 @@ public class Shoot : MonoBehaviour
 
     private void Awake()
     {
-        playerInput = FindObjectOfType<PlayerInputs>();
+        playerRef = FindObjectOfType<PlayerReferences>();
         projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
     }
 
@@ -36,11 +37,23 @@ public class Shoot : MonoBehaviour
     {
         if (shootDelayTimer == shootDelay)
         {
-            GameObject proj = Instantiate(projectile, ProjectilePositionCalculate(), Quaternion.identity, projectileParent.transform);
-            proj.GetComponent<Projectile>().target = playerInput.gameObject.transform.position;
+            if (autoInput) AiProjectile();
+            else PlayerProjectile();
         }
         if (shootDelayTimer > 0) shootDelayTimer -= Time.deltaTime;
         else shootDelayTimer = shootDelay;
+    }
+
+    private void AiProjectile()
+    {
+        GameObject proj = Instantiate(projectile, ProjectilePositionCalculate(), Quaternion.identity, projectileParent.transform);
+        proj.GetComponent<Projectile>().target = playerRef.gameObject.transform.position;
+    }
+
+    private void PlayerProjectile()
+    {
+        GameObject proj = Instantiate(projectile, ProjectilePositionCalculate(), Quaternion.identity, projectileParent.transform);
+        proj.GetComponent<Projectile>().target = playerRef.mousePos.mousePositionInSpace;
     }
 
     void InputCheck()
@@ -57,8 +70,9 @@ public class Shoot : MonoBehaviour
 
     void WithPlayerInput()
     {
-        if (playerInput.RightClickInput == true)
+        if (playerRef.playerInputs.RightClickInput == true && playerRef.playerController.battery >= playerBatteryExpend)
         {
+            playerRef.playerController.BatteryUpdate(-playerBatteryExpend);
             ShootTimer();
         }
     }

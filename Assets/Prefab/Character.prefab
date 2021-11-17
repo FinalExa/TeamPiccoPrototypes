@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4058440074229409874
 Transform:
   m_ObjectHideFlags: 0
@@ -126,6 +126,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2368323287208570982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2260342308493683730}
+  m_Layer: 0
+  m_Name: PlayerProjectileStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2260342308493683730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368323287208570982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.75}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 1140784502109354574}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3743724503456921277
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +219,7 @@ Transform:
   m_Children:
   - {fileID: 9002663570858913329}
   - {fileID: 4058440074229409874}
+  - {fileID: 2260342308493683730}
   m_Father: {fileID: 3376691023311971414}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -270,11 +301,12 @@ GameObject:
   - component: {fileID: -1009637460361697397}
   - component: {fileID: 434767083574039446}
   - component: {fileID: 6259044601743341115}
+  - component: {fileID: 8839056874508986754}
   - component: {fileID: -2456297739160437030}
   - component: {fileID: 7616627670619280990}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: ProjectilePlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -335,6 +367,8 @@ MonoBehaviour:
   playerReferences: {fileID: 0}
   actualSpeed: 0
   curState: 
+  battery: 0
+  batteryText: {fileID: 0}
 --- !u!114 &1355043783643722004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: ab9435c57dc07f341a3cb88543733823, type: 2}
   playerInputs: {fileID: 0}
+  playerController: {fileID: 0}
   melee: {fileID: 0}
   playerRb: {fileID: 0}
   mainCamera: {fileID: 0}
@@ -392,6 +427,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 0
   rotationEnabled: 1
+--- !u!114 &8839056874508986754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976793914851956942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa2beb4e0561cb45847245aff3be578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRef: {fileID: 0}
+  playerBatteryExpend: 2
+  autoInput: 0
+  projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
+  projectileParent: {fileID: 0}
+  projectileStartPosition: {fileID: 2368323287208570982}
+  shootDelay: 0
 --- !u!114 &-2456297739160437030
 MonoBehaviour:
   m_ObjectHideFlags: 0

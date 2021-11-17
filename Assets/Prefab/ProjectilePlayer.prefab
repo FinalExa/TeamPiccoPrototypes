@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 4982697968639824756}
   - component: {fileID: -3310621872110477516}
   m_Layer: 0
-  m_Name: Projectile
-  m_TagString: Projectile
+  m_Name: ProjectilePlayer
+  m_TagString: ProjectilePlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeValue: 1
   lifeTime: 10
-  speed: 30
+  speed: 50
   thisProjectileRigidbody: {fileID: -3310621872110477516}
   target: {x: 0, y: 0, z: 0}
 --- !u!33 &2318725330408936699
@@ -79,7 +79,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 51fdb2da8c642334fa244d024af3b198, type: 2}
+  - {fileID: 2100000, guid: 078462b946ddf9344abfa4029f8da0b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
