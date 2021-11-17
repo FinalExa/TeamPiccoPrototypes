@@ -21,7 +21,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Melee")) Destroy(this.gameObject);
+        if (other.CompareTag("Melee"))
+        {
+            this.thisProjectileRigidbody.velocity = Vector3.zero;
+            Destroy(this.gameObject);
+        }
     }
 
     protected virtual void ProjectileMovement()

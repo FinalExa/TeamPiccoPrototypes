@@ -6,6 +6,7 @@ public class DamageTaken : MonoBehaviour
 {
     [SerializeField] private GameObject objectToColor;
     [SerializeField] private float feedbackDuration;
+    [SerializeField] private Rigidbody thisRB;
     private float feedbackTimer;
     private Renderer thisRenderer;
     [SerializeField] private Material baseMaterial;
@@ -24,14 +25,21 @@ public class DamageTaken : MonoBehaviour
     {
         DamageCooldown();
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Projectile"))
+        {
+            thisRB.velocity = Vector3.zero;
+            Destroy(collision.gameObject);
+            if (!isDamaged)
+            {
+                TakeDamage();
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Projectile") && !isDamaged)
-        {
-            Destroy(other.gameObject);
-            TakeDamage();
-        }
+
     }
 
     private void TakeDamage()

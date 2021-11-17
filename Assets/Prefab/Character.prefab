@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4058440074229409874
 Transform:
   m_ObjectHideFlags: 0
@@ -58,8 +58,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439333442255006852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.5}
-  m_LocalScale: {x: 5, y: 1, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 7, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 4058440074229409874}
   m_RootOrder: 0
@@ -406,6 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToColor: {fileID: 4322382635205729614}
   feedbackDuration: 1
+  thisRB: {fileID: 7616627670619280990}
   baseMaterial: {fileID: 2100000, guid: 7c2f0274b0f41e449b76d6ce4b10ca9d, type: 2}
   damagedMaterial: {fileID: 2100000, guid: 078462b946ddf9344abfa4029f8da0b5, type: 2}
 --- !u!54 &7616627670619280990
