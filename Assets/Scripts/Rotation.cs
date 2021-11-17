@@ -4,14 +4,10 @@ public class Rotation : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed;
     public bool rotationEnabled;
-    private PlayerInputs playerInputs;
     private MousePos mousePos;
     private Transform playerCharacterTransform;
-    private Camera mainCamera;
     void Awake()
     {
-        playerInputs = FindObjectOfType<PlayerInputs>();
-        mainCamera = FindObjectOfType<Camera>();
         mousePos = FindObjectOfType<MousePos>();
         playerCharacterTransform = this.gameObject.transform;
     }
@@ -22,20 +18,6 @@ public class Rotation : MonoBehaviour
     void Update()
     {
         RotatePlayerToMousePosition();
-    }
-
-    private void Rotate()
-    {
-        Vector3 forward = mainCamera.transform.forward;
-        forward.y = 0f;
-        Vector3 right = mainCamera.transform.right;
-        right.y = 0f;
-        forward.Normalize();
-        right.Normalize();
-        Vector3 playerVector = (playerInputs.MovementInput.x * forward) + (playerInputs.MovementInput.z * right);
-        Vector3 direction = (playerVector).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
     private float CalculateAngle(Vector3 player, Vector3 mouse)
     {
