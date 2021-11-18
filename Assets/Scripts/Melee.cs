@@ -23,8 +23,7 @@ public class Melee : MonoBehaviour
         meleeObject.SetActive(false);
         timerAttack = meleeDuration;
         timerCooldown = meleeCooldown;
-        meleeDuration = playerRef.playerData.meleeDuration;
-        meleeCooldown = playerRef.playerData.meleeCooldown;
+        
     }
 
     private void Update()
@@ -32,6 +31,8 @@ public class Melee : MonoBehaviour
         MeleeCheck();
         MeleeActive();
         MeleeCooldown();
+        meleeDuration = playerRef.playerData.meleeDuration;
+        meleeCooldown = playerRef.playerData.meleeCooldown;
     }
 
     private void MeleeCheck()

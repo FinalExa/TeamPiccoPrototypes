@@ -7,12 +7,13 @@ public class Moving : PlayerState
     public override void Start()
     {
         PlayerReferences playerReferences = _playerCharacter.playerController.playerReferences;
-        UpdateSpeedValue();
+        
     }
     public override void StateUpdate()
     {
         Movement();
         Transitions();
+        UpdateSpeedValue();
     }
 
     #region Movement
@@ -20,7 +21,7 @@ public class Moving : PlayerState
     {
         PlayerData playerData = _playerCharacter.playerController.playerReferences.playerData;
         PlayerController playerController = _playerCharacter.playerController;
-        playerController.actualSpeed = playerData.currentMovementSpeed;
+        playerController.actualSpeed = playerData.defaultMovementSpeed;
     }
     private void Movement()
     {
