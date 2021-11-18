@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: shootDelay
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: -8092036773541869765, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
+      propertyPath: baseMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 5f362b65fc8db064888ab83cb5a3ad35, type: 2}
+    - target: {fileID: -6906413286637633626, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
+      propertyPath: baseMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 5f362b65fc8db064888ab83cb5a3ad35, type: 2}
     - target: {fileID: 2733700917984062088, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
       propertyPath: m_Name
       value: Gatling

@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 2260342308493683730}
   m_Layer: 0
   m_Name: PlayerProjectileStart
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 3376691023311971414}
   m_Layer: 0
   m_Name: rotation
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 7175903716107958130}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 7616627670619280990}
   m_Layer: 0
   m_Name: Character
-  m_TagString: ProjectilePlayer
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ca727a7e97ed34bbbd5823bf6030fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hostileTag: Projectile
   objectToColor: {fileID: 4322382635205729614}
   feedbackDuration: 1
   thisRB: {fileID: 7616627670619280990}
@@ -493,7 +494,7 @@ GameObject:
   - component: {fileID: 2833284064710484593}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -587,7 +588,7 @@ GameObject:
   - component: {fileID: 547927082905764515}
   m_Layer: 0
   m_Name: Face
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

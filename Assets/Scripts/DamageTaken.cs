@@ -4,47 +4,45 @@ using UnityEngine;
 
 public class DamageTaken : MonoBehaviour
 {
-    [SerializeField] private GameObject objectToColor;
-    [SerializeField] private float feedbackDuration;
-    [SerializeField] private Rigidbody thisRB;
-    private float feedbackTimer;
-    private Renderer thisRenderer;
-    [SerializeField] private Material baseMaterial;
-    [SerializeField] private Material damagedMaterial;
-    private bool isDamaged;
+    [SerializeField] protected string hostileTag;
+    [SerializeField] protected GameObject objectToColor;
+    [SerializeField] protected float feedbackDuration;
+    [SerializeField] protected Rigidbody thisRB;
+    protected float feedbackTimer;
+    protected Renderer thisRenderer;
+    [SerializeField] protected Material baseMaterial;
+    [SerializeField] protected Material damagedMaterial;
+    protected bool isDamaged;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         thisRenderer = objectToColor.GetComponent<Renderer>();
     }
-    private void Start()
+    protected virtual void Start()
     {
         feedbackTimer = feedbackDuration;
     }
-    private void Update()
+    protected virtual void Update()
     {
         DamageCooldown();
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Projectile"))
+        if (collision.gameObject.CompareTag(hostileTag) && !collision.gameObject.CompareTag("Player"))
         {
             thisRB.velocity = Vector3.zero;
             Destroy(collision.gameObject);
-            if (!isDamaged)
-            {
-                TakeDamage();
-            }
+            if (!isDamaged) TakeDamage();
         }
     }
 
-    private void TakeDamage()
+    protected virtual void TakeDamage()
     {
         thisRenderer.material = damagedMaterial;
         isDamaged = true;
     }
 
-    private void DamageCooldown()
+    protected virtual void DamageCooldown()
     {
         if (isDamaged)
         {
