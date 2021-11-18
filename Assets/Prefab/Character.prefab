@@ -446,9 +446,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
-  playerBatteryExpend: 2
+  playerBatteryExpend: 20
   autoInput: 0
-  projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
+  projectile: {fileID: 1495253717480726450, guid: 7d23ce4680d73c748bcd761e56bed9f1, type: 3}
   projectileParent: {fileID: 0}
   projectileStartPosition: {fileID: 2368323287208570982}
   shootDelay: 0
