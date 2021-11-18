@@ -2340,7 +2340,7 @@ MonoBehaviour:
 
     -  shoot
 
-    -  pause menu'
+    -  pause'
 --- !u!222 &1167778245
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3160,7 +3160,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3664,7 +3664,7 @@ MonoBehaviour:
 
     RIGHT MOUSE
 
-    PAUSE'
+    ESC'
 --- !u!222 &1893067085
 CanvasRenderer:
   m_ObjectHideFlags: 0
