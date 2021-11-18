@@ -6,11 +6,12 @@ public class DamageEnemy : DamageTaken
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(hostileTag) && !other.gameObject.CompareTag("Player"))
+        if ((other.gameObject.CompareTag(hostileTag) || other.gameObject.CompareTag("Melee")) && !other.gameObject.CompareTag("Player"))
         {
             thisRB.velocity = Vector3.zero;
-            Destroy(other.gameObject);
+            if(!other.gameObject.CompareTag("Melee")) Destroy(other.gameObject);
             if (!isDamaged) TakeDamage();
         }
+
     }
 }

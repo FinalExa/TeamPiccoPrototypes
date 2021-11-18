@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3879403988285957613}
   - component: {fileID: 7648173519115936072}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ProjectileStartPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 2733700917984062091}
   - component: {fileID: 2733700917984062090}
   - component: {fileID: 2733700917984062089}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   playerRef: {fileID: 0}
   playerBatteryExpend: 0
   autoInput: 1
-  projectile: {fileID: 333056865935709539, guid: 5ba8f0bdd81b14a4c9ea88e709773561, type: 3}
+  projectile: {fileID: 2408049617588720604, guid: a11724f5c8845544589da3d96552641a, type: 3}
   projectileParent: {fileID: 0}
   projectileStartPosition: {fileID: 1023044744484094521}
   shootDelay: 1.5

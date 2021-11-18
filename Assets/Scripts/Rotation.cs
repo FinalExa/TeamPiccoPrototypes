@@ -6,14 +6,18 @@ public class Rotation : MonoBehaviour
     public bool rotationEnabled;
     private MousePos mousePos;
     private Transform playerCharacterTransform;
+
+    public Transform PointAIM;
     void Awake()
     {
         mousePos = FindObjectOfType<MousePos>();
         playerCharacterTransform = this.gameObject.transform;
+        
     }
     private void Start()
     {
         rotationEnabled = true;
+        //Instantiate(PointAIM,mousePos.reticlePosition,Quaternion.identity);
     }
     void Update()
     {
@@ -32,7 +36,9 @@ public class Rotation : MonoBehaviour
     }
     public void RotatePlayerToMousePosition()
     {
-        float angle = CalculateAngle(playerCharacterTransform.position, mousePos.mousePositionInSpace);
+        float angle = CalculateAngle(playerCharacterTransform.position, mousePos.ReticlePosition);
         playerCharacterTransform.rotation = Quaternion.Euler(new Vector3(playerCharacterTransform.rotation.x, angle, playerCharacterTransform.rotation.z));
+        
+        PointAIM.position = mousePos.ReticlePosition;
     }
 }

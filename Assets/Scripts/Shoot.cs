@@ -53,7 +53,7 @@ public class Shoot : MonoBehaviour
     private void PlayerProjectile()
     {
         GameObject proj = Instantiate(projectile, ProjectilePositionCalculate(), Quaternion.identity, projectileParent.transform);
-        proj.GetComponent<Projectile>().target = playerRef.mousePos.mousePositionInSpace;
+        proj.GetComponent<Projectile>().target = playerRef.mousePos.VectorPoitToShoot;
     }
 
     void InputCheck()
