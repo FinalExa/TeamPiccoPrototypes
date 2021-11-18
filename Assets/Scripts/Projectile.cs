@@ -1,16 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Projectile : MonoBehaviour
 {
-    public static Action<int> absorb;
-    [SerializeField] private int rechargeValue;
-    [SerializeField] private float lifeTime;
     [SerializeField] private float speed;
-    [SerializeField] private Rigidbody thisProjectileRigidbody;
+    [SerializeField] private float lifeTime;
+    [SerializeField] private ProjectileBody[] thisProjectileChildren;
     private float lifeTimer;
     public Vector3 target;
-
     private void Start()
     {
         lifeTimer = lifeTime;
@@ -22,30 +20,14 @@ public class Projectile : MonoBehaviour
         LifeTime();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Melee"))
-        {
-            this.thisProjectileRigidbody.velocity = Vector3.zero;
-            absorb(rechargeValue);
-            Destroy(this.gameObject);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.gameObject.CompareTag("Wall"))
-        {
-            this.thisProjectileRigidbody.velocity = Vector3.zero;
-            Destroy(this.gameObject);
-        }
-    }
-
-    protected virtual void ProjectileMovement()
+    private void ProjectileMovement()
     {
         Vector3 direction = (target - this.transform.position).normalized;
         this.transform.rotation = Quaternion.LookRotation(direction);
-        thisProjectileRigidbody.velocity = this.transform.forward * speed;
+        for (int i = 0; i < thisProjectileChildren.Length; i++)
+        {
+            thisProjectileChildren[i].thisProjectileRigidbody.velocity = this.transform.forward * speed;
+        }
     }
 
     private void LifeTime()

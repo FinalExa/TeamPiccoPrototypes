@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        Projectile.absorb += BatteryUpdate;
+        ProjectileBody.absorb += BatteryUpdate;
         playerReferences = this.gameObject.GetComponent<PlayerReferences>();
     }
 
