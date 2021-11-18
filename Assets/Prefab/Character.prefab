@@ -303,7 +303,6 @@ GameObject:
   - component: {fileID: 8839056874508986754}
   - component: {fileID: -2456297739160437030}
   - component: {fileID: 7616627670619280990}
-  - component: {fileID: 3694550947062883038}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -415,7 +414,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mousePositionInSpace: {x: 0, y: 0, z: 0}
-  Cube: {fileID: 2763786835875342857, guid: 6bffb327ddfd3a14bbd421f53fabb688, type: 3}
+  PointToShoot: {fileID: 0}
+  VectorPoitToShoot: {x: 0, y: 0, z: 0}
   reticlePosition: {x: 0, y: 0, z: 0}
   reticleNormal: {x: 0, y: 0, z: 0}
 --- !u!114 &6259044601743341115
@@ -486,20 +486,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 3
---- !u!114 &3694550947062883038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4976793914851956942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0a13319b945a2e40a5f27edaaf43ac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Barrel: {fileID: 6626539129697738486}
-  CrossHair: {fileID: 0}
 --- !u!1 &5620538665637547948
 GameObject:
   m_ObjectHideFlags: 0

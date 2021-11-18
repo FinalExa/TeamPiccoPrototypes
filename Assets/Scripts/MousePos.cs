@@ -14,7 +14,7 @@ public class MousePos : MonoBehaviour
     public Vector3 reticlePosition;
     public Vector3 ReticlePosition
     {
-         get { return reticlePosition; }
+        get { return reticlePosition; }
     }
 
     public Vector3 reticleNormal;
@@ -40,14 +40,10 @@ public class MousePos : MonoBehaviour
             MouseRaycast();
             VectorPoitToShoot = new Vector3(PointToShoot.transform.position.x, PointToShoot.transform.position.y, PointToShoot.transform.position.z);
         }
-        
+
     }
     private void MouseRaycast()
     {
-        //ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        //Physics.Raycast(ray, out hit);
-        //mousePositionInSpace = hit.point;
-        //Debug.DrawRay(mousePositionInSpace, hit.point, Color.red);
         Ray screenRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -56,18 +52,5 @@ public class MousePos : MonoBehaviour
             reticlePosition = hit.point;
             reticleNormal = hit.normal;
         }
-        Debug.Log(hit.normal);
     }
-
-    //protected virtual void HandleInputs()
-    //{
-    //    Ray screenRay = Camera.FindSceneObjectsOfType(Input.mousePosition);
-    //    RaycastHit hit;
-    //
-    //    if(Physics.Raycast(screenRay,out hit))
-    //    {
-    //        reticlePosition = hit.point;
-    //        reticleNormal = hit.normal;
-    //    }
-    //}
 }
