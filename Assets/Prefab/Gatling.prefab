@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gatling
       objectReference: {fileID: 0}
+    - target: {fileID: 2733700917984062088, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2733700917984062090, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

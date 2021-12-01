@@ -177,10 +177,10 @@ MonoBehaviour:
   playerRef: {fileID: 0}
   playerBatteryExpend: 0
   autoInput: 1
-  projectile: {fileID: 2408049617588720604, guid: a11724f5c8845544589da3d96552641a, type: 3}
+  projectile: {fileID: 5814666638754323035, guid: f70949fb2ecb1ba448843a39fd41d193, type: 3}
   projectileParent: {fileID: 0}
   projectileStartPosition: {fileID: 1023044744484094521}
-  shootDelay: 1.5
+  shootDelay: 0.7
   rechargeDelay: 0
   weaponRechargeValue: 0
   ammoMax: 0
