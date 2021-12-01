@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shoot : MonoBehaviour
 {
@@ -10,21 +11,44 @@ public class Shoot : MonoBehaviour
     [SerializeField] GameObject projectileStartPosition;
     [SerializeField] private float shootDelay;
     float shootDelayTimer;
-
+    private bool shootReady;
+    [SerializeField] private float rechargeDelay;
+    float rechargeDelayTimer;
+    private bool isRecharging;
+    [SerializeField] private int weaponRechargeValue;
+    [SerializeField] private int ammoMax;
+    private int ammoCurrent;
+    [SerializeField] private int magazineSize;
+    private int magazineCurrent;
+    [SerializeField] private Text ammoText;
+    private int scalingLevel;
     private void Awake()
     {
+        ProjectileBody.absorb += RechargeAmmo;
         playerRef = FindObjectOfType<PlayerReferences>();
         projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
     }
 
     private void Start()
     {
+        if (!autoInput) shootReady = true;
         shootDelayTimer = shootDelay;
+        rechargeDelayTimer = rechargeDelay;
+        ammoCurrent = ammoMax;
+        magazineCurrent = magazineSize;
     }
 
     private void Update()
     {
-        InputCheck();
+        if (!autoInput) InputCheck();
+        if (Input.GetKeyDown(KeyCode.R) && magazineCurrent != magazineSize) isRecharging = true;
+        UpdateText();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!shootReady) ShootTimer();
+        if (isRecharging) RechargeTimer();
     }
 
     private Vector3 ProjectilePositionCalculate()
@@ -33,15 +57,46 @@ public class Shoot : MonoBehaviour
         return position;
     }
 
-    void ShootTimer()
+    private void ShootTimer()
     {
-        if (shootDelayTimer == shootDelay)
+        if (shootDelayTimer == shootDelay && autoInput) AiProjectile();
+        if (shootDelayTimer > 0) shootDelayTimer -= Time.fixedDeltaTime;
+        else
         {
-            if (autoInput) AiProjectile();
-            else PlayerProjectile();
+            shootDelayTimer = shootDelay;
+            if (!autoInput) shootReady = true;
         }
-        if (shootDelayTimer > 0) shootDelayTimer -= Time.deltaTime;
-        else shootDelayTimer = shootDelay;
+    }
+
+    private void RechargeTimer()
+    {
+        if (rechargeDelayTimer == rechargeDelay && autoInput) AiProjectile();
+        if (rechargeDelayTimer > 0) rechargeDelayTimer -= Time.fixedDeltaTime;
+        else
+        {
+            scalingLevel = 0;
+            rechargeDelayTimer = rechargeDelay;
+            if (ammoCurrent >= magazineSize)
+            {
+                if (magazineCurrent == 0)
+                {
+                    magazineCurrent = magazineSize;
+                    ammoCurrent -= magazineSize;
+                }
+                else
+                {
+                    int ammoPartial = magazineSize - magazineCurrent;
+                    magazineCurrent += ammoPartial;
+                    ammoCurrent -= ammoPartial;
+                }
+            }
+            else
+            {
+                magazineCurrent = ammoCurrent;
+                ammoCurrent = 0;
+            }
+            if (!autoInput) isRecharging = false;
+        }
     }
 
     private void AiProjectile()
@@ -54,26 +109,35 @@ public class Shoot : MonoBehaviour
     {
         GameObject proj = Instantiate(projectile, ProjectilePositionCalculate(), Quaternion.identity, projectileParent.transform);
         proj.GetComponent<Projectile>().target = playerRef.mousePos.VectorPoitToShoot;
+        proj.GetComponent<Projectile>().scalingLevel = scalingLevel;
     }
 
-    void InputCheck()
+    private void InputCheck()
     {
-        if (autoInput == false)
+        if (playerRef.playerInputs.RightClickInput == true && shootReady && !isRecharging && magazineCurrent > 0)
         {
-            WithPlayerInput();
-        }
-        else
-        {
-            ShootTimer();
+            if (playerRef.playerController.battery > 0)
+            {
+                scalingLevel = playerRef.playerController.battery;
+                playerRef.playerController.BatteryUpdate(-scalingLevel);
+            }
+            magazineCurrent--;
+            PlayerProjectile();
+            if (magazineCurrent == 0)
+            {
+                isRecharging = true;
+            }
+            else shootReady = false;
         }
     }
 
-    void WithPlayerInput()
+    public void RechargeAmmo(int value)
     {
-        if (playerRef.playerInputs.RightClickInput == true && playerRef.playerController.battery >= playerBatteryExpend)
-        {
-            playerRef.playerController.BatteryUpdate(-playerBatteryExpend);
-            ShootTimer();
-        }
+        ammoCurrent = Mathf.Clamp(ammoCurrent + weaponRechargeValue, 0, ammoMax);
+    }
+
+    private void UpdateText()
+    {
+        if (!autoInput) ammoText.text = magazineCurrent + "/" + ammoCurrent;
     }
 }

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerReferences playerReferences;
     [HideInInspector] public float actualSpeed;
     [HideInInspector] public string curState;
-    [HideInInspector] [Range(0, 100)] public int battery;
+    [HideInInspector] [Range(0, 3)] public int battery;
     [SerializeField] private Text batteryText;
 
     private void Awake()
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public void BatteryUpdate(int value)
     {
         battery += value;
-        battery = Mathf.Clamp(battery, 0, 100);
-        batteryText.text = battery + "%";
+        battery = Mathf.Clamp(battery, 0, 3);
+        batteryText.text = battery + "/3";
     }
 }

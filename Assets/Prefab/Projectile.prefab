@@ -49,6 +49,7 @@ MonoBehaviour:
   lifeTime: 15
   thisProjectileChildren:
   - {fileID: 6774846178389032494}
+  scalingLevel: 0
   target: {x: 0, y: 0, z: 0}
 --- !u!54 &631769037431677199
 Rigidbody:
@@ -113,8 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d050f3e635abd4ab81373214c274f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rechargeValue: 2
+  rechargeValue: 1
   thisProjectileRigidbody: {fileID: 5760941072590139813}
+  damage: 10
+  scalingLevel: 0
+  scaling: {fileID: 0}
 --- !u!33 &2784398110612634817
 MeshFilter:
   m_ObjectHideFlags: 0

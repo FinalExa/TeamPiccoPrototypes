@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d050f3e635abd4ab81373214c274f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rechargeValue: 2
+  rechargeValue: 1
   thisProjectileRigidbody: {fileID: 6528644334756927456}
 --- !u!33 &991600265637974329
 MeshFilter:
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d050f3e635abd4ab81373214c274f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rechargeValue: 2
+  rechargeValue: 1
   thisProjectileRigidbody: {fileID: 3604578869721121233}
 --- !u!33 &8574432060912019820
 MeshFilter:

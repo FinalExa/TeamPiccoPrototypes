@@ -9,6 +9,7 @@ public class PlayerReferences : MonoBehaviour
     [HideInInspector] public Melee melee;
     [HideInInspector] public Rigidbody playerRb;
     [HideInInspector] public Camera mainCamera;
+    [HideInInspector] public Shoot shoot;
 
 
     private void Awake()
@@ -20,5 +21,6 @@ public class PlayerReferences : MonoBehaviour
         playerRb = this.gameObject.GetComponent<Rigidbody>();
         melee = this.gameObject.GetComponent<Melee>();
         mainCamera = FindObjectOfType<Camera>();
+        shoot = this.gameObject.GetComponent<Shoot>();
     }
 }

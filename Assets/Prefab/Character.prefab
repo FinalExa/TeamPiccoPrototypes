@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4058440074229409874}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MeleeAttack
   m_TagString: Melee
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3166821101803557365}
   - component: {fileID: 2010316715214352451}
   - component: {fileID: 9031676151879547453}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Side
   m_TagString: Melee
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2260342308493683730}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayerProjectileStart
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3376691023311971414}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: rotation
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 4564734752982590426}
   - component: {fileID: 981750958531450748}
   - component: {fileID: 7175903716107958130}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 8839056874508986754}
   - component: {fileID: -2456297739160437030}
   - component: {fileID: 7616627670619280990}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -388,6 +388,7 @@ MonoBehaviour:
   melee: {fileID: 0}
   playerRb: {fileID: 0}
   mainCamera: {fileID: 0}
+  shoot: {fileID: 0}
 --- !u!114 &-1009637460361697397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,7 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 0
   rotationEnabled: 1
-  PointAIM: {fileID: 4548861543995197210, guid: 6bffb327ddfd3a14bbd421f53fabb688, type: 3}
+  PointAIM: {fileID: 0}
 --- !u!114 &8839056874508986754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,12 +447,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
-  playerBatteryExpend: 20
+  playerBatteryExpend: 0
   autoInput: 0
-  projectile: {fileID: 1495253717480726450, guid: 7d23ce4680d73c748bcd761e56bed9f1, type: 3}
+  projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   projectileParent: {fileID: 0}
   projectileStartPosition: {fileID: 2368323287208570982}
-  shootDelay: 0
+  shootDelay: 0.1
+  rechargeDelay: 1
+  weaponRechargeValue: 3
+  ammoMax: 24
+  magazineSize: 6
+  ammoText: {fileID: 0}
 --- !u!114 &-2456297739160437030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,7 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2267265460092253888}
   - component: {fileID: 2833284064710484593}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spot Light
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -590,7 +596,7 @@ GameObject:
   - component: {fileID: 9002663570858913329}
   - component: {fileID: 2839715576700478448}
   - component: {fileID: 547927082905764515}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Face
   m_TagString: Player
   m_Icon: {fileID: 0}
