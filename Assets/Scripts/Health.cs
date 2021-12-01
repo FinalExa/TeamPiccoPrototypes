@@ -1,15 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHP;
     private float currentHP;
+    [SerializeField] private Text UItext;
 
     private void OnEnable()
     {
         currentHP = maxHP;
+    }
+
+    private void Update()
+    {
+        UpdateHPInUI();
+    }
+
+    private void UpdateHPInUI()
+    {
+        UItext.text = currentHP + "/" + maxHP;
     }
 
     public void DecreaseHP(float damageReceived)

@@ -29,7 +29,6 @@ public class ProjectileBody : MonoBehaviour
     {
         float addedDmg = (damage / 100f) * scaling.scalingPer[scalingLevel - 1];
         float totalDmg = damage + addedDmg;
-        print(totalDmg);
         return totalDmg;
     }
 

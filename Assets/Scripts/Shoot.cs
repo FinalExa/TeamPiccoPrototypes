@@ -138,6 +138,6 @@ public class Shoot : MonoBehaviour
 
     private void UpdateText()
     {
-        if (!autoInput) ammoText.text = magazineCurrent + "/" + ammoCurrent;
+        if (!autoInput) ammoText.text = "Ammo: " + magazineCurrent + "/" + ammoCurrent;
     }
 }
