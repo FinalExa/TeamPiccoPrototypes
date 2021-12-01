@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scalingPer:
   - 50
-  - 125
-  - 300
+  - 175
+  - 400
