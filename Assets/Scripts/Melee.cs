@@ -8,6 +8,7 @@ public class Melee : MonoBehaviour
     private float meleeDuration;
     private float meleeCooldown;
     [SerializeField] GameObject meleeObject;
+    public float meleeDamage;
     private bool meleeOn;
     private bool meleeCooldownOn;
     private float timerAttack;
@@ -23,7 +24,7 @@ public class Melee : MonoBehaviour
         meleeObject.SetActive(false);
         timerAttack = meleeDuration;
         timerCooldown = meleeCooldown;
-        
+
     }
 
     private void Update()
@@ -37,7 +38,7 @@ public class Melee : MonoBehaviour
 
     private void MeleeCheck()
     {
-        if (playerRef.playerInputs.LeftClickInput == true && !meleeCooldownOn)
+        if (playerRef.playerInputs.RightClickInput == true && !meleeCooldownOn)
         {
             meleeObject.SetActive(true);
             meleeOn = true;

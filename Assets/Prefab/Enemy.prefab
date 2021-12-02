@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 2733700917984062089}
   m_Layer: 2
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   playerRef: {fileID: 0}
   playerBatteryExpend: 0
   autoInput: 1
+  autoFirstShootStop: 0
   projectile: {fileID: 5814666638754323035, guid: f70949fb2ecb1ba448843a39fd41d193, type: 3}
   projectileParent: {fileID: 0}
   projectileStartPosition: {fileID: 1023044744484094521}
@@ -219,7 +220,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
+  isPlayer: 0
   UItext: {fileID: 1661040557318456125}
+  invincibilityTime: 0.05
 --- !u!54 &3746685406685054688
 Rigidbody:
   m_ObjectHideFlags: 0

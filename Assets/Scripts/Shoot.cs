@@ -150,7 +150,7 @@ public class Shoot : MonoBehaviour
 
     private void InputCheck()
     {
-        if (playerRef.playerInputs.RightClickInput == true && shootReady && !isRecharging && magazineCurrent > 0)
+        if (playerRef.playerInputs.LeftClickInput == true && shootReady && !isRecharging && magazineCurrent > 0)
         {
             if (playerRef.playerController.battery > 0)
             {

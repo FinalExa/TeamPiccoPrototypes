@@ -584,6 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeObject: {fileID: 1135220798556889091}
+  meleeDamage: 25
 --- !u!114 &434767083574039446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +632,7 @@ MonoBehaviour:
   playerRef: {fileID: 0}
   playerBatteryExpend: 0
   autoInput: 0
+  autoFirstShootStop: 0
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   projectileParent: {fileID: 0}
   projectileStartPosition: {fileID: 2368323287208570982}
@@ -675,6 +677,7 @@ MonoBehaviour:
   maxHP: 3
   isPlayer: 1
   UItext: {fileID: 5672406584093513531}
+  invincibilityTime: 0.3
 --- !u!54 &7616627670619280990
 Rigidbody:
   m_ObjectHideFlags: 0
