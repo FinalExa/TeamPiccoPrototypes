@@ -180,12 +180,14 @@ MonoBehaviour:
   projectile: {fileID: 5814666638754323035, guid: f70949fb2ecb1ba448843a39fd41d193, type: 3}
   projectileParent: {fileID: 0}
   projectileStartPosition: {fileID: 1023044744484094521}
-  shootDelay: 0.7
+  reloadCanvas: {fileID: 0}
+  shootDelay: 1.5
   rechargeDelay: 0
   weaponRechargeValue: 0
   ammoMax: 0
   magazineSize: 0
   ammoText: {fileID: 0}
+  ammoRegenTime: 0
 --- !u!114 &-6906413286637633626
 MonoBehaviour:
   m_ObjectHideFlags: 0

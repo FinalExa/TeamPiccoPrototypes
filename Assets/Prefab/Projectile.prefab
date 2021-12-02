@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903b6268d39792747a62b03eff9ba1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 50
   lifeTime: 15
   thisProjectileChildren:
   - {fileID: 6774846178389032494}
