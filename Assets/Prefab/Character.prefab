@@ -638,12 +638,12 @@ MonoBehaviour:
   projectileStartPosition: {fileID: 2368323287208570982}
   reloadCanvas: {fileID: 2807222723503654337}
   shootDelay: 0.1
-  rechargeDelay: 1
+  rechargeDelay: 0.75
   weaponRechargeValue: 3
-  ammoMax: 24
-  magazineSize: 6
+  ammoMax: 48
+  magazineSize: 3
   ammoText: {fileID: 0}
-  ammoRegenTime: 1.5
+  ammoRegenTime: 100
 --- !u!114 &-2456297739160437030
 MonoBehaviour:
   m_ObjectHideFlags: 0
