@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHP;
+    [SerializeField] private bool isPlayer;
     private float currentHP;
     [SerializeField] private Text UItext;
 
@@ -27,7 +29,11 @@ public class Health : MonoBehaviour
     public void DecreaseHP(float damageReceived)
     {
         currentHP = Mathf.Clamp(currentHP - damageReceived, 0, 100);
-        if (currentHP == 0) this.gameObject.SetActive(false);
+        if (currentHP == 0)
+        {
+            if (!isPlayer) this.gameObject.SetActive(false);
+            else SceneManager.LoadScene(0);
+        }
     }
 
     public void IncreaseHP(float healReceived)

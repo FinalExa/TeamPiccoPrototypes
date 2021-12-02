@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TuningVariant.unity
+    guid: 56d3b84cf1933834eabe1a9dc171e176
   m_configObjects: {}

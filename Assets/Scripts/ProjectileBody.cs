@@ -39,5 +39,9 @@ public class ProjectileBody : MonoBehaviour
             this.thisProjectileRigidbody.velocity = Vector3.zero;
             Destroy(this.gameObject);
         }
+        if (this.gameObject.CompareTag("Projectile") && collision.gameObject.GetComponent<Health>())
+        {
+            collision.gameObject.GetComponent<Health>().DecreaseHP(damage);
+        }
     }
 }

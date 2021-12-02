@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rechargeValue: 1
   thisProjectileRigidbody: {fileID: 5760941072590139813}
-  damage: 5
+  damage: 1
   scalingLevel: 0
   scaling: {fileID: 0}
 --- !u!33 &2784398110612634817
