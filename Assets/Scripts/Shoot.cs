@@ -6,6 +6,7 @@ public class Shoot : MonoBehaviour
     [SerializeField] PlayerReferences playerRef;
     [SerializeField] int playerBatteryExpend;
     [SerializeField] bool autoInput;
+    [SerializeField] bool autoFirstShootStop;
     [SerializeField] GameObject projectile;
     [SerializeField] GameObject projectileParent;
     [SerializeField] GameObject projectileStartPosition;
@@ -38,6 +39,10 @@ public class Shoot : MonoBehaviour
         {
             reloadCanvas.SetActive(false);
             shootReady = true;
+        }
+        else
+        {
+            autoFirstShootStop = true;
         }
         shootDelayTimer = shootDelay;
         rechargeDelayTimer = rechargeDelay;
@@ -78,7 +83,11 @@ public class Shoot : MonoBehaviour
 
     private void ShootTimer()
     {
-        if (shootDelayTimer == shootDelay && autoInput) AiProjectile();
+        if (shootDelayTimer == shootDelay && autoInput)
+        {
+            if (autoFirstShootStop) autoFirstShootStop = false;
+            else AiProjectile();
+        }
         if (shootDelayTimer > 0) shootDelayTimer -= Time.fixedDeltaTime;
         else
         {
