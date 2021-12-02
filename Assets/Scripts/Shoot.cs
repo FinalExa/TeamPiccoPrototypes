@@ -9,6 +9,7 @@ public class Shoot : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] GameObject projectileParent;
     [SerializeField] GameObject projectileStartPosition;
+    [SerializeField] GameObject reloadCanvas;
     [SerializeField] private float shootDelay;
     float shootDelayTimer;
     private bool shootReady;
@@ -22,6 +23,8 @@ public class Shoot : MonoBehaviour
     private int magazineCurrent;
     [SerializeField] private Text ammoText;
     private int scalingLevel;
+    [SerializeField] private float ammoRegenTime;
+    private float ammoRegenTimer;
     private void Awake()
     {
         ProjectileBody.absorb += RechargeAmmo;
@@ -31,9 +34,14 @@ public class Shoot : MonoBehaviour
 
     private void Start()
     {
-        if (!autoInput) shootReady = true;
+        if (!autoInput)
+        {
+            reloadCanvas.SetActive(false);
+            shootReady = true;
+        }
         shootDelayTimer = shootDelay;
         rechargeDelayTimer = rechargeDelay;
+        ammoRegenTimer = ammoRegenTime;
         ammoCurrent = ammoMax;
         magazineCurrent = magazineSize;
     }
@@ -49,12 +57,23 @@ public class Shoot : MonoBehaviour
     {
         if (!shootReady) ShootTimer();
         if (isRecharging) RechargeTimer();
+        if (!autoInput && ammoCurrent < ammoMax) AmmoRegen();
     }
 
     private Vector3 ProjectilePositionCalculate()
     {
         Vector3 position = projectileStartPosition.transform.position;
         return position;
+    }
+
+    private void AmmoRegen()
+    {
+        if (ammoRegenTimer > 0) ammoRegenTimer -= Time.fixedDeltaTime;
+        else
+        {
+            ammoRegenTimer = ammoRegenTime;
+            ammoCurrent++;
+        }
     }
 
     private void ShootTimer()
@@ -71,7 +90,11 @@ public class Shoot : MonoBehaviour
     private void RechargeTimer()
     {
         if (rechargeDelayTimer == rechargeDelay && autoInput) AiProjectile();
-        if (rechargeDelayTimer > 0) rechargeDelayTimer -= Time.fixedDeltaTime;
+        if (rechargeDelayTimer > 0)
+        {
+            if (!reloadCanvas.activeSelf && !autoInput) reloadCanvas.SetActive(true);
+            rechargeDelayTimer -= Time.fixedDeltaTime;
+        }
         else
         {
             scalingLevel = 0;
@@ -95,7 +118,11 @@ public class Shoot : MonoBehaviour
                 magazineCurrent = ammoCurrent;
                 ammoCurrent = 0;
             }
-            if (!autoInput) isRecharging = false;
+            if (!autoInput)
+            {
+                isRecharging = false;
+                reloadCanvas.SetActive(false);
+            }
         }
     }
 
