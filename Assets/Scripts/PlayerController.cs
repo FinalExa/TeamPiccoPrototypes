@@ -23,10 +23,14 @@ public class PlayerController : MonoBehaviour
         BatteryUpdate(0);
     }
 
+    private void Update()
+    {
+        batteryText.text = battery + "/3";
+    }
+
     public void BatteryUpdate(int value)
     {
         battery += value;
         battery = Mathf.Clamp(battery, 0, 3);
-        batteryText.text = battery + "/3";
     }
 }
