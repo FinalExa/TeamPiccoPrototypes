@@ -54,6 +54,7 @@ public class Shoot : MonoBehaviour
     private void Update()
     {
         if (!autoInput) InputCheck();
+        if (!autoInput) UseStack();
         if (Input.GetKeyDown(KeyCode.R) && magazineCurrent != magazineSize) isRecharging = true;
         UpdateText();
     }
@@ -152,11 +153,6 @@ public class Shoot : MonoBehaviour
     {
         if (playerRef.playerInputs.LeftClickInput == true && shootReady && !isRecharging && magazineCurrent > 0)
         {
-            if (playerRef.playerController.battery > 0)
-            {
-                scalingLevel = playerRef.playerController.battery;
-                playerRef.playerController.BatteryUpdate(-scalingLevel);
-            }
             magazineCurrent--;
             PlayerProjectile();
             if (magazineCurrent == 0)
@@ -175,5 +171,14 @@ public class Shoot : MonoBehaviour
     private void UpdateText()
     {
         if (!autoInput) ammoText.text = "Ammo: " + magazineCurrent + "/" + ammoCurrent;
+    }
+
+    private void UseStack()
+    {
+        if (playerRef.playerController.battery > 0 && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            scalingLevel = playerRef.playerController.battery;
+            playerRef.playerController.BatteryUpdate(-scalingLevel);
+        }
     }
 }
