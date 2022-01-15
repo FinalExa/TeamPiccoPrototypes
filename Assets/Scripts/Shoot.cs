@@ -119,15 +119,8 @@ public class Shoot : MonoBehaviour
         {
             for (int i = 0; i < weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunProjectileNumber; i++)
             {
-                if (i == 1)
-                {
-                    ProjectileCreate(false);
-                }
-                else
-                {
-                    float spread = Random.Range(0, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread * 2) - weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread;
-                    ProjectileCreate(true);
-                }
+                if (i == 1) ProjectileCreate(false);
+                else ProjectileCreate(true);
             }
         }
     }
