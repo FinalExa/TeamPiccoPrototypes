@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPattern: {fileID: 8843207864057268455}
-  detectionRange: 50
+  detectionRange: 40
   colliders: []
 --- !u!1 &8796631964980363955
 GameObject:
