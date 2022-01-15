@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    public float speed;
     [SerializeField] private float lifeTime;
     [SerializeField] private ProjectileBody[] thisProjectileChildren;
-    public int scalingLevel;
     private float lifeTimer;
     public Vector3 target;
+    public float damage;
     private void Start()
     {
         lifeTimer = lifeTime;
@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
         for (int i = 0; i < thisProjectileChildren.Length; i++)
         {
             thisProjectileChildren[i].thisProjectileRigidbody.velocity = this.transform.forward * speed;
-            thisProjectileChildren[i].scalingLevel = scalingLevel;
+            thisProjectileChildren[i].damage = damage;
         }
     }
 

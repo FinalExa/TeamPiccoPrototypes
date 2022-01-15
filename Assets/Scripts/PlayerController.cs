@@ -8,29 +8,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerReferences playerReferences;
     [HideInInspector] public float actualSpeed;
     [HideInInspector] public string curState;
-    [HideInInspector] [Range(0, 3)] public int battery;
-    [SerializeField] private Text batteryText;
 
     private void Awake()
     {
-        ProjectileBody.absorb += BatteryUpdate;
         playerReferences = this.gameObject.GetComponent<PlayerReferences>();
-    }
-
-    private void Start()
-    {
-        battery = 0;
-        BatteryUpdate(0);
-    }
-
-    private void Update()
-    {
-        batteryText.text = battery + "/3";
-    }
-
-    public void BatteryUpdate(int value)
-    {
-        battery += value;
-        battery = Mathf.Clamp(battery, 0, 3);
     }
 }

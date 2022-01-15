@@ -9,13 +9,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseMenuPanel, Player;
     public bool IsStopped;
     public PlayerData playerData;
-    public Text MovementSpeed,MeleeColldown,MeleeDuration;
+    public Text MovementSpeed, MeleeColldown, MeleeDuration;
 
-
-    // Update is called once per frame
     void Update()
     {
-        
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (IsStopped == false)
@@ -31,8 +29,6 @@ public class PauseMenu : MonoBehaviour
             }
         }
         MovementSpeed.text = playerData.defaultMovementSpeed.ToString();
-        MeleeColldown.text = playerData.meleeCooldown.ToString();
-        MeleeDuration.text = playerData.meleeDuration.ToString();
     }
 
     public void ResumeGame()
@@ -48,34 +44,13 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void increaseSpeed()
+    public void IncreaseSpeed()
     {
         playerData.defaultMovementSpeed += 1f;
     }
 
-    public void speedDecrease()
+    public void SpeedDecrease()
     {
         playerData.defaultMovementSpeed -= 1f;
-    }
-
-
-    public void increaseMeleeCooldown()
-    {
-        playerData.meleeCooldown += 0.1f;
-    }
-
-    public void MeleeCooldownDecrease()
-    {
-        playerData.meleeCooldown -= 0.1f;
-    }
-
-    public void increaseMeleeDuration()
-    {
-        playerData.meleeDuration += 0.1f;
-    }
-
-    public void MeleeDurationDecrease()
-    {
-        playerData.meleeDuration -= 0.1f;
     }
 }

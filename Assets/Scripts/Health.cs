@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float maxHP;
     [SerializeField] private bool isPlayer;
     private float currentHP;
-    [SerializeField] private Text UItext;
+    [SerializeField] private Text UIText;
     [SerializeField] private float invincibilityTime;
     private float invincibilityTimer;
     private bool invincibility;
@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
 
     private void UpdateHPInUI()
     {
-        UItext.text = currentHP + "/" + maxHP;
+        UIText.text = currentHP + "/" + maxHP;
     }
 
     public void DecreaseHP(float damageReceived)
@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
             }
             else
             {
-                invincibility = true;
+                if (isPlayer) invincibility = true;
             }
         }
     }
@@ -66,14 +66,5 @@ public class Health : MonoBehaviour
     public void IncreaseHP(float healReceived)
     {
         currentHP = Mathf.Clamp(currentHP + healReceived, 0, 100);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (this.gameObject.CompareTag("Enemy") && other.gameObject.CompareTag("Melee"))
-        {
-            float dmg = other.gameObject.GetComponentInParent<Melee>().meleeDamage;
-            DecreaseHP(dmg);
-        }
     }
 }

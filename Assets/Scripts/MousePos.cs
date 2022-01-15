@@ -9,7 +9,7 @@ public class MousePos : MonoBehaviour
     private Camera mainCamera;
     public GameObject PointToShoot;
 
-    public Vector3 VectorPoitToShoot;
+    public Vector3 VectorPointToShoot;
 
     public Vector3 reticlePosition;
     public Vector3 ReticlePosition
@@ -38,7 +38,7 @@ public class MousePos : MonoBehaviour
         if (mainCamera)
         {
             MouseRaycast();
-            VectorPoitToShoot = new Vector3(PointToShoot.transform.position.x, PointToShoot.transform.position.y, PointToShoot.transform.position.z);
+            VectorPointToShoot = new Vector3(PointToShoot.transform.position.x, PointToShoot.transform.position.y, PointToShoot.transform.position.z);
         }
 
     }

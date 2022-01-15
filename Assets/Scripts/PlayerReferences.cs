@@ -6,7 +6,6 @@ public class PlayerReferences : MonoBehaviour
     [HideInInspector] public PlayerInputs playerInputs;
     [HideInInspector] public PlayerController playerController;
     [HideInInspector] public MousePos mousePos;
-    [HideInInspector] public Melee melee;
     [HideInInspector] public Rigidbody playerRb;
     [HideInInspector] public Camera mainCamera;
     [HideInInspector] public Shoot shoot;
@@ -19,7 +18,6 @@ public class PlayerReferences : MonoBehaviour
         playerController = this.gameObject.GetComponent<PlayerController>();
         mousePos = this.gameObject.GetComponent<MousePos>();
         playerRb = this.gameObject.GetComponent<Rigidbody>();
-        melee = this.gameObject.GetComponent<Melee>();
         mainCamera = FindObjectOfType<Camera>();
         shoot = this.gameObject.GetComponent<Shoot>();
     }

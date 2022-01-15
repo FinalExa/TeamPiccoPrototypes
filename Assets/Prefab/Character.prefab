@@ -477,9 +477,9 @@ GameObject:
   - component: {fileID: 8272693625022707976}
   - component: {fileID: 3542715711493757976}
   - component: {fileID: 1355043783643722004}
-  - component: {fileID: -1009637460361697397}
   - component: {fileID: 434767083574039446}
   - component: {fileID: 6259044601743341115}
+  - component: {fileID: -2927172591083080509}
   - component: {fileID: 8839056874508986754}
   - component: {fileID: -2456297739160437030}
   - component: {fileID: 507427419748984000}
@@ -549,8 +549,6 @@ MonoBehaviour:
   playerReferences: {fileID: 0}
   actualSpeed: 0
   curState: 
-  battery: 0
-  batteryText: {fileID: 0}
 --- !u!114 &1355043783643722004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,24 +565,9 @@ MonoBehaviour:
   playerInputs: {fileID: 0}
   playerController: {fileID: 0}
   mousePos: {fileID: 0}
-  melee: {fileID: 0}
   playerRb: {fileID: 0}
   mainCamera: {fileID: 0}
   shoot: {fileID: 0}
---- !u!114 &-1009637460361697397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4976793914851956942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c58020e32789cf8428a24c1a0f088ed6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meleeObject: {fileID: 1135220798556889091}
-  meleeDamage: 25
 --- !u!114 &434767083574039446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mousePositionInSpace: {x: 0, y: 0, z: 0}
   PointToShoot: {fileID: 0}
-  VectorPoitToShoot: {x: 0, y: 0, z: 0}
+  VectorPointToShoot: {x: 0, y: 0, z: 0}
   reticlePosition: {x: 0, y: 0, z: 0}
   reticleNormal: {x: 0, y: 0, z: 0}
 --- !u!114 &6259044601743341115
@@ -617,6 +600,43 @@ MonoBehaviour:
   rotationSpeed: 0
   rotationEnabled: 1
   PointAIM: {fileID: 0}
+--- !u!114 &-2927172591083080509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976793914851956942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40782136b811304b8a8fc90d8bd71a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponInfo:
+  - weapon: {fileID: 11400000, guid: 029ed6c2ffbc5924ab70ef50dd799959, type: 2}
+    shootDelayTimer: 0
+    shootReady: 0
+    rechargeDelayTimer: 0
+    isRecharging: 0
+    ammoCurrent: 0
+    magazineCurrent: 0
+    projectileParent: {fileID: 0}
+  - weapon: {fileID: 11400000, guid: 0668d7eea8dc30b439afedff602647c6, type: 2}
+    shootDelayTimer: 0
+    shootReady: 0
+    rechargeDelayTimer: 0
+    isRecharging: 0
+    ammoCurrent: 0
+    magazineCurrent: 0
+    projectileParent: {fileID: 0}
+  - weapon: {fileID: 11400000, guid: 0c0091fee5659004a842bbc21bdea409, type: 2}
+    shootDelayTimer: 0
+    shootReady: 0
+    rechargeDelayTimer: 0
+    isRecharging: 0
+    ammoCurrent: 0
+    magazineCurrent: 0
+    projectileParent: {fileID: 0}
 --- !u!114 &8839056874508986754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,21 +649,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa2beb4e0561cb45847245aff3be578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRef: {fileID: 0}
-  playerBatteryExpend: 0
   autoInput: 0
   autoFirstShootStop: 0
-  projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
-  projectileParent: {fileID: 0}
   projectileStartPosition: {fileID: 2368323287208570982}
   reloadCanvas: {fileID: 2807222723503654337}
-  shootDelay: 0.1
-  rechargeDelay: 0.75
-  weaponRechargeValue: 3
-  ammoMax: 48
-  magazineSize: 3
   ammoText: {fileID: 0}
-  ammoRegenTime: 100
 --- !u!114 &-2456297739160437030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,7 +686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 3
   isPlayer: 1
-  UItext: {fileID: 5672406584093513531}
+  UIText: {fileID: 5672406584093513531}
   invincibilityTime: 0.3
 --- !u!54 &7616627670619280990
 Rigidbody:

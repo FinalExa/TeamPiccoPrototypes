@@ -14,5 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentMovementSpeed: 20
   defaultMovementSpeed: 20
-  meleeDuration: 0.06
-  meleeCooldown: 0.3
