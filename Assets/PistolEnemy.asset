@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7b8357ea365434aa337fa5833fd2b6, type: 3}
   m_Name: PistolEnemy
   m_EditorClassIdentifier: 
-  shootDelay: 3
+  shootDelay: 2.5
   rechargeDelay: 0.3
   endlessAmmo: 1
   ammoMax: 72
-  magazineSize: 6
+  magazineSize: 15
   projectileDamage: 1
-  projectileSpeed: 65
+  projectileSpeed: 35
   projectile: {fileID: 5814666638754323035, guid: f70949fb2ecb1ba448843a39fd41d193, type: 3}
   automaticWeapon: 0
+  shotgunWeapon: 0
+  shotgunProjectileNumber: 0
+  shotgunSpread: 0
+  shotgunSpeedDifference: 0

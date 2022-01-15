@@ -22,6 +22,6 @@ MonoBehaviour:
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   automaticWeapon: 0
   shotgunWeapon: 1
-  shotgunProjectileNumber: 13
-  shotgunSpread: 1.5
+  shotgunProjectileNumber: 8
+  shotgunSpread: 1.7
   shotgunSpeedDifference: 20

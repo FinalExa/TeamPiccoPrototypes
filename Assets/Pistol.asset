@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7b8357ea365434aa337fa5833fd2b6, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  shootDelay: 0.2
-  rechargeDelay: 0.7
+  shootDelay: 0.1
+  rechargeDelay: 1.1
   endlessAmmo: 0
-  ammoMax: 72
-  magazineSize: 6
-  projectileDamage: 10
+  ammoMax: 180
+  magazineSize: 24
+  projectileDamage: 4
   projectileSpeed: 90
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   automaticWeapon: 1
   shotgunWeapon: 0
   shotgunProjectileNumber: 0
   shotgunSpread: 0
+  shotgunSpeedDifference: 0
