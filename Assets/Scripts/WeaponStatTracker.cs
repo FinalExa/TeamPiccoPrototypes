@@ -16,6 +16,7 @@ public class WeaponStatTracker : MonoBehaviour
         [HideInInspector] public int magazineCurrent;
         [HideInInspector] public GameObject projectileParent;
         [HideInInspector] public float chargedTimer;
+        [HideInInspector] public float chargePercentage;
         [HideInInspector] public float hitscanVisibleTimer;
         [HideInInspector] public float secondaryCooldownTimer;
         [HideInInspector] public bool secondaryCooldownActive;

@@ -47,4 +47,4 @@ MonoBehaviour:
   secondaryCooldownTime: 3
   secondaryLifetime: 20
   secondaryAmmoCost: 0
-  normalShotsInteractWithSecondaryProjectile: 0
+  normalShotsInteractWithSecondaryProjectile: 1
