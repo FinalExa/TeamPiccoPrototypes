@@ -38,13 +38,13 @@ MonoBehaviour:
   secondaryDamage: 0
   secondaryProjectileSpeed: 50
   secondaryStopsAtMousePosition: 1
-  secondaryDuration: 0
-  secondaryDurationTime: 0
+  secondaryFlies: 1
+  secondaryDurationToggle: 1
+  secondaryDurationTime: 5
   effectStartsAfterTimer: 0
-  secondaryFlies: 0
   playerIsStoppedDuringSecondaryDuration: 0
   secondaryCooldownToggle: 1
   secondaryCooldownTime: 3
-  secondaryLifetime: 15
+  secondaryLifetime: 20
   secondaryAmmoCost: 0
   normalShotsInteractWithSecondaryProjectile: 0

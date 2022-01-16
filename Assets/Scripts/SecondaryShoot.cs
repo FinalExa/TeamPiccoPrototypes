@@ -47,14 +47,17 @@ public class SecondaryShoot : MonoBehaviour
 
     private void LaunchAbility()
     {
-        GameObject projectile = Instantiate(weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryProjectile, ProjectilePositionCalculate(), Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
+        GameObject projectile;
+        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryFlies) projectile = Instantiate(weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryProjectile, ProjectilePositionCalculate(), Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
+        else projectile = Instantiate(weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryProjectile, playerRef.mousePos.VectorPointToShoot, Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
         AbilityProjectile proj = projectile.GetComponent<AbilityProjectile>();
         proj.target = playerRef.mousePos.VectorPointToShoot;
-        proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryProjectileSpeed;
+        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryFlies) proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryProjectileSpeed;
         proj.damage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryDamage;
         proj.lifeTime = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryLifetime;
         if (weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryStopsAtMousePosition) proj.StopAtTargetLocation();
         if (weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryCooldownToggle) weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownActive = true;
+        if (weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryDurationToggle) proj.SetDurationInfos(true, weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryDurationTime, weaponUsed.weaponInfo[activeWeaponIndex].weapon.effectStartsAfterTimer, weaponUsed.weaponInfo[activeWeaponIndex].weapon.playerIsStoppedDuringSecondaryDuration);
 
     }
     private Vector3 ProjectilePositionCalculate()

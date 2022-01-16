@@ -570,6 +570,7 @@ MonoBehaviour:
   playerRb: {fileID: 0}
   mainCamera: {fileID: 0}
   shoot: {fileID: 0}
+  rotation: {fileID: 0}
 --- !u!114 &434767083574039446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,10 +626,8 @@ MonoBehaviour:
     projectileParent: {fileID: 0}
     chargedTimer: 0
     hitscanVisibleTimer: 0
-    secondaryDurationTimer: 0
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
-    secondaryLifetimer: 0
   - weapon: {fileID: 11400000, guid: 0668d7eea8dc30b439afedff602647c6, type: 2}
     shootDelayTimer: 0
     shootReady: 0
@@ -639,10 +638,8 @@ MonoBehaviour:
     projectileParent: {fileID: 0}
     chargedTimer: 0
     hitscanVisibleTimer: 0
-    secondaryDurationTimer: 0
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
-    secondaryLifetimer: 0
   - weapon: {fileID: 11400000, guid: 0c0091fee5659004a842bbc21bdea409, type: 2}
     shootDelayTimer: 0
     shootReady: 0
@@ -653,10 +650,8 @@ MonoBehaviour:
     projectileParent: {fileID: 0}
     chargedTimer: 0
     hitscanVisibleTimer: 0
-    secondaryDurationTimer: 0
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
-    secondaryLifetimer: 0
   - weapon: {fileID: 11400000, guid: 60fcee5f11f7de645ae61302bb375253, type: 2}
     shootDelayTimer: 0
     shootReady: 0
@@ -667,10 +662,8 @@ MonoBehaviour:
     projectileParent: {fileID: 0}
     chargedTimer: 0
     hitscanVisibleTimer: 0
-    secondaryDurationTimer: 0
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
-    secondaryLifetimer: 0
 --- !u!114 &-596477047835414564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,6 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileStartPosition: {fileID: 2368323287208570982}
+  abilityCooldownText: {fileID: 0}
 --- !u!114 &-2456297739160437030
 MonoBehaviour:
   m_ObjectHideFlags: 0

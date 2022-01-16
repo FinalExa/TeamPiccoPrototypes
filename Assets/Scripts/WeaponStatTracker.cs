@@ -17,7 +17,6 @@ public class WeaponStatTracker : MonoBehaviour
         [HideInInspector] public GameObject projectileParent;
         [HideInInspector] public float chargedTimer;
         [HideInInspector] public float hitscanVisibleTimer;
-        [HideInInspector] public float secondaryDurationTimer;
         [HideInInspector] public float secondaryCooldownTimer;
         [HideInInspector] public bool secondaryCooldownActive;
     }
@@ -36,7 +35,6 @@ public class WeaponStatTracker : MonoBehaviour
             weaponInfo[i].projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
             weaponInfo[i].chargedTimer = weaponInfo[i].weapon.chargeTime;
             weaponInfo[i].hitscanVisibleTimer = weaponInfo[i].weapon.hitscanVisibleTime;
-            weaponInfo[i].secondaryDurationTimer = weaponInfo[i].weapon.secondaryDurationTime;
             weaponInfo[i].secondaryCooldownTimer = weaponInfo[i].weapon.secondaryCooldownTime;
             weaponInfo[i].secondaryCooldownActive = false;
         }
