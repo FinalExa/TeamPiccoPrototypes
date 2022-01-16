@@ -6,7 +6,7 @@ public class ProjectileBody : MonoBehaviour
     public Rigidbody thisProjectileRigidbody;
     public float damage;
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         if (this.gameObject.CompareTag("ProjectilePlayer") && other.gameObject.GetComponent<Health>() && other.gameObject.CompareTag("Enemy"))
         {
@@ -19,7 +19,7 @@ public class ProjectileBody : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("Wall"))
         {
@@ -31,7 +31,7 @@ public class ProjectileBody : MonoBehaviour
         }
     }
 
-    private void DestroyProjectile()
+    public virtual void DestroyProjectile()
     {
         this.thisProjectileRigidbody.velocity = Vector3.zero;
         Destroy(this.gameObject);

@@ -6,22 +6,22 @@ public class Projectile : MonoBehaviour
 {
     [HideInInspector] public float speed;
     [HideInInspector] public float lifeTime;
-    [SerializeField] private ProjectileBody[] thisProjectileChildren;
-    private float lifeTimer;
+    [SerializeField] protected ProjectileBody[] thisProjectileChildren;
+    protected float lifeTimer;
     public Vector3 target;
     public float damage;
-    private void Start()
+    public virtual void Start()
     {
         lifeTimer = lifeTime;
         ProjectileMovement();
     }
 
-    private void Update()
+    public virtual void Update()
     {
         LifeTime();
     }
 
-    private void ProjectileMovement()
+    public virtual void ProjectileMovement()
     {
         Vector3 direction = (target - this.transform.position).normalized;
         this.transform.rotation = Quaternion.LookRotation(direction);
@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void LifeTime()
+    public virtual void LifeTime()
     {
         if (lifeTimer > 0) lifeTimer -= Time.deltaTime;
         else

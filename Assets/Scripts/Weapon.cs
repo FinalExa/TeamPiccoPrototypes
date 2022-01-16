@@ -44,12 +44,13 @@ public class Weapon : ScriptableObject
     public bool effectStartsAfterTimer;
     [Tooltip("Toggle if you want to be casted directly on the point clicked, without travelling")]
     public bool secondaryFlies;
-    [Tooltip("Toggle if you want the player to stop moving")]
+    [Tooltip("Toggle if you want the player to stop moving and shooting during the duration")]
     public bool playerIsStoppedDuringSecondaryDuration;
     [Tooltip("Toggle if you want a cooldown after the secondary fire is shot")]
     public bool secondaryCooldownToggle;
     public float secondaryCooldownTime;
     public float secondaryLifetime;
     public int secondaryAmmoCost;
+    [Tooltip("Toggle if you want ALL normal weapon shots to interact with the projectile in the field")]
     public bool normalShotsInteractWithSecondaryProjectile;
 }

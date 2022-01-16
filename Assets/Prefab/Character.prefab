@@ -627,6 +627,7 @@ MonoBehaviour:
     hitscanVisibleTimer: 0
     secondaryDurationTimer: 0
     secondaryCooldownTimer: 0
+    secondaryCooldownActive: 0
     secondaryLifetimer: 0
   - weapon: {fileID: 11400000, guid: 0668d7eea8dc30b439afedff602647c6, type: 2}
     shootDelayTimer: 0
@@ -640,6 +641,7 @@ MonoBehaviour:
     hitscanVisibleTimer: 0
     secondaryDurationTimer: 0
     secondaryCooldownTimer: 0
+    secondaryCooldownActive: 0
     secondaryLifetimer: 0
   - weapon: {fileID: 11400000, guid: 0c0091fee5659004a842bbc21bdea409, type: 2}
     shootDelayTimer: 0
@@ -653,6 +655,7 @@ MonoBehaviour:
     hitscanVisibleTimer: 0
     secondaryDurationTimer: 0
     secondaryCooldownTimer: 0
+    secondaryCooldownActive: 0
     secondaryLifetimer: 0
   - weapon: {fileID: 11400000, guid: 60fcee5f11f7de645ae61302bb375253, type: 2}
     shootDelayTimer: 0
@@ -666,6 +669,7 @@ MonoBehaviour:
     hitscanVisibleTimer: 0
     secondaryDurationTimer: 0
     secondaryCooldownTimer: 0
+    secondaryCooldownActive: 0
     secondaryLifetimer: 0
 --- !u!114 &-596477047835414564
 MonoBehaviour:
@@ -709,6 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256336fe90b25f742ac07cd4634d2b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileStartPosition: {fileID: 2368323287208570982}
 --- !u!114 &-2456297739160437030
 MonoBehaviour:
   m_ObjectHideFlags: 0
