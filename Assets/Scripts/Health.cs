@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
 
     private void UpdateHPInUI()
     {
-        UIText.text = currentHP + "/" + maxHP;
+        UIText.text = "HP: " + currentHP + "/" + maxHP;
     }
 
     public void DecreaseHP(float damageReceived)

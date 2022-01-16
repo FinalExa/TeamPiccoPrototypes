@@ -165,7 +165,7 @@ public class Shoot : MonoBehaviour
     {
         if (!autoInput)
         {
-            ammoText.text = "Ammo: " + weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent + "/" + weaponUsed.weaponInfo[activeWeaponIndex].ammoCurrent;
+            ammoText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.weaponName + "\nAmmo: " + weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent + "/" + weaponUsed.weaponInfo[activeWeaponIndex].ammoCurrent;
             reloadCanvas.SetActive(weaponUsed.weaponInfo[activeWeaponIndex].isRecharging);
         }
     }

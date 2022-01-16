@@ -31,6 +31,7 @@ public class Weapon : ScriptableObject
     [Header("Secondary Fire")]
     [Tooltip("Activates secondary fire on the weapon, used with right click")]
     public bool hasSecondaryFire;
+    public string secondaryFireName;
     public GameObject secondaryProjectile;
     public float secondaryDamage;
     public float secondaryProjectileSpeed;

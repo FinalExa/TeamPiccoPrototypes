@@ -19,6 +19,7 @@ public class WeaponStatTracker : MonoBehaviour
         [HideInInspector] public float hitscanVisibleTimer;
         [HideInInspector] public float secondaryDurationTimer;
         [HideInInspector] public float secondaryCooldownTimer;
+        [HideInInspector] public bool secondaryCooldownActive;
         [HideInInspector] public float secondaryLifetimer;
     }
     public WeaponInfo[] weaponInfo;
@@ -38,6 +39,7 @@ public class WeaponStatTracker : MonoBehaviour
             weaponInfo[i].hitscanVisibleTimer = weaponInfo[i].weapon.hitscanVisibleTime;
             weaponInfo[i].secondaryDurationTimer = weaponInfo[i].weapon.secondaryDurationTime;
             weaponInfo[i].secondaryCooldownTimer = weaponInfo[i].weapon.secondaryCooldownTime;
+            weaponInfo[i].secondaryCooldownActive = false;
             weaponInfo[i].secondaryLifetimer = weaponInfo[i].weapon.secondaryLifetime;
         }
     }
