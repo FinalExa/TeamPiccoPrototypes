@@ -9,6 +9,7 @@ public class SecondaryShoot : MonoBehaviour
     private PlayerReferences playerRef;
     private WeaponStatTracker weaponUsed;
     private WeaponCycle weaponCycle;
+    private Shoot shoot;
     private int activeWeaponIndex;
     [SerializeField] private GameObject projectileStartPosition;
     [SerializeField] private Text abilityCooldownText;
@@ -18,6 +19,7 @@ public class SecondaryShoot : MonoBehaviour
         weaponUsed = this.gameObject.GetComponent<WeaponStatTracker>();
         weaponCycle = this.gameObject.GetComponent<WeaponCycle>();
         playerRef = this.gameObject.GetComponent<PlayerReferences>();
+        shoot = this.gameObject.GetComponent<Shoot>();
     }
 
     private void Start()
@@ -59,6 +61,7 @@ public class SecondaryShoot : MonoBehaviour
         if (wpn.secondaryStopsAtMousePosition) proj.StopAtTargetLocation();
         if (wpn.secondaryCooldownToggle) weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownActive = true;
         if (wpn.secondaryDurationToggle) proj.SetDurationInfos(true, wpn.secondaryDurationTime, wpn.effectStartsAfterTimer, wpn.playerIsStoppedDuringSecondaryDuration);
+        if (wpn.secondaryAmmoCost > 0) shoot.WeaponAmmoDecrease(wpn.secondaryAmmoCost);
 
     }
     private Vector3 ProjectilePositionCalculate()

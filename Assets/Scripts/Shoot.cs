@@ -150,14 +150,23 @@ public class Shoot : MonoBehaviour
     {
         if (playerRef.playerInputs.LeftClickInput == true && weaponUsed.weaponInfo[activeWeaponIndex].shootReady && !weaponUsed.weaponInfo[activeWeaponIndex].isRecharging && weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent > 0 && !lockUntilNextClick)
         {
-            weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent--;
             ProjectileSpawn();
-            if (weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent == 0)
+            WeaponAmmoDecrease(1);
+            if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.automaticWeapon) lockUntilNextClick = true;
+        }
+    }
+
+    public void WeaponAmmoDecrease(int decreaseAmount)
+    {
+        if (weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent > 0)
+        {
+            weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent -= decreaseAmount;
+            if (weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent <= 0)
             {
+                if (weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent < 0) weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent = 0;
                 weaponUsed.weaponInfo[activeWeaponIndex].isRecharging = true;
             }
             else weaponUsed.weaponInfo[activeWeaponIndex].shootReady = false;
-            if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.automaticWeapon) lockUntilNextClick = true;
         }
     }
 
