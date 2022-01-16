@@ -8,7 +8,7 @@ public class ProjectileBody : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (this.gameObject.CompareTag("ProjectilePlayer") && other.gameObject.GetComponent<Health>())
+        if (this.gameObject.CompareTag("ProjectilePlayer") && other.gameObject.GetComponent<Health>() && other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Health>().DecreaseHP(damage);
             DestroyProjectile();
@@ -25,7 +25,7 @@ public class ProjectileBody : MonoBehaviour
         {
             DestroyProjectile();
         }
-        if (this.gameObject.CompareTag("Projectile") && collision.gameObject.GetComponent<Health>())
+        if (this.gameObject.CompareTag("Projectile") && collision.gameObject.GetComponent<Health>() && collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Health>().DecreaseHP(damage);
         }

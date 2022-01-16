@@ -19,7 +19,7 @@ MonoBehaviour:
   magazineSize: 3
   projectileDamage: 7
   projectileSpeed: 90
-  projectileLifetime: 99
+  projectileLifetime: 10
   projectile: {fileID: 1495253717480726450, guid: 7d23ce4680d73c748bcd761e56bed9f1, type: 3}
   automaticWeapon: 0
   shotgunWeapon: 0

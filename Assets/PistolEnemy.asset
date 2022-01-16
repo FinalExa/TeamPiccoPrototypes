@@ -19,6 +19,7 @@ MonoBehaviour:
   magazineSize: 15
   projectileDamage: 1
   projectileSpeed: 35
+  projectileLifetime: 10
   projectile: {fileID: 5814666638754323035, guid: f70949fb2ecb1ba448843a39fd41d193, type: 3}
   automaticWeapon: 0
   shotgunWeapon: 0
