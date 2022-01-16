@@ -10,6 +10,7 @@ public class Weapon : ScriptableObject
     public int magazineSize;
     public float projectileDamage;
     public float projectileSpeed;
+    public float projectileLifetime;
     public GameObject projectile;
     public bool automaticWeapon;
     public bool shotgunWeapon;

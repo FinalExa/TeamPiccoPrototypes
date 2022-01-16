@@ -140,6 +140,7 @@ public class Shoot : MonoBehaviour
             else proj.target = playerRef.gameObject.transform.position + new Vector3(Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread), 0, Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread));
         }
         proj.damage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileDamage;
+        proj.lifeTime = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileLifetime;
         if (!isShotgun) proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed;
         else proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed - Random.Range(0, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpeedDifference);
     }
