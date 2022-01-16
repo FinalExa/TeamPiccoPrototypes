@@ -48,16 +48,17 @@ public class SecondaryShoot : MonoBehaviour
     private void LaunchAbility()
     {
         GameObject projectile;
-        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryFlies) projectile = Instantiate(weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryProjectile, ProjectilePositionCalculate(), Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
-        else projectile = Instantiate(weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryProjectile, playerRef.mousePos.VectorPointToShoot, Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
+        Weapon wpn = weaponUsed.weaponInfo[activeWeaponIndex].weapon;
+        if (wpn.secondaryFlies && wpn.secondaryStopsAtMousePosition) projectile = Instantiate(wpn.secondaryProjectile, playerRef.mousePos.VectorPointToShoot, Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
+        else projectile = Instantiate(wpn.secondaryProjectile, ProjectilePositionCalculate(), Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
         AbilityProjectile proj = projectile.GetComponent<AbilityProjectile>();
         proj.target = playerRef.mousePos.VectorPointToShoot;
-        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryFlies) proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryProjectileSpeed;
-        proj.damage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryDamage;
-        proj.lifeTime = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryLifetime;
-        if (weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryStopsAtMousePosition) proj.StopAtTargetLocation();
-        if (weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryCooldownToggle) weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownActive = true;
-        if (weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryDurationToggle) proj.SetDurationInfos(true, weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryDurationTime, weaponUsed.weaponInfo[activeWeaponIndex].weapon.effectStartsAfterTimer, weaponUsed.weaponInfo[activeWeaponIndex].weapon.playerIsStoppedDuringSecondaryDuration);
+        proj.speed = wpn.secondaryProjectileSpeed;
+        proj.damage = wpn.secondaryDamage;
+        proj.lifeTime = wpn.secondaryLifetime;
+        if (wpn.secondaryStopsAtMousePosition) proj.StopAtTargetLocation();
+        if (wpn.secondaryCooldownToggle) weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownActive = true;
+        if (wpn.secondaryDurationToggle) proj.SetDurationInfos(true, wpn.secondaryDurationTime, wpn.effectStartsAfterTimer, wpn.playerIsStoppedDuringSecondaryDuration);
 
     }
     private Vector3 ProjectilePositionCalculate()

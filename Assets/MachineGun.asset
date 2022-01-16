@@ -37,12 +37,12 @@ MonoBehaviour:
   secondaryProjectile: {fileID: 5814666638754323035, guid: ba14a487e8fd72b41a39af5a472628dc, type: 3}
   secondaryDamage: 0
   secondaryProjectileSpeed: 50
-  secondaryStopsAtMousePosition: 1
-  secondaryFlies: 1
+  secondaryStopsAtMousePosition: 0
+  secondaryFlies: 0
   secondaryDurationToggle: 1
-  secondaryDurationTime: 5
+  secondaryDurationTime: 3
   effectStartsAfterTimer: 0
-  playerIsStoppedDuringSecondaryDuration: 0
+  playerIsStoppedDuringSecondaryDuration: 1
   secondaryCooldownToggle: 1
   secondaryCooldownTime: 3
   secondaryLifetime: 20

@@ -54,4 +54,14 @@ public class PlayerInputs : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel") < 0f) MouseWheelDown = true;
         else MouseWheelDown = false;
     }
+
+    public void StopAllInputs()
+    {
+        LeftClickInput = false;
+        RightClickInput = false;
+        MouseWheelUp = false;
+        MouseWheelDown = false;
+        RKey = false;
+        MovementInput = Vector3.zero.normalized;
+    }
 }

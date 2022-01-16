@@ -47,32 +47,47 @@ public class AbilityProjectileBody : ProjectileBody
             durationTimer -= Time.fixedDeltaTime;
             if (!afterDuration)
             {
-                AbilityEffect();
-                if (stopsPlayer && !stopAtTarget)
-                {
-                    playerRefs.playerInputs.enabled = false;
-                    playerRefs.rotation.enabled = false;
-                }
+                AbilityEffectDuration();
+                StopPlayer();
             }
         }
         else
         {
-            if (afterDuration) AbilityEffect();
-            else
-            {
-                if (stopsPlayer && !stopAtTarget)
-                {
-                    playerRefs.playerInputs.enabled = true;
-                    playerRefs.rotation.enabled = true;
-                }
-            }
+            if (afterDuration) AbilityEffectAfterDuration();
+            RestartPlayer();
             durationActive = false;
         }
     }
 
-    private void AbilityEffect()
+    private void AbilityEffectDuration()
     {
         print("Ciaoooo");
+    }
+
+    private void AbilityEffectAfterDuration()
+    {
+        print("Addioooo");
+    }
+
+    private void StopPlayer()
+    {
+        if (stopsPlayer)
+        {
+            playerRefs.playerInputs.enabled = false;
+            playerRefs.playerInputs.StopAllInputs();
+            playerRefs.rotation.enabled = false;
+            playerRefs.weaponCycle.enabled = false;
+        }
+    }
+
+    private void RestartPlayer()
+    {
+        if (stopsPlayer)
+        {
+            playerRefs.playerInputs.enabled = true;
+            playerRefs.rotation.enabled = true;
+            playerRefs.weaponCycle.enabled = true;
+        }
     }
 
     private void StopAtTarget()
@@ -94,7 +109,7 @@ public class AbilityProjectileBody : ProjectileBody
     {
         if (collision.collider.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget) DestroyProjectile();
+            if (!stopAtTarget && !stopsPlayer) DestroyProjectile();
             else StopMovement();
         }
         if (this.gameObject.CompareTag("Projectile") && collision.gameObject.GetComponent<Health>() && collision.gameObject.CompareTag("Player"))
@@ -112,7 +127,7 @@ public class AbilityProjectileBody : ProjectileBody
         }
         if (other.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget) DestroyProjectile();
+            if (!stopAtTarget && !stopsPlayer) DestroyProjectile();
             else StopMovement();
         }
     }
