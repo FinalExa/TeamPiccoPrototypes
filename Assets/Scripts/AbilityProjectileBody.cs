@@ -93,7 +93,7 @@ public class AbilityProjectileBody : ProjectileBody
     private void StopAtTarget()
     {
         float distance = Vector3.Distance(this.gameObject.transform.position, target);
-        if (distance <= 0.4f)
+        if (distance <= 0.5f)
         {
             StopMovement();
             if (usesDuration) durationActive = true;
