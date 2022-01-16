@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2733700917984062092}
   - component: {fileID: 2488468583081216940}
+  - component: {fileID: 7195649034900898036}
   - component: {fileID: -8989108024156747980}
   - component: {fileID: -6906413286637633626}
   - component: {fileID: 7488026599981649021}
@@ -187,6 +188,24 @@ MonoBehaviour:
     ammoCurrent: 0
     magazineCurrent: 0
     projectileParent: {fileID: 0}
+    chargedTimer: 0
+    hitscanVisibleTimer: 0
+    secondaryDurationTimer: 0
+    secondaryCooldownTimer: 0
+    secondaryLifetimer: 0
+--- !u!114 &7195649034900898036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2733700917984062088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c14e0ae527e874386179a2810a44e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeWeaponIndex: 0
 --- !u!114 &-8989108024156747980
 MonoBehaviour:
   m_ObjectHideFlags: 0

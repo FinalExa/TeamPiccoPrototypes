@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Shoot : MonoBehaviour
 {
     private WeaponStatTracker weaponUsed;
+    private WeaponCycle weaponCycle;
     private int activeWeaponIndex;
     private bool lockUntilNextClick;
     private PlayerReferences playerRef;
@@ -17,11 +18,11 @@ public class Shoot : MonoBehaviour
     {
         playerRef = FindObjectOfType<PlayerReferences>();
         weaponUsed = this.gameObject.GetComponent<WeaponStatTracker>();
+        weaponCycle = this.gameObject.GetComponent<WeaponCycle>();
     }
 
     private void Start()
     {
-        activeWeaponIndex = 0;
         if (!autoInput)
         {
             for (int i = 0; i < weaponUsed.weaponInfo.Length; i++)
@@ -34,9 +35,9 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
+        activeWeaponIndex = weaponCycle.activeWeaponIndex;
         if (!autoInput) InputCheck();
         if (lockUntilNextClick) LockUntilNextClick();
-        WeaponChange();
         if (playerRef.playerInputs.RKey == true && weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent != weaponUsed.weaponInfo[activeWeaponIndex].weapon.magazineSize) weaponUsed.weaponInfo[activeWeaponIndex].isRecharging = true;
         UpdateText();
     }
@@ -166,20 +167,6 @@ public class Shoot : MonoBehaviour
         {
             ammoText.text = "Ammo: " + weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent + "/" + weaponUsed.weaponInfo[activeWeaponIndex].ammoCurrent;
             reloadCanvas.SetActive(weaponUsed.weaponInfo[activeWeaponIndex].isRecharging);
-        }
-    }
-
-    private void WeaponChange()
-    {
-        if (playerRef.playerInputs.MouseWheelUp == true)
-        {
-            if (activeWeaponIndex + 1 < weaponUsed.weaponInfo.Length) activeWeaponIndex++;
-            else activeWeaponIndex = 0;
-        }
-        if (playerRef.playerInputs.MouseWheelDown == true)
-        {
-            if (activeWeaponIndex - 1 >= 0) activeWeaponIndex--;
-            else activeWeaponIndex = weaponUsed.weaponInfo.Length - 1;
         }
     }
 }

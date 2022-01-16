@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7b8357ea365434aa337fa5833fd2b6, type: 3}
   m_Name: TripleShot
   m_EditorClassIdentifier: 
+  weaponName: Tripleshot
   shootDelay: 0.3
   rechargeDelay: 1
-  endlessAmmo: 0
   ammoMax: 30
   magazineSize: 3
   projectileDamage: 7
   projectileSpeed: 90
   projectileLifetime: 10
   projectile: {fileID: 1495253717480726450, guid: 7d23ce4680d73c748bcd761e56bed9f1, type: 3}
+  endlessAmmo: 0
   automaticWeapon: 0
   shotgunWeapon: 0
   shotgunProjectileNumber: 0
