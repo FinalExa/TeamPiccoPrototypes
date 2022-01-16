@@ -27,6 +27,8 @@ public class Weapon : ScriptableObject
     public float chargedMaxDamage;
     [Header("Hitscan Weapon Toggle")]
     public bool hitscanWeapon;
+    public bool hitscanLimitedRange;
+    public float hitscanRange;
     public float hitscanVisibleTime;
     [Header("Secondary Fire")]
     [Tooltip("Activates secondary fire on the weapon, used with right click")]

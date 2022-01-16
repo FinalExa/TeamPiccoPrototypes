@@ -31,7 +31,9 @@ MonoBehaviour:
   chargeTime: 0
   chargedMaxDamage: 0
   hitscanWeapon: 0
-  hitscanVisibleTime: 0
+  hitscanLimitedRange: 0
+  hitscanRange: 100
+  hitscanVisibleTime: 0.2
   hasSecondaryFire: 1
   secondaryFireName: Black Hole
   secondaryProjectile: {fileID: 5814666638754323035, guid: ba14a487e8fd72b41a39af5a472628dc, type: 3}

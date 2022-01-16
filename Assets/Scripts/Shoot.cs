@@ -148,8 +148,19 @@ public class Shoot : MonoBehaviour
         if (!useAltDamage) proj.damage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileDamage;
         else proj.damage = bulletDamage;
         proj.lifeTime = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileLifetime;
-        if (!isShotgun) proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed;
-        else proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed - Random.Range(0, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpeedDifference);
+        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.hitscanWeapon)
+        {
+            if (!isShotgun) proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed;
+            else proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed - Random.Range(0, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpeedDifference);
+        }
+        else
+        {
+            proj.isRay = true;
+            proj.rayNeedsRange = weaponUsed.weaponInfo[activeWeaponIndex].weapon.hitscanLimitedRange;
+            proj.rayRange = weaponUsed.weaponInfo[activeWeaponIndex].weapon.hitscanRange;
+            proj.rayDuration = weaponUsed.weaponInfo[activeWeaponIndex].weapon.hitscanVisibleTime;
+            proj.rayOrigin = projectileStartPosition.transform.position;
+        }
     }
 
     private void InputCheck()

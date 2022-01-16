@@ -10,10 +10,16 @@ public class Projectile : MonoBehaviour
     protected float lifeTimer;
     public Vector3 target;
     public float damage;
+    public bool isRay;
+    public bool rayNeedsRange;
+    public float rayRange;
+    public float rayDuration;
+    public Vector3 rayOrigin;
     public virtual void Start()
     {
         lifeTimer = lifeTime;
-        ProjectileMovement();
+        if (!isRay) ProjectileMovement();
+        else Hitscan();
     }
 
     public virtual void Update()
@@ -40,4 +46,19 @@ public class Projectile : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public virtual void Hitscan()
+    {
+        Vector3 direction = (target - this.transform.position).normalized;
+        for (int i = 0; i < thisProjectileChildren.Length; i++) thisProjectileChildren[i].gameObject.SetActive(false);
+        Ray ray = new Ray(rayOrigin, direction);
+        RaycastHit hit;
+        //Vector3 endposition = rayOrigin + (rayRange * direction);
+        if (Physics.Raycast(ray, out hit))
+        {
+            print(hit.collider);
+        }
+        Debug.DrawRay(rayOrigin, direction, Color.red, rayDuration, true);
+    }
 }
+
