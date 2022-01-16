@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e7b8357ea365434aa337fa5833fd2b6, type: 3}
-  m_Name: Shotgun
+  m_Name: Flamethrower
   m_EditorClassIdentifier: 
-  shootDelay: 0.2
+  shootDelay: 0.01
   rechargeDelay: 1.5
   endlessAmmo: 0
-  ammoMax: 36
-  magazineSize: 4
-  projectileDamage: 3
-  projectileSpeed: 90
-  projectileLifetime: 0.3
-  projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
-  automaticWeapon: 0
+  ammoMax: 240
+  magazineSize: 18
+  projectileDamage: 1
+  projectileSpeed: 25
+  projectileLifetime: 0.6
+  projectile: {fileID: 1495253717480726450, guid: 7d23ce4680d73c748bcd761e56bed9f1, type: 3}
+  automaticWeapon: 1
   shotgunWeapon: 1
-  shotgunProjectileNumber: 8
-  shotgunSpread: 1.7
+  shotgunProjectileNumber: 5
+  shotgunSpread: 1.55
   shotgunSpeedDifference: 20

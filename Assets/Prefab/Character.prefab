@@ -637,6 +637,14 @@ MonoBehaviour:
     ammoCurrent: 0
     magazineCurrent: 0
     projectileParent: {fileID: 0}
+  - weapon: {fileID: 11400000, guid: 60fcee5f11f7de645ae61302bb375253, type: 2}
+    shootDelayTimer: 0
+    shootReady: 0
+    rechargeDelayTimer: 0
+    isRecharging: 0
+    ammoCurrent: 0
+    magazineCurrent: 0
+    projectileParent: {fileID: 0}
 --- !u!114 &8839056874508986754
 MonoBehaviour:
   m_ObjectHideFlags: 0
