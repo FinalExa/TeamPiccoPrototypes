@@ -190,9 +190,8 @@ MonoBehaviour:
     projectileParent: {fileID: 0}
     chargedTimer: 0
     hitscanVisibleTimer: 0
-    secondaryDurationTimer: 0
     secondaryCooldownTimer: 0
-    secondaryLifetimer: 0
+    secondaryCooldownActive: 0
 --- !u!114 &7195649034900898036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 114494468674010135}
+  - component: {fileID: 1821234732452213911}
   - component: {fileID: 3686299953331373898}
   - component: {fileID: 7087135058298828945}
   - component: {fileID: 4050360708156187777}
@@ -457,6 +457,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1.75}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1821234732452213911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796631964980363955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291115f50542db144a30773047e1b974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!223 &3686299953331373898
 Canvas:
   m_ObjectHideFlags: 0

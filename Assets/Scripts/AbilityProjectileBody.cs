@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class AbilityProjectileBody : ProjectileBody
 {
-    public Vector3 target;
-    public bool stopAtTarget;
-    public bool usesDuration;
-    public bool durationActive;
-    public bool afterDuration;
-    public bool stopsPlayer;
-    public float durationTime;
-    public float durationTimer;
+    [HideInInspector] public Vector3 target;
+    [HideInInspector] public bool stopAtTarget;
+    [HideInInspector] public bool usesDuration;
+    [HideInInspector] public bool durationActive;
+    [HideInInspector] public bool afterDuration;
+    [HideInInspector] public bool stopsPlayer;
+    [HideInInspector] public bool interactsWithMainShots;
+    [HideInInspector] public float durationTime;
+    [HideInInspector] public float durationTimer;
     private PlayerReferences playerRefs;
 
     private void Awake()
@@ -59,14 +60,19 @@ public class AbilityProjectileBody : ProjectileBody
         }
     }
 
-    private void AbilityEffectDuration()
+    public virtual void AbilityEffectDuration()
     {
         print("Ciaoooo");
     }
 
-    private void AbilityEffectAfterDuration()
+    public virtual void AbilityEffectAfterDuration()
     {
         print("Addioooo");
+    }
+
+    public virtual void MainFireInteraction()
+    {
+        print("Helo");
     }
 
     private void StopPlayer()
@@ -112,19 +118,10 @@ public class AbilityProjectileBody : ProjectileBody
             if (!stopAtTarget && !stopsPlayer) DestroyProjectile();
             else StopMovement();
         }
-        if (this.gameObject.CompareTag("Projectile") && collision.gameObject.GetComponent<Health>() && collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<Health>().DecreaseHP(damage);
-        }
     }
 
     public override void OnTriggerEnter(Collider other)
     {
-        if (this.gameObject.CompareTag("ProjectilePlayer") && other.gameObject.GetComponent<Health>() && other.gameObject.CompareTag("Enemy"))
-        {
-            other.gameObject.GetComponent<Health>().DecreaseHP(damage);
-            DestroyProjectile();
-        }
         if (other.gameObject.CompareTag("Wall"))
         {
             if (!stopAtTarget && !stopsPlayer) DestroyProjectile();

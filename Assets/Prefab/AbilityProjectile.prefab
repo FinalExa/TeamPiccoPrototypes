@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7819062070217293344}
   m_Layer: 0
   m_Name: Body
-  m_TagString: ProjectilePlayer
+  m_TagString: AbilityProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,6 +51,12 @@ MonoBehaviour:
   damage: 0
   target: {x: 0, y: 0, z: 0}
   stopAtTarget: 0
+  usesDuration: 0
+  durationActive: 0
+  afterDuration: 0
+  stopsPlayer: 0
+  durationTime: 0
+  durationTimer: 0
 --- !u!33 &8322204657353962034
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -142,7 +148,7 @@ GameObject:
   - component: {fileID: -3310621872110477516}
   m_Layer: 0
   m_Name: AbilityProjectile
-  m_TagString: ProjectilePlayer
+  m_TagString: AbilityProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -10,6 +10,8 @@ TagManager:
   - Projectile
   - ProjectilePlayer
   - Enemy
+  - EnemyRange
+  - AbilityProjectile
   layers:
   - Default
   - TransparentFX

@@ -19,7 +19,7 @@ public class AbilityProjectile : Projectile
             child.target = target;
         }
     }
-    public void SetDurationInfos(bool usesDuration, float durationTimeValue, bool afterTimer, bool stopsPlayer)
+    public void SetDurationInfos(bool usesDuration, float durationTimeValue, bool afterTimer, bool stopsPlayer, bool interactionWithMainShots)
     {
         for (int i = 0; i < thisProjectileChildren.Length; i++)
         {
@@ -27,6 +27,7 @@ public class AbilityProjectile : Projectile
             child.SetDurationTimer(usesDuration, durationTimeValue);
             child.afterDuration = afterTimer;
             child.stopsPlayer = stopsPlayer;
+            child.interactsWithMainShots = interactionWithMainShots;
         }
     }
 }

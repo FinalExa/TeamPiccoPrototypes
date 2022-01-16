@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7b8357ea365434aa337fa5833fd2b6, type: 3}
   m_Name: MachineGun
   m_EditorClassIdentifier: 
-  weaponName: MachineGun
+  weaponName: Machinegun
   shootDelay: 0.1
   rechargeDelay: 1.1
   ammoMax: 180
@@ -33,14 +33,14 @@ MonoBehaviour:
   hitscanWeapon: 0
   hitscanVisibleTime: 0
   hasSecondaryFire: 1
-  secondaryFireName: Bomb
+  secondaryFireName: Black Hole
   secondaryProjectile: {fileID: 5814666638754323035, guid: ba14a487e8fd72b41a39af5a472628dc, type: 3}
   secondaryDamage: 0
   secondaryProjectileSpeed: 50
   secondaryStopsAtMousePosition: 1
   secondaryFlies: 0
   secondaryDurationToggle: 1
-  secondaryDurationTime: 3
+  secondaryDurationTime: 1
   effectStartsAfterTimer: 0
   playerIsStoppedDuringSecondaryDuration: 0
   secondaryCooldownToggle: 1
