@@ -53,15 +53,18 @@ public class Projectile : MonoBehaviour
         if (rayNeedsRange) distance = rayRange;
         Vector3 direction = (target - rayOrigin).normalized;
         RaycastHit hit;
+        bool itHit = false;
         for (int i = 0; i < thisProjectileChildren.Length; i++) thisProjectileChildren[i].gameObject.SetActive(false);
         if (Physics.Raycast(rayOrigin, direction, out hit, distance))
         {
+            itHit = true;
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
                 hit.collider.gameObject.GetComponent<Health>().DecreaseHP(damage);
             }
-            Debug.DrawRay(rayOrigin, hit.point, Color.red, rayDuration);
         }
+        if (!rayNeedsRange || (rayNeedsRange && itHit)) Debug.DrawRay(rayOrigin, (hit.point - rayOrigin).normalized * Vector3.Distance(rayOrigin, hit.point), Color.red, rayDuration);
+        else Debug.DrawRay(rayOrigin, (target - rayOrigin).normalized * distance, Color.red, rayDuration);
     }
 }
 

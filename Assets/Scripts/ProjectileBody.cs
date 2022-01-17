@@ -4,7 +4,7 @@ using System;
 public class ProjectileBody : MonoBehaviour
 {
     public Rigidbody thisProjectileRigidbody;
-    public float damage;
+    [HideInInspector] public float damage;
 
     public virtual void OnTriggerEnter(Collider other)
     {

@@ -59,17 +59,17 @@ public class AbilityProjectileBody : ProjectileBody
 
     public virtual void AbilityEffectDuration()
     {
-        print("Ciaoooo");
+        return;
     }
 
     public virtual void AbilityEffectAfterDuration()
     {
-        print("Addioooo");
+        return;
     }
 
     public virtual void MainFireInteraction()
     {
-        print("Helo");
+        return;
     }
 
     private void StopPlayer()
