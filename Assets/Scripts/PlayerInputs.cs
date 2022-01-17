@@ -10,6 +10,7 @@ public class PlayerInputs : MonoBehaviour
     public bool MouseWheelDown { get; private set; }
     public bool RKey { get; private set; }
     public Vector3 MovementInput { get; private set; }
+    public bool DashInput { get; private set; }
     private void Update()
     {
         GetInputs();
@@ -22,6 +23,7 @@ public class PlayerInputs : MonoBehaviour
         GetMovementInput();
         GetMouseWheelUp();
         GetMouseWheelDown();
+        GetDashInput();
     }
     void GetLeftClickInput()
     {
@@ -55,6 +57,12 @@ public class PlayerInputs : MonoBehaviour
         else MouseWheelDown = false;
     }
 
+    void GetDashInput()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) == true) DashInput = true;
+        else DashInput = false;
+    }
+
     public void StopAllInputs()
     {
         LeftClickInput = false;
@@ -63,5 +71,6 @@ public class PlayerInputs : MonoBehaviour
         MouseWheelDown = false;
         RKey = false;
         MovementInput = Vector3.zero.normalized;
+        DashInput = false;
     }
 }
