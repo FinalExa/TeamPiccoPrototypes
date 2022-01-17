@@ -19,13 +19,12 @@ public class AbilityProjectile : Projectile
             child.target = target;
         }
     }
-    public void SetDurationInfos(bool usesDuration, float durationTimeValue, bool afterTimer, bool stopsPlayer, bool interactionWithMainShots)
+    public void SetDurationInfos(bool usesDuration, float durationTimeValue, bool stopsPlayer, bool interactionWithMainShots)
     {
         for (int i = 0; i < thisProjectileChildren.Length; i++)
         {
             AbilityProjectileBody child = thisProjectileChildren[i].GetComponent<AbilityProjectileBody>();
             child.SetDurationTimer(usesDuration, durationTimeValue);
-            child.afterDuration = afterTimer;
             child.stopsPlayer = stopsPlayer;
             child.interactsWithMainShots = interactionWithMainShots;
         }

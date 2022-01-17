@@ -44,8 +44,6 @@ public class Weapon : ScriptableObject
     [Tooltip("Toggle if you want the projectile shot to last a certain amount of time in the field before disappearing")]
     public bool secondaryDurationToggle;
     public float secondaryDurationTime;
-    [Tooltip("Toggle if you want the projectile effect to start after the timer")]
-    public bool effectStartsAfterTimer;
     [Tooltip("Toggle if you want the player to stop moving and shooting during the duration, works only if duration is active and effect after duration is NOT active, also the projectile stopping on the mouse pos must NOT be active")]
     public bool playerIsStoppedDuringSecondaryDuration;
     [Tooltip("Toggle if you want a cooldown after the secondary fire is shot")]

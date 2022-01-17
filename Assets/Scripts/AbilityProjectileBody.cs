@@ -46,15 +46,12 @@ public class AbilityProjectileBody : ProjectileBody
         if (durationTimer > 0)
         {
             durationTimer -= Time.fixedDeltaTime;
-            if (!afterDuration)
-            {
-                AbilityEffectDuration();
-                StopPlayer();
-            }
+            AbilityEffectDuration();
+            StopPlayer();
         }
         else
         {
-            if (afterDuration) AbilityEffectAfterDuration();
+            AbilityEffectAfterDuration();
             RestartPlayer();
             durationActive = false;
         }
