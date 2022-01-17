@@ -12,7 +12,8 @@ public class SecondaryShoot : MonoBehaviour
     private Shoot shoot;
     private int activeWeaponIndex;
     [SerializeField] private GameObject projectileStartPosition;
-    [SerializeField] private Text abilityCooldownText;
+    [SerializeField] private Text cooldownText;
+    [SerializeField] private Text abilityText;
 
     private void Awake()
     {
@@ -24,19 +25,16 @@ public class SecondaryShoot : MonoBehaviour
 
     private void Start()
     {
-        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryCooldownToggle) abilityCooldownText.text = string.Empty;
-        else abilityCooldownText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryFireName + "\nREADY";
-    }
-
-    private void Update()
-    {
-        activeWeaponIndex = weaponCycle.activeWeaponIndex;
+        abilityText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryFireName;
+        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryCooldownToggle) cooldownText.text = string.Empty;
+        else cooldownText.text = "READY";
     }
 
     private void FixedUpdate()
     {
+        WeaponSwitchProcedures();
         PlayerInput();
-        if (weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownActive) AbilityCooldown();
+        AbilityCooldown();
     }
 
     private void PlayerInput()
@@ -72,16 +70,42 @@ public class SecondaryShoot : MonoBehaviour
 
     private void AbilityCooldown()
     {
-        if (weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownTimer > 0)
+        for (int i = 0; i < weaponUsed.weaponInfo.Length; i++)
         {
-            weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownTimer -= Time.fixedDeltaTime;
-            abilityCooldownText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryFireName + "\n" + Math.Round(weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownTimer, 2).ToString();
+            if (weaponUsed.weaponInfo[i].secondaryCooldownActive)
+            {
+                if (weaponUsed.weaponInfo[i].secondaryCooldownTimer > 0)
+                {
+                    weaponUsed.weaponInfo[i].secondaryCooldownTimer -= Time.fixedDeltaTime;
+                    if (i == activeWeaponIndex) cooldownText.text = Math.Round(weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownTimer, 2).ToString();
+                }
+                else
+                {
+                    weaponUsed.weaponInfo[i].secondaryCooldownTimer = weaponUsed.weaponInfo[i].weapon.secondaryCooldownTime;
+                    if (i == activeWeaponIndex) cooldownText.text = "READY";
+                    weaponUsed.weaponInfo[i].secondaryCooldownActive = false;
+                }
+            }
         }
+    }
+
+    private void WeaponSwitchProcedures()
+    {
+        if (activeWeaponIndex != weaponCycle.activeWeaponIndex)
+        {
+            activeWeaponIndex = weaponCycle.activeWeaponIndex;
+            SetupAbilityCooldownText();
+        }
+    }
+
+    private void SetupAbilityCooldownText()
+    {
+        abilityText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryFireName;
+        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryCooldownToggle) cooldownText.text = string.Empty;
         else
         {
-            weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownTimer = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryCooldownTime;
-            abilityCooldownText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryFireName + "\nREADY";
-            weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownActive = false;
+            if (weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownTimer == weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryCooldownTime) cooldownText.text = "READY";
+            else cooldownText.text = Math.Round(weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownTimer, 2).ToString();
         }
     }
 }

@@ -706,30 +706,7 @@ MonoBehaviour:
     magazineCurrent: 0
     projectileParent: {fileID: 0}
     chargedTimer: 0
-    hitscanVisibleTimer: 0
-    secondaryCooldownTimer: 0
-    secondaryCooldownActive: 0
-  - weapon: {fileID: 11400000, guid: 0668d7eea8dc30b439afedff602647c6, type: 2}
-    shootDelayTimer: 0
-    shootReady: 0
-    rechargeDelayTimer: 0
-    isRecharging: 0
-    ammoCurrent: 0
-    magazineCurrent: 0
-    projectileParent: {fileID: 0}
-    chargedTimer: 0
-    hitscanVisibleTimer: 0
-    secondaryCooldownTimer: 0
-    secondaryCooldownActive: 0
-  - weapon: {fileID: 11400000, guid: 0c0091fee5659004a842bbc21bdea409, type: 2}
-    shootDelayTimer: 0
-    shootReady: 0
-    rechargeDelayTimer: 0
-    isRecharging: 0
-    ammoCurrent: 0
-    magazineCurrent: 0
-    projectileParent: {fileID: 0}
-    chargedTimer: 0
+    chargePercentage: 0
     hitscanVisibleTimer: 0
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
@@ -742,6 +719,7 @@ MonoBehaviour:
     magazineCurrent: 0
     projectileParent: {fileID: 0}
     chargedTimer: 0
+    chargePercentage: 0
     hitscanVisibleTimer: 0
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
