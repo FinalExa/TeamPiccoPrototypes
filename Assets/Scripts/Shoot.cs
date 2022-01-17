@@ -137,7 +137,7 @@ public class Shoot : MonoBehaviour
         Projectile proj = projectile.GetComponent<Projectile>();
         if (!autoInput)
         {
-            if (!isShotgun) proj.target = playerRef.mousePos.VectorPointToShoot;
+            if (!isShotgun) proj.target = new Vector3(playerRef.mousePos.VectorPointToShoot.x, projectileStartPosition.transform.position.y, playerRef.mousePos.VectorPointToShoot.z);
             else proj.target = playerRef.mousePos.VectorPointToShoot + new Vector3(Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread), 0, Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread));
         }
         else

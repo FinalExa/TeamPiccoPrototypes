@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8138723754154361793}
   - component: {fileID: 8196914974345011287}
   - component: {fileID: 1661040557318456125}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3879403988285957613}
   - component: {fileID: 7648173519115936072}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: ProjectileStartPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 2733700917984062090}
   - component: {fileID: 2733700917984062089}
   - component: {fileID: -2982296740507482438}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -189,6 +189,7 @@ MonoBehaviour:
     magazineCurrent: 0
     projectileParent: {fileID: 0}
     chargedTimer: 0
+    chargePercentage: 0
     hitscanVisibleTimer: 0
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
@@ -222,6 +223,7 @@ MonoBehaviour:
   projectileStartPosition: {fileID: 1023044744484094521}
   reloadCanvas: {fileID: 0}
   ammoText: {fileID: 0}
+  chargeText: {fileID: 0}
 --- !u!114 &-6906413286637633626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3910083687365122120}
   - component: {fileID: 6384285516124561856}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Range
   m_TagString: EnemyRange
   m_Icon: {fileID: 0}
@@ -430,7 +432,7 @@ GameObject:
   - component: {fileID: 3686299953331373898}
   - component: {fileID: 7087135058298828945}
   - component: {fileID: 4050360708156187777}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 'Canvas '
   m_TagString: Untagged
   m_Icon: {fileID: 0}

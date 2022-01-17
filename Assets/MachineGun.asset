@@ -30,7 +30,7 @@ MonoBehaviour:
   chargedWeapon: 0
   chargeTime: 0
   chargedMaxDamage: 0
-  hitscanWeapon: 0
+  hitscanWeapon: 1
   hitscanLimitedRange: 0
   hitscanRange: 100
   hitscanVisibleTime: 0.2
@@ -43,8 +43,7 @@ MonoBehaviour:
   secondaryFlies: 0
   secondaryDurationToggle: 1
   secondaryDurationTime: 1
-  effectStartsAfterTimer: 0
-  playerIsStoppedDuringSecondaryDuration: 0
+  playerIsStoppedDuringSecondaryDuration: 1
   secondaryCooldownToggle: 1
   secondaryCooldownTime: 3
   secondaryLifetime: 20
