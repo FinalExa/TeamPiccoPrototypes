@@ -12,8 +12,8 @@ public class SecondaryShoot : MonoBehaviour
     private Shoot shoot;
     private int activeWeaponIndex;
     [SerializeField] private GameObject projectileStartPosition;
-    [SerializeField] private Text cooldownText;
     [SerializeField] private Text abilityText;
+    [SerializeField] private Text cooldownText;
 
     private void Awake()
     {

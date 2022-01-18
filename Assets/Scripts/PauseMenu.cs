@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseMenuPanel, Player;
     public bool IsStopped;
     public PlayerData playerData;
-    public Text MovementSpeed, MeleeColldown, MeleeDuration;
+    public Text MovementSpeed;
 
     void Update()
     {
