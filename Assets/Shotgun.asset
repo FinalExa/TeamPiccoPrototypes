@@ -27,3 +27,25 @@ MonoBehaviour:
   shotgunProjectileNumber: 8
   shotgunSpread: 1.7
   shotgunSpeedDifference: 20
+  chargedWeapon: 0
+  chargeTime: 0
+  chargedMaxDamage: 0
+  hitscanWeapon: 0
+  hitscanLimitedRange: 0
+  hitscanRange: 0
+  hitscanVisibleTime: 0
+  hasSecondaryFire: 1
+  secondaryFireName: Mega Laser
+  secondaryProjectile: {fileID: 5814666638754323035, guid: 26902a40192141948b24a417852af81f, type: 3}
+  secondaryDamage: 7
+  secondaryProjectileSpeed: 0
+  secondaryStopsAtMousePosition: 0
+  secondaryFlies: 0
+  secondaryDurationToggle: 1
+  secondaryDurationTime: 1
+  playerIsStoppedDuringSecondaryDuration: 1
+  secondaryCooldownToggle: 1
+  secondaryCooldownTime: 3
+  secondaryLifetime: 20
+  secondaryAmmoCost: 0
+  normalShotsInteractWithSecondaryProjectile: 0

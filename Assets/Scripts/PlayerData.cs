@@ -4,6 +4,10 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [Header("Movement section")]
-    [HideInInspector] public float currentMovementSpeed;
     public float defaultMovementSpeed;
+    [HideInInspector] public float currentMovementSpeed;
+    [Header("Dash section")]
+    public float dashDistance;
+    public float dashDuration;
+    public float dashCooldown;
 }

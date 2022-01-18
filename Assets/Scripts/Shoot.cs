@@ -7,12 +7,15 @@ public class Shoot : MonoBehaviour
     private WeaponCycle weaponCycle;
     private int activeWeaponIndex;
     private bool lockUntilNextClick;
+    private bool charging;
     private PlayerReferences playerRef;
+    private float bulletDamage;
     [SerializeField] private bool autoInput;
     [SerializeField] private bool autoFirstShootStop;
     [SerializeField] private GameObject projectileStartPosition;
     [SerializeField] private GameObject reloadCanvas;
     [SerializeField] private Text ammoText;
+    [SerializeField] private Text chargeText;
 
     private void Awake()
     {
@@ -29,6 +32,7 @@ public class Shoot : MonoBehaviour
             {
                 weaponUsed.weaponInfo[i].shootReady = true;
             }
+            chargeText.text = string.Empty;
         }
         else autoFirstShootStop = true;
     }
@@ -40,6 +44,7 @@ public class Shoot : MonoBehaviour
         if (lockUntilNextClick) LockUntilNextClick();
         if (playerRef.playerInputs.RKey == true && weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent != weaponUsed.weaponInfo[activeWeaponIndex].weapon.magazineSize) weaponUsed.weaponInfo[activeWeaponIndex].isRecharging = true;
         UpdateText();
+        ChargeShot();
     }
 
     private void FixedUpdate()
@@ -67,7 +72,7 @@ public class Shoot : MonoBehaviour
         if (weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer == weaponUsed.weaponInfo[activeWeaponIndex].weapon.shootDelay && autoInput)
         {
             if (autoFirstShootStop) autoFirstShootStop = false;
-            else ProjectileSpawn();
+            else ProjectileSpawn(false);
         }
         if (weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer > 0) weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer -= Time.fixedDeltaTime;
         else
@@ -79,7 +84,7 @@ public class Shoot : MonoBehaviour
 
     private void RechargeTimer()
     {
-        if (weaponUsed.weaponInfo[activeWeaponIndex].rechargeDelayTimer == weaponUsed.weaponInfo[activeWeaponIndex].weapon.rechargeDelay && autoInput) ProjectileSpawn();
+        if (weaponUsed.weaponInfo[activeWeaponIndex].rechargeDelayTimer == weaponUsed.weaponInfo[activeWeaponIndex].weapon.rechargeDelay && autoInput) ProjectileSpawn(false);
         if (weaponUsed.weaponInfo[activeWeaponIndex].rechargeDelayTimer > 0)
         {
             weaponUsed.weaponInfo[activeWeaponIndex].rechargeDelayTimer -= Time.fixedDeltaTime;
@@ -113,26 +118,26 @@ public class Shoot : MonoBehaviour
         }
     }
 
-    private void ProjectileSpawn()
+    private void ProjectileSpawn(bool isCharged)
     {
-        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunWeapon) ProjectileCreate(false);
+        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunWeapon) ProjectileCreate(false, isCharged);
         else
         {
             for (int i = 0; i < weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunProjectileNumber; i++)
             {
-                if (i == 1) ProjectileCreate(false);
-                else ProjectileCreate(true);
+                if (i == 1) ProjectileCreate(false, isCharged);
+                else ProjectileCreate(true, isCharged);
             }
         }
     }
 
-    private void ProjectileCreate(bool isShotgun)
+    private void ProjectileCreate(bool isShotgun, bool useAltDamage)
     {
         GameObject projectile = Instantiate(weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectile, ProjectilePositionCalculate(), Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
         Projectile proj = projectile.GetComponent<Projectile>();
         if (!autoInput)
         {
-            if (!isShotgun) proj.target = playerRef.mousePos.VectorPointToShoot;
+            if (!isShotgun) proj.target = new Vector3(playerRef.mousePos.VectorPointToShoot.x, projectileStartPosition.transform.position.y, playerRef.mousePos.VectorPointToShoot.z);
             else proj.target = playerRef.mousePos.VectorPointToShoot + new Vector3(Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread), 0, Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread));
         }
         else
@@ -140,24 +145,81 @@ public class Shoot : MonoBehaviour
             if (!isShotgun) proj.target = playerRef.gameObject.transform.position;
             else proj.target = playerRef.gameObject.transform.position + new Vector3(Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread), 0, Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread));
         }
-        proj.damage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileDamage;
+        if (!useAltDamage) proj.damage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileDamage;
+        else proj.damage = bulletDamage;
         proj.lifeTime = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileLifetime;
-        if (!isShotgun) proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed;
-        else proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed - Random.Range(0, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpeedDifference);
+        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.hitscanWeapon)
+        {
+            if (!isShotgun) proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed;
+            else proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed - Random.Range(0, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpeedDifference);
+        }
+        else
+        {
+            proj.isRay = true;
+            proj.rayNeedsRange = weaponUsed.weaponInfo[activeWeaponIndex].weapon.hitscanLimitedRange;
+            proj.rayRange = weaponUsed.weaponInfo[activeWeaponIndex].weapon.hitscanRange;
+            proj.rayDuration = weaponUsed.weaponInfo[activeWeaponIndex].weapon.hitscanVisibleTime;
+            proj.rayOrigin = projectileStartPosition.transform.position;
+        }
     }
 
     private void InputCheck()
     {
         if (playerRef.playerInputs.LeftClickInput == true && weaponUsed.weaponInfo[activeWeaponIndex].shootReady && !weaponUsed.weaponInfo[activeWeaponIndex].isRecharging && weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent > 0 && !lockUntilNextClick)
         {
-            weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent--;
-            ProjectileSpawn();
-            if (weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent == 0)
+            if (weaponUsed.weaponInfo[activeWeaponIndex].weapon.chargedWeapon && !weaponUsed.weaponInfo[activeWeaponIndex].weapon.automaticWeapon) charging = true;
+            else
             {
+                ProjectileSpawn(false);
+                WeaponAmmoDecrease(1);
+                if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.automaticWeapon) lockUntilNextClick = true;
+            }
+        }
+    }
+
+    private void ChargeShot()
+    {
+        if (charging)
+        {
+            if (playerRef.playerInputs.LeftClickInput == true)
+            {
+                if (weaponUsed.weaponInfo[activeWeaponIndex].chargedTimer > 0)
+                {
+                    weaponUsed.weaponInfo[activeWeaponIndex].chargedTimer -= Time.deltaTime;
+                    weaponUsed.weaponInfo[activeWeaponIndex].chargePercentage = (Mathf.Abs(weaponUsed.weaponInfo[activeWeaponIndex].chargedTimer - weaponUsed.weaponInfo[activeWeaponIndex].weapon.chargeTime) * 100) / weaponUsed.weaponInfo[activeWeaponIndex].weapon.chargeTime;
+                    chargeText.text = System.Math.Round(weaponUsed.weaponInfo[activeWeaponIndex].chargePercentage, 2).ToString();
+                }
+                else
+                {
+                    weaponUsed.weaponInfo[activeWeaponIndex].chargePercentage = 100f;
+                    chargeText.text = System.Math.Round(weaponUsed.weaponInfo[activeWeaponIndex].chargePercentage, 2).ToString();
+                }
+            }
+            else
+            {
+                float damageFluctuation = weaponUsed.weaponInfo[activeWeaponIndex].weapon.chargedMaxDamage - weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileDamage;
+                float damageIncrease = (weaponUsed.weaponInfo[activeWeaponIndex].chargePercentage * damageFluctuation) / 100;
+                bulletDamage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileDamage + damageIncrease;
+                bulletDamage = Mathf.RoundToInt(bulletDamage);
+                ProjectileSpawn(true);
+                weaponUsed.weaponInfo[activeWeaponIndex].chargedTimer = weaponUsed.weaponInfo[activeWeaponIndex].weapon.chargeTime;
+                chargeText.text = string.Empty;
+                charging = false;
+            }
+        }
+    }
+
+    public void WeaponAmmoDecrease(int decreaseAmount)
+    {
+        if (weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent > 0)
+        {
+            weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent -= decreaseAmount;
+            if (weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent <= 0)
+            {
+                if (weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent < 0) weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent = 0;
                 weaponUsed.weaponInfo[activeWeaponIndex].isRecharging = true;
             }
             else weaponUsed.weaponInfo[activeWeaponIndex].shootReady = false;
-            if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.automaticWeapon) lockUntilNextClick = true;
         }
     }
 

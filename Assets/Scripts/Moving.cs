@@ -7,7 +7,7 @@ public class Moving : PlayerState
     public override void Start()
     {
         PlayerReferences playerReferences = _playerCharacter.playerController.playerReferences;
-        
+
     }
     public override void StateUpdate()
     {
@@ -28,7 +28,7 @@ public class Moving : PlayerState
         Rigidbody playerRb = _playerCharacter.playerController.playerReferences.playerRb;
         PlayerController playerController = _playerCharacter.playerController;
         Vector3 movementWithDirection = MovementInitialization();
-        playerRb.velocity = new Vector3(movementWithDirection.x, movementWithDirection.y, movementWithDirection.z) * playerController.actualSpeed;
+        playerRb.velocity = movementWithDirection * playerController.actualSpeed;
     }
 
     private Vector3 MovementInitialization()
@@ -50,6 +50,7 @@ public class Moving : PlayerState
     {
         PlayerInputs playerInputs = _playerCharacter.playerController.playerReferences.playerInputs;
         GoToIdleState(playerInputs);
+        GoToDashState(playerInputs);
     }
     #region ToIdleState
     private void GoToIdleState(PlayerInputs playerInputs)
@@ -58,6 +59,12 @@ public class Moving : PlayerState
         {
             _playerCharacter.SetState(new Idle(_playerCharacter));
         }
+    }
+    #endregion
+    #region ToDashState
+    private void GoToDashState(PlayerInputs playerInputs)
+    {
+        if ((playerInputs.DashInput)) _playerCharacter.SetState(new Dash(_playerCharacter));
     }
     #endregion
     #endregion

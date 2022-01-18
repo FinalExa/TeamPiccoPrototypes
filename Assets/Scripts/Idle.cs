@@ -19,11 +19,18 @@ public class Idle : PlayerState
     {
         PlayerInputs playerInputs = _playerCharacter.playerController.playerReferences.playerInputs;
         GoToMovementState(playerInputs);
+        GoToDashState(playerInputs);
     }
     #region ToMovementState
     private void GoToMovementState(PlayerInputs playerInputs)
     {
         if ((playerInputs.MovementInput != UnityEngine.Vector3.zero)) _playerCharacter.SetState(new Moving(_playerCharacter));
+    }
+    #endregion
+    #region ToDashState
+    private void GoToDashState(PlayerInputs playerInputs)
+    {
+        if ((playerInputs.DashInput)) _playerCharacter.SetState(new Dash(_playerCharacter));
     }
     #endregion
     #endregion
