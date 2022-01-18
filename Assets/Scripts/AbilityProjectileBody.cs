@@ -13,6 +13,7 @@ public class AbilityProjectileBody : ProjectileBody
     [HideInInspector] public bool interactsWithMainShots;
     [HideInInspector] public float durationTime;
     [HideInInspector] public float durationTimer;
+    [HideInInspector] public GameObject originPoint;
     private PlayerReferences playerRefs;
 
     private void Awake()
@@ -28,7 +29,7 @@ public class AbilityProjectileBody : ProjectileBody
 
     private void FixedUpdate()
     {
-        if (durationActive) Duration();
+        if (durationActive && usesDuration) Duration();
     }
 
     public void SetDurationTimer(bool ud, float durationTimeValue)

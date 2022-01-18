@@ -58,7 +58,7 @@ public class SecondaryShoot : MonoBehaviour
         proj.lifeTime = wpn.secondaryLifetime;
         if (wpn.secondaryStopsAtMousePosition) proj.StopAtTargetLocation();
         if (wpn.secondaryCooldownToggle) weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownActive = true;
-        if (wpn.secondaryDurationToggle) proj.SetDurationInfos(true, wpn.secondaryDurationTime, wpn.playerIsStoppedDuringSecondaryDuration, wpn.normalShotsInteractWithSecondaryProjectile);
+        proj.SetDurationInfos(true, wpn.secondaryDurationTime, wpn.playerIsStoppedDuringSecondaryDuration, wpn.normalShotsInteractWithSecondaryProjectile, projectileStartPosition);
         if (wpn.secondaryAmmoCost > 0) shoot.WeaponAmmoDecrease(wpn.secondaryAmmoCost);
 
     }

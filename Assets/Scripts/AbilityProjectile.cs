@@ -16,10 +16,9 @@ public class AbilityProjectile : Projectile
         {
             AbilityProjectileBody child = thisProjectileChildren[i].GetComponent<AbilityProjectileBody>();
             child.stopAtTarget = true;
-            child.target = target;
         }
     }
-    public void SetDurationInfos(bool usesDuration, float durationTimeValue, bool stopsPlayer, bool interactionWithMainShots)
+    public void SetDurationInfos(bool usesDuration, float durationTimeValue, bool stopsPlayer, bool interactionWithMainShots, GameObject originPoint)
     {
         for (int i = 0; i < thisProjectileChildren.Length; i++)
         {
@@ -27,6 +26,8 @@ public class AbilityProjectile : Projectile
             child.SetDurationTimer(usesDuration, durationTimeValue);
             child.stopsPlayer = stopsPlayer;
             child.interactsWithMainShots = interactionWithMainShots;
+            child.originPoint = originPoint;
+            child.target = target;
         }
     }
 }
