@@ -11,6 +11,7 @@ public class ProjectileBody : MonoBehaviour
         if (this.gameObject.CompareTag("ProjectilePlayer") && other.gameObject.GetComponent<Health>() && other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Health>().DecreaseHP(damage);
+            other.GetComponent<EnemyPattern>().alerted = true;
             DestroyProjectile();
         }
         if (other.gameObject.CompareTag("Wall")) DestroyProjectile();
