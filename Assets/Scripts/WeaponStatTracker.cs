@@ -36,8 +36,11 @@ public class WeaponStatTracker : MonoBehaviour
             weaponInfo[i].projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
             weaponInfo[i].chargedTimer = weaponInfo[i].weapon.chargeTime;
             weaponInfo[i].hitscanVisibleTimer = weaponInfo[i].weapon.hitscanVisibleTime;
-            weaponInfo[i].secondaryCooldownTimer = weaponInfo[i].weapon.secondaryCooldownTime;
-            weaponInfo[i].secondaryCooldownActive = false;
+            if (weaponInfo[i].weapon.hasSecondaryFire && weaponInfo[i].weapon.secondaryAbility != null)
+            {
+                weaponInfo[i].secondaryCooldownTimer = weaponInfo[i].weapon.secondaryAbility.secondaryCooldownTime;
+                weaponInfo[i].secondaryCooldownActive = false;
+            }
         }
     }
 }

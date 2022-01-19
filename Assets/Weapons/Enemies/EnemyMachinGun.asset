@@ -30,22 +30,9 @@ MonoBehaviour:
   chargedWeapon: 0
   chargeTime: 0
   chargedMaxDamage: 0
-  hitscanWeapon: 1
-  hitscanLimitedRange: 1
+  hitscanWeapon: 0
+  hitscanLimitedRange: 0
   hitscanRange: 60
   hitscanVisibleTime: 1
   hasSecondaryFire: 0
-  secondaryFireName: 
-  secondaryProjectile: {fileID: 0}
-  secondaryDamage: 0
-  secondaryProjectileSpeed: 0
-  secondaryStopsAtMousePosition: 0
-  secondaryFlies: 0
-  secondaryDurationToggle: 0
-  secondaryDurationTime: 0
-  playerIsStoppedDuringSecondaryDuration: 0
-  secondaryCooldownToggle: 0
-  secondaryCooldownTime: 0
-  secondaryLifetime: 0
-  secondaryAmmoCost: 0
-  normalShotsInteractWithSecondaryProjectile: 0
+  secondaryAbility: {fileID: 0}
