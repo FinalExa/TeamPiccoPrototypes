@@ -48,12 +48,12 @@ public class PlayerInputs : MonoBehaviour
     }
     void GetMouseWheelUp()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f) MouseWheelUp = true;
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.E)) MouseWheelUp = true;
         else MouseWheelUp = false;
     }
     void GetMouseWheelDown()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") < 0f) MouseWheelDown = true;
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.Q)) MouseWheelDown = true;
         else MouseWheelDown = false;
     }
 
