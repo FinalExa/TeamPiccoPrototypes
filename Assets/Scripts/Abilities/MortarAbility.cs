@@ -5,6 +5,12 @@ using UnityEngine;
 public class MortarAbility : AbilityProjectileBody
 {
     [SerializeField] float mortarRadius;
+    private bool isActive;
+
+    public override void AbilityEffectDuration()
+    {
+        if (!isActive) isActive = true;
+    }
     public override void AbilityEffectAfterDuration()
     {
         Collider[] hits = Physics.OverlapSphere(this.gameObject.transform.position, mortarRadius);
@@ -16,5 +22,14 @@ public class MortarAbility : AbilityProjectileBody
             }
         }
         DestroyProjectile();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(0, 1, 1, 0.3f);
+        if (isActive)
+        {
+            Gizmos.DrawSphere(this.gameObject.transform.position, mortarRadius);
+        }
     }
 }

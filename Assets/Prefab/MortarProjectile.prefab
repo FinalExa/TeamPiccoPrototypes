@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6014446787522181176}
-  - component: {fileID: 8322204657353962034}
   - component: {fileID: 324724785948185933}
+  - component: {fileID: 8322204657353962034}
   - component: {fileID: 1363740215615553181}
   - component: {fileID: 3250459953577688360}
   - component: {fileID: 7819062070217293344}
@@ -35,14 +35,6 @@ Transform:
   m_Father: {fileID: 6455833119315879679}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8322204657353962034
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4881437851323851357}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &324724785948185933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +58,16 @@ MonoBehaviour:
   interactsWithMainShots: 0
   durationTime: 0
   durationTimer: 0
-  mortarRadius: 30
+  originPoint: {fileID: 0}
+  mortarRadius: 10
+--- !u!33 &8322204657353962034
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881437851323851357}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1363740215615553181
 MeshRenderer:
   m_ObjectHideFlags: 0
