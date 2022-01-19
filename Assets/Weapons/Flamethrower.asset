@@ -35,17 +35,4 @@ MonoBehaviour:
   hitscanRange: 0
   hitscanVisibleTime: 0
   hasSecondaryFire: 1
-  secondaryFireName: Mortar
-  secondaryProjectile: {fileID: 5814666638754323035, guid: cbb9909ae324d954983f069721903367, type: 3}
-  secondaryDamage: 100
-  secondaryProjectileSpeed: 0
-  secondaryStopsAtMousePosition: 1
-  secondaryFlies: 1
-  secondaryDurationToggle: 1
-  secondaryDurationTime: 3
-  playerIsStoppedDuringSecondaryDuration: 0
-  secondaryCooldownToggle: 1
-  secondaryCooldownTime: 7
-  secondaryLifetime: 20
-  secondaryAmmoCost: 0
-  normalShotsInteractWithSecondaryProjectile: 0
+  secondaryAbility: {fileID: 11400000, guid: 0ff53f923f263d04188df8a76b76ce93, type: 2}

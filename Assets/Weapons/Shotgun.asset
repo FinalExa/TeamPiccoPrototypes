@@ -35,17 +35,4 @@ MonoBehaviour:
   hitscanRange: 0
   hitscanVisibleTime: 0
   hasSecondaryFire: 1
-  secondaryFireName: Mega Laser
-  secondaryProjectile: {fileID: 5814666638754323035, guid: 26902a40192141948b24a417852af81f, type: 3}
-  secondaryDamage: 7
-  secondaryProjectileSpeed: 0
-  secondaryStopsAtMousePosition: 0
-  secondaryFlies: 0
-  secondaryDurationToggle: 1
-  secondaryDurationTime: 1
-  playerIsStoppedDuringSecondaryDuration: 1
-  secondaryCooldownToggle: 1
-  secondaryCooldownTime: 3
-  secondaryLifetime: 20
-  secondaryAmmoCost: 0
-  normalShotsInteractWithSecondaryProjectile: 0
+  secondaryAbility: {fileID: 11400000, guid: da65fe9d8e0af334580e0e2019017f13, type: 2}

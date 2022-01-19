@@ -30,22 +30,9 @@ MonoBehaviour:
   chargedWeapon: 0
   chargeTime: 0
   chargedMaxDamage: 0
-  hitscanWeapon: 1
+  hitscanWeapon: 0
   hitscanLimitedRange: 0
   hitscanRange: 0
   hitscanVisibleTime: 0.2
   hasSecondaryFire: 1
-  secondaryFireName: Black Hole
-  secondaryProjectile: {fileID: 5814666638754323035, guid: c3193df0b2aaa4342a2575e6cf362ceb, type: 3}
-  secondaryDamage: 0
-  secondaryProjectileSpeed: 50
-  secondaryStopsAtMousePosition: 1
-  secondaryFlies: 0
-  secondaryDurationToggle: 1
-  secondaryDurationTime: 5
-  playerIsStoppedDuringSecondaryDuration: 0
-  secondaryCooldownToggle: 1
-  secondaryCooldownTime: 15
-  secondaryLifetime: 20
-  secondaryAmmoCost: 0
-  normalShotsInteractWithSecondaryProjectile: 1
+  secondaryAbility: {fileID: 11400000, guid: 82cdc7a56884ca9448bbd7ce19e653cf, type: 2}

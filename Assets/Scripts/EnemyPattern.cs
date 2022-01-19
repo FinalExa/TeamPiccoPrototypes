@@ -22,9 +22,15 @@ public class EnemyPattern : MonoBehaviour
     private void Start()
     {
         alerted = false;
+        shoot.enabled = false;
     }
 
     private void Update()
+    {
+        Alert();
+    }
+
+    private void Alert()
     {
         if (alerted)
         {
@@ -32,23 +38,14 @@ public class EnemyPattern : MonoBehaviour
             float distance = Vector3.Distance(playerRef.transform.position, this.transform.position);
             if (distance <= distanceFromPlayer)
             {
-                if (distance < distanceFromPlayer - closenessFromPlayer)
-                {
-                    thisNavMesh.isStopped = false;
-                    thisNavMesh.SetDestination(this.transform.forward - playerRef.transform.position);
-                }
-                else thisNavMesh.isStopped = true;
+                thisNavMesh.isStopped = false;
+                thisNavMesh.SetDestination(this.transform.forward - playerRef.transform.position);
             }
             else
             {
                 thisNavMesh.isStopped = false;
                 thisNavMesh.SetDestination(playerRef.transform.position);
             }
-        }
-        else
-        {
-            shoot.enabled = false;
-            thisNavMesh.isStopped = true;
         }
     }
 }

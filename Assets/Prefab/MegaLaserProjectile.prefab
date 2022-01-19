@@ -56,7 +56,7 @@ MonoBehaviour:
   durationTime: 0
   durationTimer: 0
   originPoint: {fileID: 0}
-  timesTriggeredInDuration: 30
+  timesTriggeredInDuration: 50
 --- !u!54 &7819062070217293344
 Rigidbody:
   m_ObjectHideFlags: 0
