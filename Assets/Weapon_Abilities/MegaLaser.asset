@@ -22,7 +22,7 @@ MonoBehaviour:
   secondaryDurationTime: 1
   playerIsStoppedDuringSecondaryDuration: 1
   secondaryCooldownToggle: 1
-  secondaryCooldownTime: 10
+  secondaryCooldownTime: 3
   secondaryLifetime: 20
   secondaryAmmoCost: 0
   normalShotsInteractWithSecondaryProjectile: 0

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MegaLaserAbility : AbilityProjectileBody
@@ -31,6 +30,7 @@ public class MegaLaserAbility : AbilityProjectileBody
         Vector3 direction = (newTarget - rayOrigin).normalized;
         RaycastHit[] hits;
         hits = Physics.RaycastAll(rayOrigin, direction, Mathf.Infinity);
+        hits = hits.OrderBy((d) => (d.point - rayOrigin).sqrMagnitude).ToArray();
         foreach (RaycastHit hit in hits)
         {
             if (hit.collider.gameObject.CompareTag("Enemy"))
@@ -38,6 +38,10 @@ public class MegaLaserAbility : AbilityProjectileBody
                 hit.collider.gameObject.GetComponent<Health>().DecreaseHP(damage);
             }
             Debug.DrawRay(rayOrigin, direction * Vector3.Distance(rayOrigin, hit.point), Color.red, timeOffset);
+            if (hit.collider.gameObject.CompareTag("Wall"))
+            {
+                break;
+            }
         }
     }
     public override void AbilityEffectAfterDuration()
