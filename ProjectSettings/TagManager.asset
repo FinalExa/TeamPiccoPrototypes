@@ -6,13 +6,13 @@ TagManager:
   tags:
   - ProjectileParent
   - Wall
-  - Melee
   - Projectile
   - ProjectilePlayer
   - Enemy
   - EnemyRange
   - AbilityProjectile
   - Ground
+  - Drop
   layers:
   - Default
   - TransparentFX

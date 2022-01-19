@@ -25,7 +25,7 @@ MonoBehaviour:
   automaticWeapon: 0
   shotgunWeapon: 1
   shotgunProjectileNumber: 8
-  shotgunSpread: 1.7
+  shotgunSpread: 2.8
   shotgunSpeedDifference: 20
   chargedWeapon: 0
   chargeTime: 0

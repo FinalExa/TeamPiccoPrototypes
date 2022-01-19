@@ -232,4 +232,9 @@ public class Shoot : MonoBehaviour
             reloadCanvas.SetActive(weaponUsed.weaponInfo[activeWeaponIndex].isRecharging);
         }
     }
+
+    public void RefullAmmo()
+    {
+        weaponUsed.weaponInfo[activeWeaponIndex].ammoCurrent = weaponUsed.weaponInfo[activeWeaponIndex].weapon.ammoMax;
+    }
 }

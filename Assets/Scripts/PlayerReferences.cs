@@ -8,6 +8,7 @@ public class PlayerReferences : MonoBehaviour
     [HideInInspector] public MousePos mousePos;
     [HideInInspector] public Rigidbody playerRb;
     [HideInInspector] public Camera mainCamera;
+    [HideInInspector] public Health health;
     [HideInInspector] public Shoot shoot;
     [HideInInspector] public Rotation rotation;
     [HideInInspector] public WeaponCycle weaponCycle;
@@ -21,6 +22,7 @@ public class PlayerReferences : MonoBehaviour
         mousePos = this.gameObject.GetComponent<MousePos>();
         playerRb = this.gameObject.GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
+        health = FindObjectOfType<Health>();
         shoot = this.gameObject.GetComponent<Shoot>();
         rotation = this.gameObject.GetComponent<Rotation>();
         weaponCycle = this.gameObject.GetComponent<WeaponCycle>();

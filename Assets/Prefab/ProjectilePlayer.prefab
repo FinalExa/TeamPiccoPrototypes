@@ -178,6 +178,11 @@ MonoBehaviour:
   - {fileID: 6322534209313354996}
   target: {x: 0, y: 0, z: 0}
   damage: 0
+  isRay: 0
+  rayNeedsRange: 0
+  rayRange: 0
+  rayDuration: 0
+  rayOrigin: {x: 0, y: 0, z: 0}
 --- !u!54 &-3310621872110477516
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -58,6 +58,7 @@ MonoBehaviour:
   interactsWithMainShots: 0
   durationTime: 0
   durationTimer: 0
+  originPoint: {fileID: 0}
   blackHoleRadius: 20
   blackHolePullSpeed: 10
 --- !u!33 &8322204657353962034

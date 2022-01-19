@@ -13,6 +13,9 @@ public class Health : MonoBehaviour
     [SerializeField] private float invincibilityTime;
     private float invincibilityTimer;
     private bool invincibility;
+    [SerializeField] private GameObject dropHealth;
+    [SerializeField] private GameObject dropAmmo;
+    [SerializeField] private float dropChance;
 
     private void OnEnable()
     {
@@ -43,7 +46,11 @@ public class Health : MonoBehaviour
             currentHP = Mathf.Clamp(currentHP - damageReceived, 0, 100);
             if (currentHP == 0)
             {
-                if (!isPlayer) this.gameObject.SetActive(false);
+                if (!isPlayer)
+                {
+                    SpawnDrop();
+                    this.gameObject.SetActive(false);
+                }
                 else SceneManager.LoadScene(0);
             }
             else
@@ -66,5 +73,19 @@ public class Health : MonoBehaviour
     public void IncreaseHP(float healReceived)
     {
         currentHP = Mathf.Clamp(currentHP + healReceived, 0, 100);
+    }
+
+    public void FullyHeal()
+    {
+        currentHP = maxHP;
+    }
+
+    private void SpawnDrop()
+    {
+        if (Random.Range(0, 99) < dropChance)
+        {
+            if (Random.Range(0, 2) == 0) Instantiate(dropHealth, this.gameObject.transform.position, Quaternion.identity);
+            else Instantiate(dropAmmo, this.gameObject.transform.position, Quaternion.identity);
+        }
     }
 }
