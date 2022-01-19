@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondaryFireName: Mortar
   secondaryProjectile: {fileID: 5814666638754323035, guid: cbb9909ae324d954983f069721903367, type: 3}
-  secondaryDamage: 20
+  secondaryDamage: 35
   secondaryProjectileSpeed: 0
   secondaryStopsAtMousePosition: 1
   secondaryFlies: 1

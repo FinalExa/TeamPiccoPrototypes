@@ -737,6 +737,19 @@ MonoBehaviour:
     hitscanVisibleTimer: 0
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
+  - weapon: {fileID: 11400000, guid: 7f0d9eebb659b5f46bc2b945e9e292d1, type: 2}
+    shootDelayTimer: 0
+    shootReady: 0
+    rechargeDelayTimer: 0
+    isRecharging: 0
+    ammoCurrent: 0
+    magazineCurrent: 0
+    projectileParent: {fileID: 0}
+    chargedTimer: 0
+    chargePercentage: 0
+    hitscanVisibleTimer: 0
+    secondaryCooldownTimer: 0
+    secondaryCooldownActive: 0
 --- !u!114 &-596477047835414564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,7 +829,7 @@ MonoBehaviour:
   maxHP: 3
   isPlayer: 1
   UIText: {fileID: 5672406584093513531}
-  invincibilityTime: 0.3
+  invincibilityTime: 2
 --- !u!54 &7616627670619280990
 Rigidbody:
   m_ObjectHideFlags: 0

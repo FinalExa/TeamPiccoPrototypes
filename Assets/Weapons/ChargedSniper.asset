@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7b8357ea365434aa337fa5833fd2b6, type: 3}
+  m_Name: ChargedSniper
+  m_EditorClassIdentifier: 
+  weaponName: ChargedSniper
+  shootDelay: 0.8
+  rechargeDelay: 2
+  ammoMax: 16
+  magazineSize: 1
+  projectileDamage: 8
+  projectileSpeed: 0
+  projectileLifetime: 20
+  projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
+  endlessAmmo: 0
+  automaticWeapon: 0
+  shotgunWeapon: 0
+  shotgunProjectileNumber: 0
+  shotgunSpread: 0
+  shotgunSpeedDifference: 0
+  chargedWeapon: 1
+  chargeTime: 1.4
+  chargedMaxDamage: 40
+  hitscanWeapon: 1
+  hitscanLimitedRange: 0
+  hitscanRange: 0
+  hitscanVisibleTime: 1
+  hasSecondaryFire: 0
+  secondaryAbility: {fileID: 0}
