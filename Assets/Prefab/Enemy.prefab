@@ -243,6 +243,7 @@ MonoBehaviour:
   thisRB: {fileID: 3746685406685054688}
   baseMaterial: {fileID: 2100000, guid: 078462b946ddf9344abfa4029f8da0b5, type: 2}
   damagedMaterial: {fileID: 2100000, guid: 51fdb2da8c642334fa244d024af3b198, type: 2}
+  startingPos: {x: 0, y: 0, z: 0}
 --- !u!114 &7488026599981649021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +275,7 @@ MonoBehaviour:
   alerted: 0
   distanceFromPlayer: 30
   closenessFromPlayer: 20
+  projectileStartPos: {fileID: 1023044744484094521}
 --- !u!54 &3746685406685054688
 Rigidbody:
   m_ObjectHideFlags: 0

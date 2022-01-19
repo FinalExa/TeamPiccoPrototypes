@@ -9,8 +9,10 @@ public class EnemyPattern : MonoBehaviour
     private Shoot shoot;
     [SerializeField] private float distanceFromPlayer;
     [SerializeField] private float closenessFromPlayer;
+    [SerializeField] private GameObject projectileStartPos;
     private PlayerReferences playerRef;
     private NavMeshAgent thisNavMesh;
+    [HideInInspector] public bool canShootAtPlayer;
 
     private void Awake()
     {
@@ -23,11 +25,17 @@ public class EnemyPattern : MonoBehaviour
     {
         alerted = false;
         shoot.enabled = false;
+        canShootAtPlayer = false;
     }
 
     private void Update()
     {
         Alert();
+    }
+
+    private void FixedUpdate()
+    {
+        canShootAtPlayer = CheckOcclusionWithPlayer();
     }
 
     private void Alert()
@@ -47,5 +55,20 @@ public class EnemyPattern : MonoBehaviour
                 thisNavMesh.SetDestination(playerRef.transform.position);
             }
         }
+    }
+
+    private bool CheckOcclusionWithPlayer()
+    {
+        Vector3 startPos = this.transform.position;
+        Vector3 direction = (playerRef.transform.position - startPos).normalized;
+        bool canSeePlayer = false;
+        if (Physics.Raycast(startPos, direction, out RaycastHit hit, Mathf.Infinity))
+        {
+            if (hit.collider.gameObject.CompareTag("Player"))
+            {
+                canSeePlayer = true;
+            }
+        }
+        return canSeePlayer;
     }
 }

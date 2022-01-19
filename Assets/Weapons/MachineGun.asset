@@ -17,7 +17,7 @@ MonoBehaviour:
   rechargeDelay: 1.1
   ammoMax: 180
   magazineSize: 24
-  projectileDamage: 4
+  projectileDamage: 4.5
   projectileSpeed: 90
   projectileLifetime: 10
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}

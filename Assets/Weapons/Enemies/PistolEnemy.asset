@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: PistolEnemy
   shootDelay: 0.5
-  rechargeDelay: 0.3
+  rechargeDelay: 1.5
   ammoMax: 72
-  magazineSize: 15
+  magazineSize: 3
   projectileDamage: 1
   projectileSpeed: 50
   projectileLifetime: 10

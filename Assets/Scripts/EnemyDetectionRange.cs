@@ -7,23 +7,28 @@ public class EnemyDetectionRange : MonoBehaviour
     [SerializeField] private EnemyPattern enemyPattern;
     [SerializeField] private float detectionRange;
     [SerializeField] private Collider[] colliders;
+    private bool detected;
+
+    private void Start()
+    {
+        detected = false;
+    }
 
     private void FixedUpdate()
     {
-        bool detected = false;
-        colliders = Physics.OverlapSphere(this.transform.position, detectionRange);
-        for (int i = 0; i < colliders.Length; i++)
+        if (enemyPattern.canShootAtPlayer && !detected)
         {
-            if (colliders[i].gameObject.CompareTag("Player"))
+            print("Alert!");
+            colliders = Physics.OverlapSphere(this.transform.position, detectionRange);
+            for (int i = 0; i < colliders.Length; i++)
             {
-                enemyPattern.alerted = true;
-                detected = true;
-                break;
+                if (colliders[i].gameObject.CompareTag("Player"))
+                {
+                    enemyPattern.alerted = true;
+                    detected = true;
+                    break;
+                }
             }
-        }
-        if (!detected)
-        {
-            enemyPattern.alerted = false;
         }
     }
 }

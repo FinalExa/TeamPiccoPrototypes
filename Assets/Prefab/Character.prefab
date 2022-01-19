@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4058440074229409874}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: MeleeAttack
   m_TagString: Melee
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3166821101803557365}
   - component: {fileID: 2010316715214352451}
   - component: {fileID: 9031676151879547453}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Side
   m_TagString: Melee
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 2017996970012527724}
   - component: {fileID: 1200417930888255610}
   - component: {fileID: 1612659003228841053}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Charge%
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2260342308493683730}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: PlayerProjectileStart
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 7287337245229648185}
   - component: {fileID: 6380243112133776019}
   - component: {fileID: 2054578073611123639}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: RELOADING_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3376691023311971414}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: rotation
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 8373284113023755741}
   - component: {fileID: 2780764594783629951}
   - component: {fileID: 2259446771167082981}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Reloading
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 4564734752982590426}
   - component: {fileID: 981750958531450748}
   - component: {fileID: 7175903716107958130}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -565,7 +565,7 @@ GameObject:
   - component: {fileID: -2456297739160437030}
   - component: {fileID: 507427419748984000}
   - component: {fileID: 7616627670619280990}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -781,8 +781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileStartPosition: {fileID: 2368323287208570982}
-  cooldownText: {fileID: 0}
   abilityText: {fileID: 0}
+  cooldownText: {fileID: 0}
 --- !u!114 &-2456297739160437030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,7 +843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2267265460092253888}
   - component: {fileID: 2833284064710484593}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Spot Light
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -937,7 +937,7 @@ GameObject:
   - component: {fileID: 2196217982407333430}
   - component: {fileID: 4462267071954958787}
   - component: {fileID: 5672406584093513531}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HP_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1016,7 +1016,7 @@ GameObject:
   - component: {fileID: 9002663570858913329}
   - component: {fileID: 2839715576700478448}
   - component: {fileID: 547927082905764515}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Face
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1100,7 +1100,7 @@ GameObject:
   - component: {fileID: 7597181368178251606}
   - component: {fileID: 253932199274715483}
   - component: {fileID: 8889857953460287279}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
