@@ -18,7 +18,6 @@ public class EnemyDetectionRange : MonoBehaviour
     {
         if (enemyPattern.canShootAtPlayer && !detected)
         {
-            print("Alert!");
             colliders = Physics.OverlapSphere(this.transform.position, detectionRange);
             for (int i = 0; i < colliders.Length; i++)
             {
