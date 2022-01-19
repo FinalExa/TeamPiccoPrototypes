@@ -26,8 +26,9 @@ public class MegaLaserAbility : AbilityProjectileBody
 
     private void ShootRay()
     {
+        Vector3 newTarget = new Vector3(target.x, 0f, target.z);
         Vector3 rayOrigin = originPoint.transform.position;
-        Vector3 direction = (target - rayOrigin).normalized;
+        Vector3 direction = (newTarget - rayOrigin).normalized;
         RaycastHit[] hits;
         hits = Physics.RaycastAll(rayOrigin, direction, Mathf.Infinity);
         foreach (RaycastHit hit in hits)
