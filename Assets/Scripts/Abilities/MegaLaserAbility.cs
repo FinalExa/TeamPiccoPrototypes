@@ -28,17 +28,17 @@ public class MegaLaserAbility : AbilityProjectileBody
     {
         Vector3 rayOrigin = originPoint.transform.position;
         Vector3 direction = (target - rayOrigin).normalized;
-        RaycastHit hit;
-        if (Physics.Raycast(rayOrigin, direction, out hit))
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(rayOrigin, direction, Mathf.Infinity);
+        foreach (RaycastHit hit in hits)
         {
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
                 hit.collider.gameObject.GetComponent<Health>().DecreaseHP(damage);
             }
+            Debug.DrawRay(rayOrigin, direction * Vector3.Distance(rayOrigin, hit.point), Color.red, timeOffset);
         }
-        Debug.DrawRay(rayOrigin, (hit.point - rayOrigin).normalized * Vector3.Distance(rayOrigin, hit.point), Color.red, timeOffset);
     }
-
     public override void AbilityEffectAfterDuration()
     {
         DestroyProjectile();
