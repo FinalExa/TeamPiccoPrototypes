@@ -202,6 +202,7 @@ public class Shoot : MonoBehaviour
                 bulletDamage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileDamage + damageIncrease;
                 bulletDamage = Mathf.RoundToInt(bulletDamage);
                 ProjectileSpawn(true);
+                WeaponAmmoDecrease(1);
                 weaponUsed.weaponInfo[activeWeaponIndex].chargedTimer = weaponUsed.weaponInfo[activeWeaponIndex].weapon.chargeTime;
                 chargeText.text = string.Empty;
                 charging = false;
