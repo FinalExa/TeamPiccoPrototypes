@@ -73,6 +73,11 @@ public class AbilityProjectileBody : ProjectileBody
         return;
     }
 
+    public virtual void AbilityEffectBeforeReachingTarget()
+    {
+
+    }
+
     private void StopPlayer()
     {
         if (stopsPlayer)
@@ -102,6 +107,10 @@ public class AbilityProjectileBody : ProjectileBody
             StopMovement();
             if (usesDuration) durationActive = true;
         }
+        else
+        {
+            AbilityEffectBeforeReachingTarget();
+        }
     }
 
     private void StopMovement()
@@ -123,7 +132,11 @@ public class AbilityProjectileBody : ProjectileBody
         if (other.gameObject.CompareTag("Wall"))
         {
             if (!stopAtTarget && !stopsPlayer) DestroyProjectile();
-            else StopMovement();
+            else
+            {
+                StopMovement();
+                if (usesDuration) durationActive = true;
+            }
         }
     }
 }

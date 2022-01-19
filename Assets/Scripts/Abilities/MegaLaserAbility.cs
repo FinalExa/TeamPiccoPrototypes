@@ -6,11 +6,13 @@ public class MegaLaserAbility : AbilityProjectileBody
     [SerializeField] private float timesTriggeredInDuration;
     private float timeOffset;
     private float timer;
+    private Vector3 startPos;
 
     private void Start()
     {
         timeOffset = durationTime / timesTriggeredInDuration;
         timer = timeOffset;
+        startPos = this.gameObject.transform.position;
     }
 
     public override void AbilityEffectDuration()
@@ -25,8 +27,9 @@ public class MegaLaserAbility : AbilityProjectileBody
 
     private void ShootRay()
     {
-        Vector3 newTarget = new Vector3(target.x, 0f, target.z);
-        Vector3 rayOrigin = originPoint.transform.position;
+        Vector3 rayOrigin = startPos;
+        Vector3 positionOffset = startPos - originPoint.transform.position;
+        Vector3 newTarget = new Vector3(target.x + positionOffset.x, 0f, target.z + positionOffset.z);
         Vector3 direction = (newTarget - rayOrigin).normalized;
         RaycastHit[] hits;
         hits = Physics.RaycastAll(rayOrigin, direction, Mathf.Infinity);

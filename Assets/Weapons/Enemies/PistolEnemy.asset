@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PistolEnemy
   m_EditorClassIdentifier: 
   weaponName: PistolEnemy
-  shootDelay: 2
+  shootDelay: 0.5
   rechargeDelay: 0.3
   ammoMax: 72
   magazineSize: 15
@@ -35,17 +35,4 @@ MonoBehaviour:
   hitscanRange: 0
   hitscanVisibleTime: 0
   hasSecondaryFire: 0
-  secondaryFireName: 
-  secondaryProjectile: {fileID: 0}
-  secondaryDamage: 0
-  secondaryProjectileSpeed: 0
-  secondaryStopsAtMousePosition: 0
-  secondaryFlies: 0
-  secondaryDurationToggle: 0
-  secondaryDurationTime: 0
-  playerIsStoppedDuringSecondaryDuration: 0
-  secondaryCooldownToggle: 0
-  secondaryCooldownTime: 0
-  secondaryLifetime: 0
-  secondaryAmmoCost: 0
-  normalShotsInteractWithSecondaryProjectile: 0
+  secondaryAbility: {fileID: 0}
