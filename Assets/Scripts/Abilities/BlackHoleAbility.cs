@@ -7,10 +7,12 @@ public class BlackHoleAbility : AbilityProjectileBody
 {
     [SerializeField] float blackHoleRadius;
     [SerializeField] float blackHolePullSpeed;
+    private bool isActive;
     private Collider[] hits;
 
     public override void AbilityEffectDuration()
     {
+        if (!isActive) isActive = true;
         hits = Physics.OverlapSphere(this.gameObject.transform.position, blackHoleRadius);
         for (int i = 0; i < hits.Length; i++)
         {
@@ -40,5 +42,14 @@ public class BlackHoleAbility : AbilityProjectileBody
 
     public override void MainFireInteraction()
     {
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1, 0, 0, 0.3f);
+        if (isActive)
+        {
+            Gizmos.DrawSphere(this.gameObject.transform.position, blackHoleRadius);
+        }
     }
 }
