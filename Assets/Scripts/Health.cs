@@ -16,6 +16,12 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject dropHealth;
     [SerializeField] private GameObject dropAmmo;
     [SerializeField] private float dropChance;
+    private EnemyPattern thisEnemyPattern;
+
+    private void Start()
+    {
+        if (!isPlayer) thisEnemyPattern = this.gameObject.GetComponent<EnemyPattern>();
+    }
 
     private void OnEnable()
     {
@@ -44,6 +50,10 @@ public class Health : MonoBehaviour
         if (!invincibility)
         {
             currentHP = Mathf.Clamp(currentHP - damageReceived, 0, 100);
+            if (!isPlayer)
+            {
+                thisEnemyPattern.alerted = true;
+            }
             if (currentHP == 0)
             {
                 if (!isPlayer)
