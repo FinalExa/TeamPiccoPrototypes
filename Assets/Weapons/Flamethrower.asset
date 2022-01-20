@@ -35,4 +35,4 @@ MonoBehaviour:
   hitscanRange: 0
   hitscanVisibleTime: 0
   hasSecondaryFire: 1
-  secondaryAbility: {fileID: 11400000, guid: 52f1540291fe7904eac5668224be0c49, type: 2}
+  secondaryAbility: {fileID: 11400000, guid: 0ff53f923f263d04188df8a76b76ce93, type: 2}
