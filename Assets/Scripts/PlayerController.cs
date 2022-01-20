@@ -53,8 +53,14 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Drop"))
         {
-            if (other.gameObject.GetComponent<Drop>().falseAmmoTrueHealth) playerReferences.health.FullyHeal();
-            else playerReferences.shoot.RefullAmmo();
+            if (other.gameObject.GetComponent<Drop>().falseAmmoTrueHealth)
+            {
+                playerReferences.health.FullyHeal();
+            }
+            else
+            {
+                playerReferences.shoot.RefullAmmo();
+            }
             GameObject.Destroy(other.gameObject);
         }
     }
