@@ -75,7 +75,7 @@ public class AbilityProjectileBody : ProjectileBody
 
     public virtual void AbilityEffectBeforeReachingTarget()
     {
-
+        return;
     }
 
     private void StopPlayer()
@@ -101,8 +101,8 @@ public class AbilityProjectileBody : ProjectileBody
 
     private void StopAtTarget()
     {
-        float distance = Vector3.Distance(this.gameObject.transform.position, target);
-        if (distance <= 0.5f)
+        float distance = Vector3.Distance(new Vector3(this.gameObject.transform.position.x, 0f, this.gameObject.transform.position.z), new Vector3(target.x, 0f, target.z));
+        if (distance <= 1f)
         {
             StopMovement();
             if (usesDuration) durationActive = true;
