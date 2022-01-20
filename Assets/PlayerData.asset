@@ -16,4 +16,4 @@ MonoBehaviour:
   currentMovementSpeed: 30
   dashDistance: 20
   dashDuration: 0.1
-  dashCooldown: 0
+  dashCooldown: 1.5
