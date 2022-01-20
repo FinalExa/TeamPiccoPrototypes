@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f64dfbcc1cac3f4c9eb27a1478daae3, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  defaultMovementSpeed: 25
-  currentMovementSpeed: 25
+  defaultMovementSpeed: 30
+  currentMovementSpeed: 30
   dashDistance: 20
   dashDuration: 0.1
-  dashCooldown: 1.5
+  dashCooldown: 0
