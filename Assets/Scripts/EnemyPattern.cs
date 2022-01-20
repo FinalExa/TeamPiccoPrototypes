@@ -42,16 +42,24 @@ public class EnemyPattern : MonoBehaviour
     {
         if (alerted)
         {
-            shoot.enabled = true;
-            float distance = Vector3.Distance(playerRef.transform.position, this.transform.position);
-            if (distance <= distanceFromPlayer)
+            if (canShootAtPlayer)
             {
-                thisNavMesh.isStopped = false;
-                thisNavMesh.SetDestination(this.transform.forward - playerRef.transform.position);
+                shoot.enabled = true;
+                float distance = Vector3.Distance(playerRef.transform.position, this.transform.position);
+                if (distance <= distanceFromPlayer)
+                {
+                    thisNavMesh.isStopped = false;
+                    thisNavMesh.SetDestination(this.transform.forward - playerRef.transform.position);
+                }
+                else
+                {
+                    thisNavMesh.isStopped = false;
+                    thisNavMesh.SetDestination(playerRef.transform.position);
+                }
             }
             else
             {
-                thisNavMesh.isStopped = false;
+                shoot.enabled = false;
                 thisNavMesh.SetDestination(playerRef.transform.position);
             }
         }
