@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject dropAmmo;
     [SerializeField] private float dropChance;
     private EnemyPattern thisEnemyPattern;
+    private bool godMode;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class Health : MonoBehaviour
 
     private void OnEnable()
     {
+        godMode = false;
         currentHP = maxHP;
         invincibilityTimer = invincibilityTime;
         invincibility = false;
@@ -33,6 +35,7 @@ public class Health : MonoBehaviour
     private void Update()
     {
         UpdateHPInUI();
+        if (Input.GetKeyDown(KeyCode.G)) godMode = !godMode;
     }
 
     private void FixedUpdate()
@@ -42,30 +45,34 @@ public class Health : MonoBehaviour
 
     private void UpdateHPInUI()
     {
-        UIText.text = "HP: " + currentHP + "/" + maxHP;
+        if (!godMode) UIText.text = "HP: " + currentHP + "/" + maxHP;
+        else UIText.text = "Godmode!";
     }
 
     public void DecreaseHP(float damageReceived)
     {
-        if (!invincibility)
+        if (!godMode)
         {
-            currentHP = Mathf.Clamp(currentHP - damageReceived, 0, 100);
-            if (!isPlayer)
+            if (!invincibility)
             {
-                thisEnemyPattern.alerted = true;
-            }
-            if (currentHP == 0)
-            {
+                currentHP = Mathf.Clamp(currentHP - damageReceived, 0, 100);
                 if (!isPlayer)
                 {
-                    SpawnDrop();
-                    this.gameObject.SetActive(false);
+                    thisEnemyPattern.alerted = true;
                 }
-                else SceneManager.LoadScene(0);
-            }
-            else
-            {
-                if (isPlayer) invincibility = true;
+                if (currentHP == 0)
+                {
+                    if (!isPlayer)
+                    {
+                        SpawnDrop();
+                        this.gameObject.SetActive(false);
+                    }
+                    else SceneManager.LoadScene(0);
+                }
+                else
+                {
+                    if (isPlayer) invincibility = true;
+                }
             }
         }
     }
