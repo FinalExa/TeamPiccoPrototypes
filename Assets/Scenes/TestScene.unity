@@ -13259,7 +13259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 387, y: -40}
+  m_AnchoredPosition: {x: 388, y: -26}
   m_SizeDelta: {x: 300, y: 200.39}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1135180329
@@ -13295,11 +13295,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '- reload
+  m_Text: '-  reload
 
-    - dash
+    -  dash
 
-    - change ability'
+    -  change ability
+
+    -  next weapon'
 --- !u!222 &1135180330
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13607,7 +13609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -402, y: -40}
+  m_AnchoredPosition: {x: -370, y: -26.542}
   m_SizeDelta: {x: 300, y: 200.39}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1167778244
@@ -13643,11 +13645,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'movement -
+  m_Text: 'movement  -
 
-    primary fire -
+    primary fire  -
 
-    secondary fire -'
+    secondary fire  -
+
+    previous
+    weapon  -'
 --- !u!222 &1167778245
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21221,7 +21226,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 120}
+  m_SizeDelta: {x: 0, y: 147.3053}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1873413089
 MonoBehaviour:
@@ -21236,14 +21241,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.47058824}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 52a5cc20255d8ec41bfa2033f4fb24f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21632,7 +21637,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -165, y: -40}
+  m_AnchoredPosition: {x: -165, y: -26}
   m_SizeDelta: {x: 260, y: 200.39}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1893067084
@@ -21648,7 +21653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8509804, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.105882354, g: 0.8509804, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21670,9 +21675,11 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'WASD
 
-    LEFT MOUSE
+    Left Mouse
 
-    RIGHT MOUSE'
+    Right Mouse
+
+    Q'
 --- !u!222 &1893067085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22803,7 +22810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 10}
+  m_AnchoredPosition: {x: 0, y: 25}
   m_SizeDelta: {x: 3, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2020045780
@@ -22992,7 +22999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 170, y: -40}
+  m_AnchoredPosition: {x: 170, y: -26}
   m_SizeDelta: {x: 260, y: 200.39}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2047609380
@@ -23008,7 +23015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8490566, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.10527999, g: 0.8509804, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -23032,7 +23039,9 @@ MonoBehaviour:
 
     LShift
 
-    Mouse Wheel'
+    Mouse Wheel
+
+    E'
 --- !u!222 &2047609381
 CanvasRenderer:
   m_ObjectHideFlags: 0
