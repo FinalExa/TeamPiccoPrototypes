@@ -22,11 +22,7 @@ public class Projectile : MonoBehaviour
     {
         lifeTimer = lifeTime;
         if (!isRay) ProjectileMovement();
-        else
-        {
-            rayOrigin = this.transform.position;
-            Hitscan();
-        }
+        else Hitscan();
     }
 
     public virtual void Update()
@@ -74,13 +70,14 @@ public class Projectile : MonoBehaviour
         if (!rayNeedsRange || (rayNeedsRange && itHit)) HitscanDrawLine(rayOrigin, (hit.point).normalized * Vector3.Distance(Vector3.zero, hit.point));
         else
         {
-            HitscanDrawLine(rayOrigin, (target - rayOrigin).normalized * distance);
+            Vector3 lastLocation = (target - rayOrigin).normalized * distance;
+            HitscanDrawLine(rayOrigin, (lastLocation).normalized * Vector3.Distance(Vector3.zero, rayOrigin + lastLocation));
+            //Debug.DrawRay(rayOrigin, (target - rayOrigin).normalized * distance, Color.red, rayDuration);
         }
     }
 
     private void HitscanDrawLine(Vector3 origin, Vector3 destination)
     {
-        rayTimer = rayDuration;
         List<Vector3> positions = new List<Vector3>();
         positions.Clear();
         positions.Add(origin);
@@ -88,6 +85,7 @@ public class Projectile : MonoBehaviour
         line.positionCount = 2;
         line.SetPositions(positions.ToArray());
         line.gameObject.SetActive(true);
+        rayTimer = rayDuration;
         clearLine = true;
     }
 
