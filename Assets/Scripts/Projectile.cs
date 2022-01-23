@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [HideInInspector] public float speed;
     [HideInInspector] public float lifeTime;
+    [SerializeField] protected LineRenderer line;
     [SerializeField] protected ProjectileBody[] thisProjectileChildren;
     protected float lifeTimer;
     [HideInInspector] public Vector3 target;
@@ -15,16 +16,23 @@ public class Projectile : MonoBehaviour
     [HideInInspector] public float rayRange;
     [HideInInspector] public float rayDuration;
     [HideInInspector] public Vector3 rayOrigin;
+    private float rayTimer;
+    private bool clearLine;
     public virtual void Start()
     {
         lifeTimer = lifeTime;
         if (!isRay) ProjectileMovement();
-        else Hitscan();
+        else
+        {
+            rayOrigin = this.transform.position;
+            Hitscan();
+        }
     }
 
     public virtual void Update()
     {
         LifeTime();
+        if (isRay) ClearLine();
     }
 
     public virtual void ProjectileMovement()
@@ -63,8 +71,38 @@ public class Projectile : MonoBehaviour
                 hit.collider.gameObject.GetComponent<Health>().DecreaseHP(damage);
             }
         }
-        if (!rayNeedsRange || (rayNeedsRange && itHit)) Debug.DrawRay(rayOrigin, (hit.point - rayOrigin).normalized * Vector3.Distance(rayOrigin, hit.point), Color.red, rayDuration);
-        else Debug.DrawRay(rayOrigin, (target - rayOrigin).normalized * distance, Color.red, rayDuration);
+        if (!rayNeedsRange || (rayNeedsRange && itHit)) HitscanDrawLine(rayOrigin, (hit.point).normalized * Vector3.Distance(Vector3.zero, hit.point));
+        else
+        {
+            HitscanDrawLine(rayOrigin, (target - rayOrigin).normalized * distance);
+        }
+    }
+
+    private void HitscanDrawLine(Vector3 origin, Vector3 destination)
+    {
+        rayTimer = rayDuration;
+        List<Vector3> positions = new List<Vector3>();
+        positions.Clear();
+        positions.Add(origin);
+        positions.Add(destination);
+        line.positionCount = 2;
+        line.SetPositions(positions.ToArray());
+        line.gameObject.SetActive(true);
+        clearLine = true;
+    }
+
+    private void ClearLine()
+    {
+        if (clearLine)
+        {
+            if (rayTimer > 0) rayTimer -= Time.deltaTime;
+            else
+            {
+                line.gameObject.SetActive(false);
+                rayTimer = rayDuration;
+                clearLine = false;
+            }
+        }
     }
 }
 

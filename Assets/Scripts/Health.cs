@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
     private void Update()
     {
         UpdateHPInUI();
-        if (Input.GetKeyDown(KeyCode.G)) godMode = !godMode;
+        if (Input.GetKeyDown(KeyCode.G) && isPlayer) godMode = !godMode;
     }
 
     private void FixedUpdate()
