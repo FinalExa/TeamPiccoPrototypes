@@ -650,6 +650,7 @@ MonoBehaviour:
   mousePos: {fileID: 0}
   playerRb: {fileID: 0}
   mainCamera: {fileID: 0}
+  health: {fileID: 0}
   shoot: {fileID: 0}
   rotation: {fileID: 0}
   weaponCycle: {fileID: 0}
@@ -665,7 +666,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0b54d45f52db9459a6a60dc488fc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mousePositionInSpace: {x: 0, y: 0, z: 0}
   PointToShoot: {fileID: 0}
   VectorPointToShoot: {x: 0, y: 0, z: 0}
   reticlePosition: {x: 0, y: 0, z: 0}
@@ -712,19 +712,6 @@ MonoBehaviour:
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
   - weapon: {fileID: 11400000, guid: 60fcee5f11f7de645ae61302bb375253, type: 2}
-    shootDelayTimer: 0
-    shootReady: 0
-    rechargeDelayTimer: 0
-    isRecharging: 0
-    ammoCurrent: 0
-    magazineCurrent: 0
-    projectileParent: {fileID: 0}
-    chargedTimer: 0
-    chargePercentage: 0
-    hitscanVisibleTimer: 0
-    secondaryCooldownTimer: 0
-    secondaryCooldownActive: 0
-  - weapon: {fileID: 11400000, guid: 0c0091fee5659004a842bbc21bdea409, type: 2}
     shootDelayTimer: 0
     shootReady: 0
     rechargeDelayTimer: 0
@@ -817,6 +804,9 @@ MonoBehaviour:
   isPlayer: 1
   UIText: {fileID: 5672406584093513531}
   invincibilityTime: 0.3
+  dropHealth: {fileID: 0}
+  dropAmmo: {fileID: 0}
+  dropChance: 0
 --- !u!54 &7616627670619280990
 Rigidbody:
   m_ObjectHideFlags: 0
