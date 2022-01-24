@@ -30,8 +30,8 @@ MonoBehaviour:
   chargedWeapon: 0
   chargeTime: 0
   chargedMaxDamage: 0
-  hitscanWeapon: 1
-  hitscanLimitedRange: 1
+  hitscanWeapon: 0
+  hitscanLimitedRange: 0
   hitscanRange: 10
   hitscanVisibleTime: 0.2
   hasSecondaryFire: 1

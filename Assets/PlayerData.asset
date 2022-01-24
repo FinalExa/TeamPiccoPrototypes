@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMovementSpeed: 30
   currentMovementSpeed: 30
-  dashDistance: 0
-  dashDuration: 0
-  dashCooldown: 0
+  dashDistance: 20
+  dashDuration: 0.1
+  dashCooldown: 1.5
