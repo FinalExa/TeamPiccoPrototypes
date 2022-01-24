@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: EnemyShotgun
   m_EditorClassIdentifier: 
   weaponName: Test
-  shootDelay: 3.5
-  rechargeDelay: 0.5
+  shootDelay: 1.4
+  rechargeDelay: 1
   ammoMax: 36
-  magazineSize: 4
-  projectileDamage: 0.3
+  magazineSize: 6
+  projectileDamage: 0.5
   projectileSpeed: 35
   projectileLifetime: 4
   projectile: {fileID: 5814666638754323035, guid: f70949fb2ecb1ba448843a39fd41d193, type: 3}
@@ -25,7 +25,7 @@ MonoBehaviour:
   automaticWeapon: 0
   shotgunWeapon: 1
   shotgunProjectileNumber: 6
-  shotgunSpread: 8
+  shotgunSpread: 0
   shotgunSpeedDifference: 10
   chargedWeapon: 0
   chargeTime: 0
@@ -35,17 +35,4 @@ MonoBehaviour:
   hitscanRange: 0
   hitscanVisibleTime: 0
   hasSecondaryFire: 0
-  secondaryFireName: 
-  secondaryProjectile: {fileID: 0}
-  secondaryDamage: 0
-  secondaryProjectileSpeed: 0
-  secondaryStopsAtMousePosition: 0
-  secondaryFlies: 0
-  secondaryDurationToggle: 0
-  secondaryDurationTime: 0
-  playerIsStoppedDuringSecondaryDuration: 0
-  secondaryCooldownToggle: 0
-  secondaryCooldownTime: 0
-  secondaryLifetime: 0
-  secondaryAmmoCost: 0
-  normalShotsInteractWithSecondaryProjectile: 0
+  secondaryAbility: {fileID: 0}

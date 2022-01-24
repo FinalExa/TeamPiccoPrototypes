@@ -277,8 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alerted: 0
-  distanceFromPlayer: 30
-  closenessFromPlayer: 20
+  distanceFromPlayer: 50
+  closenessFromPlayer: 30
   projectileStartPos: {fileID: 1023044744484094521}
   canShootAtPlayer: 0
 --- !u!54 &3746685406685054688
