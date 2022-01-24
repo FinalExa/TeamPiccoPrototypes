@@ -5,6 +5,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemiesToKill;
+    public GameObject actualMission;
+    public GameObject nextMission;
 
     private void Update()
     {
@@ -19,6 +21,11 @@ public class Door : MonoBehaviour
             if (enemiesToKill[i].activeSelf) break;
             if (!enemiesToKill[i].activeSelf && i == enemiesToKill.Length - 1) check = true;
         }
-        if (check) this.gameObject.SetActive(false);
+        if (check)
+        {
+            this.gameObject.SetActive(false);
+            actualMission.SetActive(false);
+            nextMission.SetActive(true);
+        }
     }
 }
