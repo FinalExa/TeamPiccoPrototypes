@@ -46,7 +46,7 @@ public class Health : MonoBehaviour
     private void UpdateHPInUI()
     {
         if (!godMode) UIText.text = "HP: " + currentHP + "/" + maxHP;
-        else UIText.text = "Godmode!";
+        else UIText.text = "O M G !";
     }
 
     public void DecreaseHP(float damageReceived)
