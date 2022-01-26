@@ -5,15 +5,28 @@ using UnityEngine.AI;
 
 public class BlackHoleAbility : AbilityProjectileBody
 {
-    [SerializeField] float blackHoleRadius;
-    [SerializeField] float blackHolePullSpeed;
+    [SerializeField] private float blackHoleRadius;
+    [SerializeField] private float blackHolePullSpeed;
+    [SerializeField] private GameObject rangeObj;
     private bool isActive;
     private Collider[] hits;
 
     public override void AbilityEffectDuration()
     {
-        if (!isActive) isActive = true;
-        hits = Physics.OverlapSphere(this.gameObject.transform.position, blackHoleRadius);
+        ActivateRange();
+        BlackHoleEffect(this.transform.position, blackHoleRadius);
+    }
+
+    public override void AbilityEffectAfterDuration()
+    {
+        BlackHoleEffectStop();
+        DeactivateRange();
+        DestroyProjectile();
+    }
+
+    private void BlackHoleEffect(Vector3 position, float radius)
+    {
+        hits = Physics.OverlapSphere(position, radius);
         for (int i = 0; i < hits.Length; i++)
         {
             if (hits[i].gameObject.CompareTag("Enemy"))
@@ -27,7 +40,7 @@ public class BlackHoleAbility : AbilityProjectileBody
         }
     }
 
-    public override void AbilityEffectAfterDuration()
+    private void BlackHoleEffectStop()
     {
         for (int i = 0; i < hits.Length; i++)
         {
@@ -37,19 +50,25 @@ public class BlackHoleAbility : AbilityProjectileBody
                 hits[i].gameObject.GetComponent<NavMeshAgent>().enabled = true;
             }
         }
-        DestroyProjectile();
     }
 
     public override void MainFireInteraction()
     {
     }
 
-    private void OnDrawGizmos()
+    private void ActivateRange()
     {
-        Gizmos.color = new Color(1, 0, 0, 0.3f);
-        if (isActive)
+        if (!isActive)
         {
-            Gizmos.DrawSphere(this.gameObject.transform.position, blackHoleRadius);
+            isActive = true;
+            rangeObj.transform.localScale = new Vector3(blackHoleRadius, blackHoleRadius, blackHoleRadius);
+            rangeObj.SetActive(true);
         }
+    }
+
+    private void DeactivateRange()
+    {
+        rangeObj.SetActive(false);
+        isActive = false;
     }
 }

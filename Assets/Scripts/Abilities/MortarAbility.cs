@@ -5,15 +5,23 @@ using UnityEngine;
 public class MortarAbility : AbilityProjectileBody
 {
     [SerializeField] float mortarRadius;
+    [SerializeField] private GameObject rangeObj;
     private bool isActive;
 
     public override void AbilityEffectDuration()
     {
-        if (!isActive) isActive = true;
+        ActivateRange();
     }
     public override void AbilityEffectAfterDuration()
     {
-        Collider[] hits = Physics.OverlapSphere(this.gameObject.transform.position, mortarRadius);
+        MortarEffect(this.gameObject.transform.position, mortarRadius);
+        DeactivateRange();
+        DestroyProjectile();
+    }
+
+    private void MortarEffect(Vector3 position, float radius)
+    {
+        Collider[] hits = Physics.OverlapSphere(position, radius);
         for (int i = 0; i < hits.Length; i++)
         {
             if (hits[i].gameObject.CompareTag("Enemy"))
@@ -21,15 +29,21 @@ public class MortarAbility : AbilityProjectileBody
                 hits[i].gameObject.GetComponent<Health>().DecreaseHP(damage);
             }
         }
-        DestroyProjectile();
     }
 
-    private void OnDrawGizmos()
+    private void ActivateRange()
     {
-        Gizmos.color = new Color(0, 1, 1, 0.3f);
-        if (isActive)
+        if (!isActive)
         {
-            Gizmos.DrawSphere(this.gameObject.transform.position, mortarRadius);
+            isActive = true;
+            rangeObj.transform.localScale = new Vector3(mortarRadius, mortarRadius, mortarRadius);
+            rangeObj.SetActive(true);
         }
+    }
+
+    private void DeactivateRange()
+    {
+        rangeObj.SetActive(false);
+        isActive = false;
     }
 }
