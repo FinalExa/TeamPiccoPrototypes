@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [HideInInspector] public float speed;
     [HideInInspector] public float lifeTime;
-    [SerializeField] protected LineRenderer line;
+    [SerializeField] protected GameObject line;
     [SerializeField] protected ProjectileBody[] thisProjectileChildren;
     protected float lifeTimer;
     [HideInInspector] public Vector3 target;
@@ -67,23 +67,21 @@ public class Projectile : MonoBehaviour
                 hit.collider.gameObject.GetComponent<Health>().DecreaseHP(damage);
             }
         }
-        if (!rayNeedsRange || (rayNeedsRange && itHit)) HitscanDrawLine(rayOrigin, (hit.point).normalized * Vector3.Distance(Vector3.zero, hit.point));
+        if (!rayNeedsRange || (rayNeedsRange && itHit)) HitscanDrawLine(rayOrigin, hit.point);
         else
         {
-            Vector3 lastLocation = (target - rayOrigin).normalized * distance;
-            HitscanDrawLine(rayOrigin, (lastLocation).normalized * Vector3.Distance(Vector3.zero, rayOrigin + lastLocation));
-            //Debug.DrawRay(rayOrigin, (target - rayOrigin).normalized * distance, Color.red, rayDuration);
+            Vector3 lastLocation = rayOrigin + ((target - rayOrigin).normalized * distance);
+            HitscanDrawLine(rayOrigin, lastLocation);
         }
     }
 
     private void HitscanDrawLine(Vector3 origin, Vector3 destination)
     {
-        List<Vector3> positions = new List<Vector3>();
-        positions.Clear();
-        positions.Add(origin);
-        positions.Add(destination);
-        line.positionCount = 2;
-        line.SetPositions(positions.ToArray());
+        float distance = Vector3.Distance(origin, destination);
+        line.transform.localScale = new Vector3(line.transform.localScale.x, line.transform.localScale.y, distance);
+        float angle = Mathf.Atan2(destination.x - origin.x, destination.z - origin.z) * Mathf.Rad2Deg;
+        line.transform.rotation = Quaternion.Euler(new Vector3(0f, angle, 0f));
+        line.transform.position += (destination - origin).normalized * distance / 2;
         line.gameObject.SetActive(true);
         rayTimer = rayDuration;
         clearLine = true;
