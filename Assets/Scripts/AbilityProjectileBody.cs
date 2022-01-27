@@ -5,6 +5,10 @@ using UnityEngine;
 public class AbilityProjectileBody : ProjectileBody
 {
     [HideInInspector] public Vector3 target;
+    [HideInInspector] public bool stopAfterTime;
+    [HideInInspector] public bool stopTimeCheck;
+    [HideInInspector] public float stopTime;
+    [HideInInspector] public float stopTimer;
     [HideInInspector] public bool stopAtTarget;
     [HideInInspector] public bool usesDuration;
     [HideInInspector] public bool durationActive;
@@ -21,9 +25,19 @@ public class AbilityProjectileBody : ProjectileBody
         playerRefs = FindObjectOfType<PlayerReferences>();
     }
 
+    public virtual void Start()
+    {
+        if (stopAfterTime)
+        {
+            stopTimeCheck = true;
+            stopTimer = stopTime;
+        }
+    }
+
     private void Update()
     {
-        if (stopAtTarget) StopAtTarget();
+        if (stopTimeCheck) StopAfterTime();
+        else if (stopAtTarget) StopAtTarget();
         else if (usesDuration) durationActive = true;
     }
 
@@ -39,6 +53,20 @@ public class AbilityProjectileBody : ProjectileBody
         {
             durationTime = durationTimeValue;
             durationTimer = durationTime;
+        }
+    }
+
+    private void StopAfterTime()
+    {
+        if (stopTimer > 0)
+        {
+            stopTimer -= Time.deltaTime;
+            AbilityEffectBeforeReachingTarget();
+        }
+        else
+        {
+            if (usesDuration) durationActive = true;
+            StopMovement();
         }
     }
 
@@ -116,13 +144,14 @@ public class AbilityProjectileBody : ProjectileBody
     private void StopMovement()
     {
         thisProjectileRigidbody.velocity = Vector3.zero;
+        if (stopTimeCheck) stopTimeCheck = false;
     }
 
     public override void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget && !stopsPlayer) DestroyProjectile();
+            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile();
             else StopMovement();
         }
     }
@@ -131,7 +160,7 @@ public class AbilityProjectileBody : ProjectileBody
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget && !stopsPlayer) DestroyProjectile();
+            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile();
             else
             {
                 StopMovement();

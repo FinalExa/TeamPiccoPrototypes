@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class AbilityProjectile : Projectile
 {
+    [HideInInspector] public float stopTime;
 
     public override void Update()
     {
         base.Update();
+    }
+
+    public void StopAfterTime()
+    {
+        for (int i = 0; i < thisProjectileChildren.Length; i++)
+        {
+            AbilityProjectileBody child = thisProjectileChildren[i].GetComponent<AbilityProjectileBody>();
+            child.stopAfterTime = true;
+            child.stopTime = stopTime;
+        }
     }
 
     public void StopAtTargetLocation()

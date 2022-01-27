@@ -51,6 +51,10 @@ MonoBehaviour:
   thisProjectileRigidbody: {fileID: 7819062070217293344}
   damage: 0
   target: {x: 0, y: 0, z: 0}
+  stopAfterTime: 0
+  stopTimeCheck: 0
+  stopTime: 0
+  stopTimer: 0
   stopAtTarget: 0
   usesDuration: 0
   durationActive: 0
@@ -60,8 +64,10 @@ MonoBehaviour:
   durationTime: 0
   durationTimer: 0
   originPoint: {fileID: 0}
-  blackHoleRadius: 20
-  blackHolePullSpeed: 10
+  blackHoleRadius: 10
+  blackHoleRadiusWhileTravelling: 5
+  blackHolePullSpeed: 30
+  blackHoleOffsetAddPerEnemy: 0.5
   rangeObj: {fileID: 8824982888763534307}
 --- !u!33 &8322204657353962034
 MeshFilter:
@@ -139,7 +145,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &5814666638754323035
 GameObject:
@@ -198,6 +204,7 @@ MonoBehaviour:
   rayRange: 0
   rayDuration: 0
   rayOrigin: {x: 0, y: 0, z: 0}
+  stopTime: 0
 --- !u!54 &-3310621872110477516
 Rigidbody:
   m_ObjectHideFlags: 0

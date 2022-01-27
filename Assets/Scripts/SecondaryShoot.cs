@@ -56,7 +56,12 @@ public class SecondaryShoot : MonoBehaviour
         proj.speed = wpn.secondaryAbility.secondaryProjectileSpeed;
         proj.damage = wpn.secondaryAbility.secondaryDamage;
         proj.lifeTime = wpn.secondaryAbility.secondaryLifetime;
-        if (wpn.secondaryAbility.secondaryStopsAtMousePosition) proj.StopAtTargetLocation();
+        if (wpn.secondaryAbility.secondaryStopsAfterSetAmountOfTime)
+        {
+            proj.stopTime = wpn.secondaryAbility.stopAfterSeconds;
+            proj.StopAfterTime();
+        }
+        if (wpn.secondaryAbility.secondaryStopsAtMousePosition && !wpn.secondaryAbility.secondaryStopsAfterSetAmountOfTime) proj.StopAtTargetLocation();
         if (wpn.secondaryAbility.secondaryCooldownToggle) weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownActive = true;
         proj.SetDurationInfos(true, wpn.secondaryAbility.secondaryDurationTime, wpn.secondaryAbility.playerIsStoppedDuringSecondaryDuration, wpn.secondaryAbility.normalShotsInteractWithSecondaryProjectile, projectileStartPosition);
         if (wpn.secondaryAbility.secondaryAmmoCost > 0) shoot.WeaponAmmoDecrease(wpn.secondaryAbility.secondaryAmmoCost);

@@ -9,6 +9,9 @@ public class SecondaryAbility : ScriptableObject
     public GameObject secondaryProjectile;
     public float secondaryDamage;
     public float secondaryProjectileSpeed;
+    [Tooltip("Toggle if you want the projectile shot to stop moving after a set amount of time")]
+    public bool secondaryStopsAfterSetAmountOfTime;
+    public float stopAfterSeconds;
     [Tooltip("Toggle if you want the projectile shot to stop at the mouse position instead of going forward that point")]
     public bool secondaryStopsAtMousePosition;
     [Tooltip("Toggle if you want to be casted directly on the point clicked without travelling, works only if it's casted at the mouse position and not otherwise")]

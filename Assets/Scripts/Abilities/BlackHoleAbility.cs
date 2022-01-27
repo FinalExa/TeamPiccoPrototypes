@@ -6,15 +6,29 @@ using UnityEngine.AI;
 public class BlackHoleAbility : AbilityProjectileBody
 {
     [SerializeField] private float blackHoleRadius;
+    [SerializeField] private float blackHoleRadiusWhileTravelling;
     [SerializeField] private float blackHolePullSpeed;
+    [SerializeField] private float blackHoleOffsetAddPerEnemy;
     [SerializeField] private GameObject rangeObj;
+    private float blackHoleOffsetAddTotal;
     private bool isActive;
     private Collider[] hits;
 
+    public override void Start()
+    {
+        base.Start();
+        blackHoleOffsetAddTotal = 0f;
+    }
+
+    public override void AbilityEffectBeforeReachingTarget()
+    {
+        ActivateRange(blackHoleRadiusWhileTravelling + blackHoleOffsetAddTotal);
+        BlackHoleEffect(this.transform.position, blackHoleRadiusWhileTravelling + blackHoleOffsetAddTotal);
+    }
     public override void AbilityEffectDuration()
     {
-        ActivateRange();
-        BlackHoleEffect(this.transform.position, blackHoleRadius);
+        ActivateRange(blackHoleRadius + blackHoleOffsetAddTotal);
+        BlackHoleEffect(this.transform.position, blackHoleRadius + blackHoleOffsetAddTotal);
     }
 
     public override void AbilityEffectAfterDuration()
@@ -56,16 +70,18 @@ public class BlackHoleAbility : AbilityProjectileBody
     {
     }
 
-    private void ActivateRange()
+    private void ActivateRange(float range)
     {
         if (!isActive)
         {
             isActive = true;
-            rangeObj.transform.localScale = new Vector3(blackHoleRadius, blackHoleRadius, blackHoleRadius);
+        }
+        else
+        {
+            rangeObj.transform.localScale = new Vector3(range, range, range);
             rangeObj.SetActive(true);
         }
     }
-
     private void DeactivateRange()
     {
         rangeObj.SetActive(false);
