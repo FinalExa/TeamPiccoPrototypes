@@ -51,16 +51,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Drop"))
+        if (other.gameObject.CompareTag("Health"))
         {
-            if (other.gameObject.GetComponent<Drop>().falseAmmoTrueHealth)
-            {
-                playerReferences.health.FullyHeal();
-            }
-            else
-            {
-                playerReferences.shoot.RefullAmmo();
-            }
+            playerReferences.health.FullyHeal();
+            GameObject.Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Ammo"))
+        {
+            playerReferences.shoot.RefullAmmo();
             GameObject.Destroy(other.gameObject);
         }
     }

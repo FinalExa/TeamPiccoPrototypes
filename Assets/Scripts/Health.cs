@@ -89,7 +89,7 @@ public class Health : MonoBehaviour
 
     public void IncreaseHP(float healReceived)
     {
-        currentHP = Mathf.Clamp(currentHP + healReceived, 0, 100);
+        currentHP = Mathf.Clamp(currentHP + healReceived, 0, maxHP);
     }
 
     public void FullyHeal()

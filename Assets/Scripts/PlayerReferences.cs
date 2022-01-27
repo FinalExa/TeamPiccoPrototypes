@@ -22,7 +22,7 @@ public class PlayerReferences : MonoBehaviour
         mousePos = this.gameObject.GetComponent<MousePos>();
         playerRb = this.gameObject.GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
-        health = FindObjectOfType<Health>();
+        health = this.gameObject.GetComponent<Health>();
         shoot = this.gameObject.GetComponent<Shoot>();
         rotation = this.gameObject.GetComponent<Rotation>();
         weaponCycle = this.gameObject.GetComponent<WeaponCycle>();

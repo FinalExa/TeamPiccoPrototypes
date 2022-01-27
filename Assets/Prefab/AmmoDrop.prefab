@@ -9,13 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7212830922399634992}
-  - component: {fileID: 8172181690866005100}
   - component: {fileID: 3933985067743447512}
   - component: {fileID: 6792533267912791082}
   - component: {fileID: 4219815322316296685}
   m_Layer: 0
   m_Name: AmmoDrop
-  m_TagString: Drop
+  m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,19 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &8172181690866005100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2040722665342141187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd17ef7653e8ef242a3a4d690d3bf5f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  falseAmmoTrueHealth: 0
 --- !u!33 &3933985067743447512
 MeshFilter:
   m_ObjectHideFlags: 0

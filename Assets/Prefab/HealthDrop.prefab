@@ -9,13 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7733088925034180}
-  - component: {fileID: 2539768015362681352}
   - component: {fileID: 1956666590277263839}
   - component: {fileID: 8849852654561867009}
   - component: {fileID: 7925654759422613114}
   m_Layer: 0
   m_Name: HealthDrop
-  m_TagString: Drop
+  m_TagString: Health
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,19 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2539768015362681352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572457958621333393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd17ef7653e8ef242a3a4d690d3bf5f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  falseAmmoTrueHealth: 1
 --- !u!33 &1956666590277263839
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -13,6 +13,9 @@ TagManager:
   - AbilityProjectile
   - Ground
   - Drop
+  - Melee
+  - Ammo
+  - Health
   layers:
   - Default
   - TransparentFX
