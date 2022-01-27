@@ -7,8 +7,9 @@ public class WallAbility : AbilityProjectileBody
     private bool reachingTarget;
     private Vector3 startingPos;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         reachingTarget = true;
     }
 

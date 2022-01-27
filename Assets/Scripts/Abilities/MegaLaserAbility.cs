@@ -8,8 +8,9 @@ public class MegaLaserAbility : AbilityProjectileBody
     private float timer;
     private Vector3 startPos;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         timeOffset = durationTime / timesTriggeredInDuration;
         timer = timeOffset;
         startPos = this.gameObject.transform.position;
