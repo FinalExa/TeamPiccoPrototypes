@@ -18,6 +18,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float dropChance;
     private EnemyPattern thisEnemyPattern;
     private bool godMode;
+    private string scene;
 
     private void Start()
     {
@@ -65,7 +66,7 @@ public class Health : MonoBehaviour
                     SpawnDrop();
                     this.gameObject.SetActive(false);
                 }
-                else SceneManager.LoadScene(0);
+                else SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             else
             {
