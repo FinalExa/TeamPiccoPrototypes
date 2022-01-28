@@ -38,15 +38,17 @@ public class GongAbility : AbilityProjectileBody
 
     private void GongEffect(Vector3 position, float radius)
     {
+        GameObject curEnemy = null;
         Collider[] hits = Physics.OverlapSphere(position, radius);
         for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[i].gameObject.CompareTag("Enemy"))
+            if (hits[i].gameObject.CompareTag("Enemy") && curEnemy != hits[i].gameObject)
             {
                 GameObject enemy = hits[i].gameObject;
                 enemy.GetComponent<Health>().DecreaseHP(damage);
                 Vector3 direction = -(this.transform.position - enemy.transform.position).normalized * repelDistance;
                 enemy.transform.Translate(direction);
+                curEnemy = enemy;
             }
         }
         ActivateRange();
