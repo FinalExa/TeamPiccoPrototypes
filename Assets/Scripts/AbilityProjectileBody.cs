@@ -15,6 +15,7 @@ public class AbilityProjectileBody : ProjectileBody
     [HideInInspector] public bool afterDuration;
     [HideInInspector] public bool stopsPlayer;
     [HideInInspector] public bool interactsWithMainShots;
+    [HideInInspector] public GameObject signatureProjectile;
     [HideInInspector] public float durationTime;
     [HideInInspector] public float durationTimer;
     [HideInInspector] public GameObject originPoint;
@@ -39,6 +40,7 @@ public class AbilityProjectileBody : ProjectileBody
         if (stopTimeCheck) StopAfterTime();
         else if (stopAtTarget) StopAtTarget();
         else if (usesDuration) durationActive = true;
+        else if (!usesDuration) OnDeploy();
     }
 
     private void FixedUpdate()
@@ -65,6 +67,7 @@ public class AbilityProjectileBody : ProjectileBody
         }
         else
         {
+            OnDeploy();
             if (usesDuration) durationActive = true;
             StopMovement();
         }
@@ -106,6 +109,16 @@ public class AbilityProjectileBody : ProjectileBody
         return;
     }
 
+    public virtual void OnDeploy()
+    {
+        return;
+    }
+
+    protected void DestroySignature()
+    {
+        GameObject.Destroy(signatureProjectile);
+    }
+
     private void StopPlayer()
     {
         if (stopsPlayer)
@@ -134,6 +147,7 @@ public class AbilityProjectileBody : ProjectileBody
         {
             StopMovement();
             if (usesDuration) durationActive = true;
+            OnDeploy();
         }
         else
         {

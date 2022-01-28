@@ -51,28 +51,25 @@ public class Health : MonoBehaviour
 
     public void DecreaseHP(float damageReceived)
     {
-        if (!godMode)
+        if (!godMode && !invincibility)
         {
-            if (!invincibility)
+            currentHP = Mathf.Clamp(currentHP - damageReceived, 0, 100);
+            if (!isPlayer)
             {
-                currentHP = Mathf.Clamp(currentHP - damageReceived, 0, 100);
+                thisEnemyPattern.alerted = true;
+            }
+            if (currentHP == 0)
+            {
                 if (!isPlayer)
                 {
-                    thisEnemyPattern.alerted = true;
+                    SpawnDrop();
+                    this.gameObject.SetActive(false);
                 }
-                if (currentHP == 0)
-                {
-                    if (!isPlayer)
-                    {
-                        SpawnDrop();
-                        this.gameObject.SetActive(false);
-                    }
-                    else SceneManager.LoadScene(0);
-                }
-                else
-                {
-                    if (isPlayer) invincibility = true;
-                }
+                else SceneManager.LoadScene(0);
+            }
+            else
+            {
+                if (isPlayer) invincibility = true;
             }
         }
     }

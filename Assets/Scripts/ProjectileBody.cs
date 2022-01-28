@@ -14,7 +14,11 @@ public class ProjectileBody : MonoBehaviour
             DestroyProjectile();
         }
         if (other.gameObject.CompareTag("Wall")) DestroyProjectile();
-        if (other.gameObject.CompareTag("AbilityProjectile")) other.gameObject.GetComponentInChildren<AbilityProjectileBody>().MainFireInteraction();
+        if (other.gameObject.CompareTag("AbilityProjectile"))
+        {
+            other.gameObject.GetComponentInChildren<AbilityProjectileBody>().signatureProjectile = this.gameObject.transform.parent.gameObject;
+            other.gameObject.GetComponentInChildren<AbilityProjectileBody>().MainFireInteraction();
+        }
     }
 
     public virtual void OnCollisionEnter(Collision collision)
