@@ -50,6 +50,6 @@ public class MegaLaserAbility : AbilityProjectileBody
     }
     public override void AbilityEffectAfterDuration()
     {
-        DestroyProjectile();
+        DestroyProjectile(false);
     }
 }

@@ -35,7 +35,7 @@ public class BlackHoleAbility : AbilityProjectileBody
     {
         BlackHoleEffectStop();
         DeactivateRange();
-        DestroyProjectile();
+        DestroyProjectile(false);
     }
 
     private void BlackHoleEffect(Vector3 position, float radius)

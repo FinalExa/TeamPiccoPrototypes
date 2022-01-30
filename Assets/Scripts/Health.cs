@@ -109,7 +109,7 @@ public class Health : MonoBehaviour
         {
             DecreaseHP(other.gameObject.GetComponent<ProjectileBody>().damage);
             this.gameObject.GetComponent<PlayerReferences>().damageTaken.TakeDamage();
-            other.gameObject.GetComponent<ProjectileBody>().DestroyProjectile();
+            other.gameObject.GetComponent<ProjectileBody>().DestroyProjectile(false);
         }
     }
 

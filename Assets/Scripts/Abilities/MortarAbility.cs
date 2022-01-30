@@ -16,7 +16,7 @@ public class MortarAbility : AbilityProjectileBody
     {
         MortarEffect(this.gameObject.transform.position, mortarRadius);
         DeactivateRange();
-        DestroyProjectile();
+        DestroyProjectile(false);
     }
 
     private void MortarEffect(Vector3 position, float radius)

@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     [HideInInspector] public float speed;
     [HideInInspector] public float lifeTime;
     [SerializeField] protected GameObject line;
-    [SerializeField] protected ProjectileBody[] thisProjectileChildren;
+    protected ProjectileBody[] thisProjectileChildren;
     protected float lifeTimer;
     [HideInInspector] public Vector3 target;
     [HideInInspector] public float damage;
@@ -16,8 +16,15 @@ public class Projectile : MonoBehaviour
     [HideInInspector] public float rayRange;
     [HideInInspector] public float rayDuration;
     [HideInInspector] public Vector3 rayOrigin;
+    [HideInInspector] public bool pierces;
     private float rayTimer;
     private bool clearLine;
+
+    private void Awake()
+    {
+        thisProjectileChildren = this.gameObject.GetComponentsInChildren<ProjectileBody>();
+    }
+
     public virtual void Start()
     {
         lifeTimer = lifeTime;
@@ -39,6 +46,7 @@ public class Projectile : MonoBehaviour
         {
             thisProjectileChildren[i].thisProjectileRigidbody.velocity = this.transform.forward * speed;
             thisProjectileChildren[i].damage = damage;
+            thisProjectileChildren[i].pierces = pierces;
         }
     }
 

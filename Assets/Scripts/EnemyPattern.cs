@@ -76,17 +76,14 @@ public class EnemyPattern : MonoBehaviour
             {
                 canSeePlayer = true;
                 thisNavMesh.enabled = true;
-                shoot.enabled = true;
             }
             else if (hit.collider.gameObject.CompareTag("Laser"))
             {
                 thisNavMesh.enabled = false;
-                shoot.enabled = false;
             }
             else
             {
                 thisNavMesh.enabled = true;
-                shoot.enabled = false;
             }
         }
         return canSeePlayer;

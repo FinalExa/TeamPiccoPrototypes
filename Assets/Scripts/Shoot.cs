@@ -148,6 +148,7 @@ public class Shoot : MonoBehaviour
         if (!useAltDamage) proj.damage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileDamage;
         else proj.damage = bulletDamage;
         proj.lifeTime = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileLifetime;
+        proj.pierces = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectilePierces;
         if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.hitscanWeapon)
         {
             if (!isShotgun) proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed;

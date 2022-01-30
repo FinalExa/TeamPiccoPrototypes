@@ -161,11 +161,11 @@ public class AbilityProjectileBody : ProjectileBody
         if (stopTimeCheck) stopTimeCheck = false;
     }
 
-    public override void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile();
+            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile(false);
             else StopMovement();
         }
     }
@@ -174,7 +174,7 @@ public class AbilityProjectileBody : ProjectileBody
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile();
+            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile(false);
             else
             {
                 StopMovement();

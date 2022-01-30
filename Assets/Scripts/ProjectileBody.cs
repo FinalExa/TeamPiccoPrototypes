@@ -5,15 +5,16 @@ public class ProjectileBody : MonoBehaviour
 {
     public Rigidbody thisProjectileRigidbody;
     [HideInInspector] public float damage;
+    [HideInInspector] public bool pierces;
 
     public virtual void OnTriggerEnter(Collider other)
     {
         if ((this.gameObject.CompareTag("ProjectilePlayer") || (this.gameObject.CompareTag("AbilityProjectile"))) && other.gameObject.GetComponent<Health>() && other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Health>().DecreaseHP(damage);
-            DestroyProjectile();
+            DestroyProjectile(true);
         }
-        if (other.gameObject.CompareTag("Wall")) DestroyProjectile();
+        if (other.gameObject.CompareTag("Wall")) DestroyProjectile(false);
         if (other.gameObject.CompareTag("AbilityProjectile"))
         {
             other.gameObject.GetComponentInChildren<AbilityProjectileBody>().signatureProjectile = this.gameObject.transform.parent.gameObject;
@@ -21,16 +22,16 @@ public class ProjectileBody : MonoBehaviour
         }
     }
 
-    public virtual void OnCollisionEnter(Collision collision)
+    public virtual void DestroyProjectile(bool hitEnemy)
     {
-        if (collision.collider.gameObject.CompareTag("Wall")) DestroyProjectile();
-        if (this.gameObject.CompareTag("Projectile") && collision.gameObject.GetComponent<Health>() && collision.gameObject.CompareTag("Player"))
+        if (hitEnemy)
         {
-            collision.gameObject.GetComponent<Health>().DecreaseHP(damage);
+            if (!pierces) ProjectileDestruction();
         }
+        else ProjectileDestruction();
     }
 
-    public virtual void DestroyProjectile()
+    private void ProjectileDestruction()
     {
         this.thisProjectileRigidbody.velocity = Vector3.zero;
         Destroy(this.gameObject);
