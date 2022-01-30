@@ -5,6 +5,7 @@ public class PlayerReferences : MonoBehaviour
     public PlayerData playerData;
     [HideInInspector] public PlayerInputs playerInputs;
     [HideInInspector] public PlayerController playerController;
+    [HideInInspector] public DamageTaken damageTaken;
     [HideInInspector] public MousePos mousePos;
     [HideInInspector] public Rigidbody playerRb;
     [HideInInspector] public Camera mainCamera;
@@ -19,6 +20,7 @@ public class PlayerReferences : MonoBehaviour
         playerData.currentMovementSpeed = playerData.defaultMovementSpeed;
         playerInputs = this.gameObject.GetComponent<PlayerInputs>();
         playerController = this.gameObject.GetComponent<PlayerController>();
+        damageTaken = this.gameObject.GetComponent<DamageTaken>();
         mousePos = this.gameObject.GetComponent<MousePos>();
         playerRb = this.gameObject.GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();

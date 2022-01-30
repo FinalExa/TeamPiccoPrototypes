@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     [SerializeField] private bool isPlayer;
     private float currentHP;
     [SerializeField] private Text UIText;
-    [SerializeField] private float invincibilityTime;
+    public float invincibilityTime;
     private float invincibilityTimer;
     private bool invincibility;
     [SerializeField] private GameObject dropHealth;
@@ -18,7 +18,6 @@ public class Health : MonoBehaviour
     [SerializeField] private float dropChance;
     private EnemyPattern thisEnemyPattern;
     private bool godMode;
-    private string scene;
 
     private void Start()
     {
@@ -46,7 +45,7 @@ public class Health : MonoBehaviour
 
     private void UpdateHPInUI()
     {
-        if (!godMode) UIText.text = "HP: " + currentHP + "/" + maxHP;
+        if (!godMode) UIText.text = "HP: " + System.Math.Round(currentHP, 2) + "/" + maxHP;
         else UIText.text = "O M G !";
     }
 
@@ -101,6 +100,25 @@ public class Health : MonoBehaviour
         {
             if (Random.Range(0, 2) == 0) Instantiate(dropHealth, this.gameObject.transform.position, Quaternion.identity);
             else Instantiate(dropAmmo, this.gameObject.transform.position, Quaternion.identity);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isPlayer && other.gameObject.CompareTag("Projectile"))
+        {
+            DecreaseHP(other.gameObject.GetComponent<ProjectileBody>().damage);
+            this.gameObject.GetComponent<PlayerReferences>().damageTaken.TakeDamage();
+            other.gameObject.GetComponent<ProjectileBody>().DestroyProjectile();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Laser"))
+        {
+            if (isPlayer) DecreaseHP(other.GetComponentInParent<LaserOptions>().laserDamageToPlayer);
+            else DecreaseHP(other.GetComponentInParent<LaserOptions>().laserDamageToEnemies * Time.deltaTime);
         }
     }
 }

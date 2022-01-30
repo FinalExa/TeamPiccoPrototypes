@@ -16,6 +16,7 @@ TagManager:
   - Melee
   - Ammo
   - Health
+  - Laser
   layers:
   - Default
   - TransparentFX

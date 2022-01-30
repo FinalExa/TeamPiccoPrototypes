@@ -40,7 +40,7 @@ public class EnemyPattern : MonoBehaviour
 
     private void Alert()
     {
-        if (alerted)
+        if (alerted && thisNavMesh.enabled)
         {
             if (canShootAtPlayer)
             {
@@ -75,6 +75,18 @@ public class EnemyPattern : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Player"))
             {
                 canSeePlayer = true;
+                thisNavMesh.enabled = true;
+                shoot.enabled = true;
+            }
+            else if (hit.collider.gameObject.CompareTag("Laser"))
+            {
+                thisNavMesh.enabled = false;
+                shoot.enabled = false;
+            }
+            else
+            {
+                thisNavMesh.enabled = true;
+                shoot.enabled = false;
             }
         }
         return canSeePlayer;

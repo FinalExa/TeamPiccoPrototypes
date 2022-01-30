@@ -6,20 +6,23 @@ public class DamageTaken : MonoBehaviour
 {
     [SerializeField] protected string hostileTag;
     [SerializeField] protected GameObject objectToColor;
-    [SerializeField] protected float feedbackDuration;
+    protected float feedbackDuration;
     [SerializeField] protected Rigidbody thisRB;
     protected float feedbackTimer;
     protected Renderer thisRenderer;
     [SerializeField] protected Material baseMaterial;
     [SerializeField] protected Material damagedMaterial;
     protected bool isDamaged;
+    private Health health;
 
     protected virtual void Awake()
     {
         thisRenderer = objectToColor.GetComponent<Renderer>();
+        health = this.gameObject.GetComponent<Health>();
     }
     protected virtual void Start()
     {
+        feedbackDuration = health.invincibilityTime;
         feedbackTimer = feedbackDuration;
     }
     protected virtual void Update()
@@ -36,7 +39,7 @@ public class DamageTaken : MonoBehaviour
         }
     }
 
-    protected virtual void TakeDamage()
+    public virtual void TakeDamage()
     {
         thisRenderer.material = damagedMaterial;
         isDamaged = true;
