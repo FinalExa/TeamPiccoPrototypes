@@ -165,7 +165,7 @@ public class AbilityProjectileBody : ProjectileBody
     {
         if (collision.collider.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile(false);
+            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile();
             else StopMovement();
         }
     }
@@ -174,7 +174,7 @@ public class AbilityProjectileBody : ProjectileBody
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile(false);
+            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile();
             else
             {
                 StopMovement();

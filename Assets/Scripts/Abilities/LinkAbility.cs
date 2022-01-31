@@ -11,7 +11,7 @@ public class LinkAbility : AbilityProjectileBody
 
     public override void AbilityEffectAfterDuration()
     {
-        GameObject.Destroy(this.gameObject);
+        //GameObject.Destroy(this.gameObject);
     }
 
     public override void MainFireInteraction()
@@ -19,8 +19,8 @@ public class LinkAbility : AbilityProjectileBody
         base.MainFireInteraction();
     }
 
-    public override void DestroyProjectile(bool hitEnemy)
+    public override void DestroyProjectile()
     {
-        base.DestroyProjectile(hitEnemy);
+        thisProjectileRigidbody.velocity = Vector3.zero;
     }
 }

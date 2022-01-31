@@ -30,7 +30,7 @@ public class PalettiAbility : AbilityProjectileBody
         base.MainFireInteraction();
     }
 
-    public override void DestroyProjectile(bool hitEnemy)
+    public override void DestroyProjectile()
     {
         thisProjectileRigidbody.velocity = Vector3.zero;
     }

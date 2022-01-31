@@ -28,7 +28,7 @@ public class WallAbility : AbilityProjectileBody
 
     public override void AbilityEffectAfterDuration()
     {
-        DestroyProjectile(false);
+        DestroyProjectile();
     }
 
     public override void OnTriggerEnter(Collider other)

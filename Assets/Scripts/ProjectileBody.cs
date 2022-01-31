@@ -20,12 +20,12 @@ public class ProjectileBody : MonoBehaviour
         {
             if (!hasAoe) other.gameObject.GetComponent<Health>().DecreaseHP(damage);
             else AoeBehaviour();
-            DestroyProjectile(true);
+            DestroyProjectile();
         }
         if (other.gameObject.CompareTag("Wall"))
         {
             if (hasAoe) AoeBehaviour();
-            DestroyProjectile(false);
+            DestroyProjectile();
         }
         if (other.gameObject.CompareTag("AbilityProjectile"))
         {
@@ -40,16 +40,7 @@ public class ProjectileBody : MonoBehaviour
         if (aoeDone) ShowAoe();
     }
 
-    public virtual void DestroyProjectile(bool hitEnemy)
-    {
-        if (hitEnemy)
-        {
-            if (!pierces) ProjectileDestruction();
-        }
-        else ProjectileDestruction();
-    }
-
-    private void ProjectileDestruction()
+    public virtual void DestroyProjectile()
     {
         this.thisProjectileRigidbody.velocity = Vector3.zero;
         Destroy(this.gameObject);

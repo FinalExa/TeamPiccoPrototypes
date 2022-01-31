@@ -57,7 +57,7 @@ public class GongAbility : AbilityProjectileBody
 
     public override void AbilityEffectAfterDuration()
     {
-        DestroyProjectile(false);
+        DestroyProjectile();
     }
 
     private void ActivateRange()
