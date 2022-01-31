@@ -25,17 +25,26 @@ public class Projectile : MonoBehaviour
     protected bool aoeDone;
     protected float rayTimer;
     protected bool clearLine;
+    protected MeshRenderer meshRenderer;
+    protected SphereCollider sphereCollider;
 
     public virtual void Awake()
     {
         projectileRigidbody = this.gameObject.GetComponent<Rigidbody>();
+        meshRenderer = this.gameObject.GetComponent<MeshRenderer>();
+        sphereCollider = this.gameObject.GetComponent<SphereCollider>();
     }
 
     public virtual void Start()
     {
         lifeTimer = lifeTime;
         if (!isRay) ProjectileMovement();
-        else Hitscan();
+        else
+        {
+            meshRenderer.enabled = false;
+            sphereCollider.enabled = false;
+            Hitscan();
+        }
     }
 
     public virtual void Update()
