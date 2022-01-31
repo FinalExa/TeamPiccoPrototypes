@@ -5,12 +5,17 @@ using UnityEngine;
 public class AbilityProjectileBody : ProjectileBody
 {
     [HideInInspector] public Vector3 target;
+    [HideInInspector] public bool stopAfterTime;
+    [HideInInspector] public bool stopTimeCheck;
+    [HideInInspector] public float stopTime;
+    [HideInInspector] public float stopTimer;
     [HideInInspector] public bool stopAtTarget;
     [HideInInspector] public bool usesDuration;
     [HideInInspector] public bool durationActive;
     [HideInInspector] public bool afterDuration;
     [HideInInspector] public bool stopsPlayer;
     [HideInInspector] public bool interactsWithMainShots;
+    [HideInInspector] public GameObject signatureProjectile;
     [HideInInspector] public float durationTime;
     [HideInInspector] public float durationTimer;
     [HideInInspector] public GameObject originPoint;
@@ -21,10 +26,21 @@ public class AbilityProjectileBody : ProjectileBody
         playerRefs = FindObjectOfType<PlayerReferences>();
     }
 
+    public virtual void Start()
+    {
+        if (stopAfterTime)
+        {
+            stopTimeCheck = true;
+            stopTimer = stopTime;
+        }
+    }
+
     private void Update()
     {
-        if (stopAtTarget) StopAtTarget();
+        if (stopTimeCheck) StopAfterTime();
+        else if (stopAtTarget) StopAtTarget();
         else if (usesDuration) durationActive = true;
+        else if (!usesDuration) OnDeploy();
     }
 
     private void FixedUpdate()
@@ -39,6 +55,21 @@ public class AbilityProjectileBody : ProjectileBody
         {
             durationTime = durationTimeValue;
             durationTimer = durationTime;
+        }
+    }
+
+    private void StopAfterTime()
+    {
+        if (stopTimer > 0)
+        {
+            stopTimer -= Time.deltaTime;
+            AbilityEffectBeforeReachingTarget();
+        }
+        else
+        {
+            OnDeploy();
+            if (usesDuration) durationActive = true;
+            StopMovement();
         }
     }
 
@@ -73,6 +104,21 @@ public class AbilityProjectileBody : ProjectileBody
         return;
     }
 
+    public virtual void AbilityEffectBeforeReachingTarget()
+    {
+        return;
+    }
+
+    public virtual void OnDeploy()
+    {
+        return;
+    }
+
+    protected void DestroySignature()
+    {
+        GameObject.Destroy(signatureProjectile);
+    }
+
     private void StopPlayer()
     {
         if (stopsPlayer)
@@ -96,24 +142,30 @@ public class AbilityProjectileBody : ProjectileBody
 
     private void StopAtTarget()
     {
-        float distance = Vector3.Distance(this.gameObject.transform.position, target);
-        if (distance <= 0.5f)
+        float distance = Vector3.Distance(new Vector3(this.gameObject.transform.position.x, 0f, this.gameObject.transform.position.z), new Vector3(target.x, 0f, target.z));
+        if (distance <= 1f)
         {
             StopMovement();
             if (usesDuration) durationActive = true;
+            OnDeploy();
+        }
+        else
+        {
+            AbilityEffectBeforeReachingTarget();
         }
     }
 
     private void StopMovement()
     {
         thisProjectileRigidbody.velocity = Vector3.zero;
+        if (stopTimeCheck) stopTimeCheck = false;
     }
 
-    public override void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget && !stopsPlayer) DestroyProjectile();
+            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile(false);
             else StopMovement();
         }
     }
@@ -122,8 +174,12 @@ public class AbilityProjectileBody : ProjectileBody
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget && !stopsPlayer) DestroyProjectile();
-            else StopMovement();
+            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile(false);
+            else
+            {
+                StopMovement();
+                if (usesDuration) durationActive = true;
+            }
         }
     }
 }

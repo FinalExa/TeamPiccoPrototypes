@@ -20,6 +20,7 @@ public class EnemyRespawner : MonoBehaviour
     {
         foreach (DamageEnemy enemy in enemies)
         {
+            enemy.gameObject.transform.position = enemy.startingPos;
             enemy.gameObject.SetActive(true);
         }
     }

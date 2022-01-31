@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 631769037431677199}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,10 +47,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 65
   lifeTime: 15
+  line: {fileID: 0}
   thisProjectileChildren:
   - {fileID: 6774846178389032494}
-  scalingLevel: 0
   target: {x: 0, y: 0, z: 0}
+  damage: 0
+  isRay: 0
+  rayNeedsRange: 0
+  rayRange: 0
+  rayDuration: 0
+  rayOrigin: {x: 0, y: 0, z: 0}
 --- !u!54 &631769037431677199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,11 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d050f3e635abd4ab81373214c274f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rechargeValue: 1
   thisProjectileRigidbody: {fileID: 5760941072590139813}
   damage: 1
-  scalingLevel: 0
-  scaling: {fileID: 0}
 --- !u!33 &2784398110612634817
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -176,7 +179,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6326420935863526477}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

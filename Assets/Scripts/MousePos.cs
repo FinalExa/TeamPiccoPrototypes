@@ -5,7 +5,6 @@ public class MousePos : MonoBehaviour
 {
     public RaycastHit hit;
     public Ray ray;
-    [HideInInspector] public Vector3 mousePositionInSpace;
     private Camera mainCamera;
     public GameObject PointToShoot;
 

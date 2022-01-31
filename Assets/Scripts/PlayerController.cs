@@ -48,4 +48,18 @@ public class PlayerController : MonoBehaviour
             lastDashDirection = playerReferences.playerInputs.MovementInput;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Health"))
+        {
+            playerReferences.health.FullyHeal();
+            GameObject.Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Ammo"))
+        {
+            playerReferences.shoot.RefullAmmo();
+            GameObject.Destroy(other.gameObject);
+        }
+    }
 }

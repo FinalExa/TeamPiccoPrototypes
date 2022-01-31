@@ -5,28 +5,33 @@ public class ProjectileBody : MonoBehaviour
 {
     public Rigidbody thisProjectileRigidbody;
     [HideInInspector] public float damage;
+    [HideInInspector] public bool pierces;
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        if (this.gameObject.CompareTag("ProjectilePlayer") && other.gameObject.GetComponent<Health>() && other.gameObject.CompareTag("Enemy"))
+        if ((this.gameObject.CompareTag("ProjectilePlayer") || (this.gameObject.CompareTag("AbilityProjectile"))) && other.gameObject.GetComponent<Health>() && other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Health>().DecreaseHP(damage);
-            DestroyProjectile();
+            DestroyProjectile(true);
         }
-        if (other.gameObject.CompareTag("Wall")) DestroyProjectile();
-        if (other.gameObject.CompareTag("AbilityProjectile")) other.gameObject.GetComponentInChildren<AbilityProjectileBody>().MainFireInteraction();
-    }
-
-    public virtual void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.gameObject.CompareTag("Wall")) DestroyProjectile();
-        if (this.gameObject.CompareTag("Projectile") && collision.gameObject.GetComponent<Health>() && collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Wall")) DestroyProjectile(false);
+        if (other.gameObject.CompareTag("AbilityProjectile"))
         {
-            collision.gameObject.GetComponent<Health>().DecreaseHP(damage);
+            other.gameObject.GetComponentInChildren<AbilityProjectileBody>().signatureProjectile = this.gameObject.transform.parent.gameObject;
+            other.gameObject.GetComponentInChildren<AbilityProjectileBody>().MainFireInteraction();
         }
     }
 
-    public virtual void DestroyProjectile()
+    public virtual void DestroyProjectile(bool hitEnemy)
+    {
+        if (hitEnemy)
+        {
+            if (!pierces) ProjectileDestruction();
+        }
+        else ProjectileDestruction();
+    }
+
+    private void ProjectileDestruction()
     {
         this.thisProjectileRigidbody.velocity = Vector3.zero;
         Destroy(this.gameObject);

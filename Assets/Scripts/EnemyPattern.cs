@@ -9,8 +9,10 @@ public class EnemyPattern : MonoBehaviour
     private Shoot shoot;
     [SerializeField] private float distanceFromPlayer;
     [SerializeField] private float closenessFromPlayer;
+    [SerializeField] private GameObject projectileStartPos;
     private PlayerReferences playerRef;
     private NavMeshAgent thisNavMesh;
+    [HideInInspector] public bool canShootAtPlayer;
 
     private void Awake()
     {
@@ -22,33 +24,68 @@ public class EnemyPattern : MonoBehaviour
     private void Start()
     {
         alerted = false;
+        shoot.enabled = false;
+        canShootAtPlayer = false;
     }
 
     private void Update()
     {
-        if (alerted)
+        Alert();
+    }
+
+    private void FixedUpdate()
+    {
+        canShootAtPlayer = CheckOcclusionWithPlayer();
+    }
+
+    private void Alert()
+    {
+        if (alerted && thisNavMesh.enabled)
         {
-            shoot.enabled = true;
-            float distance = Vector3.Distance(playerRef.transform.position, this.transform.position);
-            if (distance <= distanceFromPlayer)
+            if (canShootAtPlayer)
             {
-                if (distance < distanceFromPlayer - closenessFromPlayer)
+                shoot.enabled = true;
+                float distance = Vector3.Distance(playerRef.transform.position, this.transform.position);
+                if (distance <= distanceFromPlayer)
                 {
                     thisNavMesh.isStopped = false;
                     thisNavMesh.SetDestination(this.transform.forward - playerRef.transform.position);
                 }
-                else thisNavMesh.isStopped = true;
+                else
+                {
+                    thisNavMesh.isStopped = false;
+                    thisNavMesh.SetDestination(playerRef.transform.position);
+                }
             }
             else
             {
-                thisNavMesh.isStopped = false;
+                shoot.enabled = false;
                 thisNavMesh.SetDestination(playerRef.transform.position);
             }
         }
-        else
+    }
+
+    private bool CheckOcclusionWithPlayer()
+    {
+        Vector3 startPos = new Vector3(this.transform.position.x, this.transform.position.y + 1f, this.transform.position.z);
+        Vector3 direction = (playerRef.transform.position - startPos).normalized;
+        bool canSeePlayer = false;
+        if (Physics.Raycast(startPos, direction, out RaycastHit hit, Mathf.Infinity))
         {
-            shoot.enabled = false;
-            thisNavMesh.isStopped = true;
+            if (hit.collider.gameObject.CompareTag("Player"))
+            {
+                canSeePlayer = true;
+                thisNavMesh.enabled = true;
+            }
+            else if (hit.collider.gameObject.CompareTag("Laser"))
+            {
+                thisNavMesh.enabled = false;
+            }
+            else
+            {
+                thisNavMesh.enabled = true;
+            }
         }
+        return canSeePlayer;
     }
 }

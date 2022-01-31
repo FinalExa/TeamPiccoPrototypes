@@ -12,8 +12,8 @@ public class SecondaryShoot : MonoBehaviour
     private Shoot shoot;
     private int activeWeaponIndex;
     [SerializeField] private GameObject projectileStartPosition;
-    [SerializeField] private Text cooldownText;
     [SerializeField] private Text abilityText;
+    [SerializeField] private Text cooldownText;
 
     private void Awake()
     {
@@ -25,8 +25,8 @@ public class SecondaryShoot : MonoBehaviour
 
     private void Start()
     {
-        abilityText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryFireName;
-        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryCooldownToggle) cooldownText.text = string.Empty;
+        abilityText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryAbility.secondaryFireName;
+        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryAbility.secondaryCooldownToggle) cooldownText.text = string.Empty;
         else cooldownText.text = "READY";
     }
 
@@ -49,17 +49,22 @@ public class SecondaryShoot : MonoBehaviour
     {
         GameObject projectile;
         Weapon wpn = weaponUsed.weaponInfo[activeWeaponIndex].weapon;
-        if (wpn.secondaryFlies && wpn.secondaryStopsAtMousePosition) projectile = Instantiate(wpn.secondaryProjectile, playerRef.mousePos.VectorPointToShoot, Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
-        else projectile = Instantiate(wpn.secondaryProjectile, ProjectilePositionCalculate(), Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
+        if (wpn.secondaryAbility.secondaryFlies && wpn.secondaryAbility.secondaryStopsAtMousePosition) projectile = Instantiate(wpn.secondaryAbility.secondaryProjectile, playerRef.mousePos.VectorPointToShoot, Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
+        else projectile = Instantiate(wpn.secondaryAbility.secondaryProjectile, ProjectilePositionCalculate(), Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
         AbilityProjectile proj = projectile.GetComponent<AbilityProjectile>();
         proj.target = playerRef.mousePos.VectorPointToShoot;
-        proj.speed = wpn.secondaryProjectileSpeed;
-        proj.damage = wpn.secondaryDamage;
-        proj.lifeTime = wpn.secondaryLifetime;
-        if (wpn.secondaryStopsAtMousePosition) proj.StopAtTargetLocation();
-        if (wpn.secondaryCooldownToggle) weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownActive = true;
-        proj.SetDurationInfos(true, wpn.secondaryDurationTime, wpn.playerIsStoppedDuringSecondaryDuration, wpn.normalShotsInteractWithSecondaryProjectile, projectileStartPosition);
-        if (wpn.secondaryAmmoCost > 0) shoot.WeaponAmmoDecrease(wpn.secondaryAmmoCost);
+        proj.speed = wpn.secondaryAbility.secondaryProjectileSpeed;
+        proj.damage = wpn.secondaryAbility.secondaryDamage;
+        proj.lifeTime = wpn.secondaryAbility.secondaryLifetime;
+        if (wpn.secondaryAbility.secondaryStopsAfterSetAmountOfTime)
+        {
+            proj.stopTime = wpn.secondaryAbility.stopAfterSeconds;
+            proj.StopAfterTime();
+        }
+        if (wpn.secondaryAbility.secondaryStopsAtMousePosition && !wpn.secondaryAbility.secondaryStopsAfterSetAmountOfTime) proj.StopAtTargetLocation();
+        if (wpn.secondaryAbility.secondaryCooldownToggle) weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownActive = true;
+        proj.SetDurationInfos(true, wpn.secondaryAbility.secondaryDurationTime, wpn.secondaryAbility.playerIsStoppedDuringSecondaryDuration, wpn.secondaryAbility.normalShotsInteractWithSecondaryProjectile, projectileStartPosition);
+        if (wpn.secondaryAbility.secondaryAmmoCost > 0) shoot.WeaponAmmoDecrease(wpn.secondaryAbility.secondaryAmmoCost);
 
     }
     private Vector3 ProjectilePositionCalculate()
@@ -81,7 +86,7 @@ public class SecondaryShoot : MonoBehaviour
                 }
                 else
                 {
-                    weaponUsed.weaponInfo[i].secondaryCooldownTimer = weaponUsed.weaponInfo[i].weapon.secondaryCooldownTime;
+                    weaponUsed.weaponInfo[i].secondaryCooldownTimer = weaponUsed.weaponInfo[i].weapon.secondaryAbility.secondaryCooldownTime;
                     if (i == activeWeaponIndex) cooldownText.text = "READY";
                     weaponUsed.weaponInfo[i].secondaryCooldownActive = false;
                 }
@@ -100,11 +105,11 @@ public class SecondaryShoot : MonoBehaviour
 
     private void SetupAbilityCooldownText()
     {
-        abilityText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryFireName;
-        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryCooldownToggle) cooldownText.text = string.Empty;
+        abilityText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryAbility.secondaryFireName;
+        if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryAbility.secondaryCooldownToggle) cooldownText.text = string.Empty;
         else
         {
-            if (weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownTimer == weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryCooldownTime) cooldownText.text = "READY";
+            if (weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownTimer == weaponUsed.weaponInfo[activeWeaponIndex].weapon.secondaryAbility.secondaryCooldownTime) cooldownText.text = "READY";
             else cooldownText.text = Math.Round(weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownTimer, 2).ToString();
         }
     }

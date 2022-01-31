@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7b8357ea365434aa337fa5833fd2b6, type: 3}
+  m_Name: TripleShot
+  m_EditorClassIdentifier: 
+  weaponName: Tripleshot
+  shootDelay: 0.3
+  rechargeDelay: 1
+  ammoMax: 30
+  magazineSize: 3
+  projectileDamage: 7
+  projectileSpeed: 90
+  projectileLifetime: 10
+  projectile: {fileID: 1495253717480726450, guid: 7d23ce4680d73c748bcd761e56bed9f1, type: 3}
+  endlessAmmo: 0
+  automaticWeapon: 0
+  shotgunWeapon: 0
+  shotgunProjectileNumber: 0
+  shotgunSpread: 0
+  shotgunSpeedDifference: 0
+  chargedWeapon: 1
+  chargeTime: 2
+  chargedMaxDamage: 21
+  hitscanWeapon: 0
+  hitscanLimitedRange: 0
+  hitscanRange: 0
+  hitscanVisibleTime: 0
+  hasSecondaryFire: 0
+  secondaryFireName: 
+  secondaryProjectile: {fileID: 0}
+  secondaryDamage: 0
+  secondaryProjectileSpeed: 0
+  secondaryStopsAtMousePosition: 0
+  secondaryFlies: 0
+  secondaryDurationToggle: 0
+  secondaryDurationTime: 0
+  playerIsStoppedDuringSecondaryDuration: 0
+  secondaryCooldownToggle: 0
+  secondaryCooldownTime: 0
+  secondaryLifetime: 0
+  secondaryAmmoCost: 0
+  normalShotsInteractWithSecondaryProjectile: 0

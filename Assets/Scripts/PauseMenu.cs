@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 
@@ -9,7 +10,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseMenuPanel, Player;
     public bool IsStopped;
     public PlayerData playerData;
-    public Text MovementSpeed, MeleeColldown, MeleeDuration;
+    public Text MovementSpeed;
 
     void Update()
     {
@@ -52,5 +53,12 @@ public class PauseMenu : MonoBehaviour
     public void SpeedDecrease()
     {
         playerData.defaultMovementSpeed -= 1f;
+    }
+
+    
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 }

@@ -6,7 +6,8 @@ public class Projectile : MonoBehaviour
 {
     [HideInInspector] public float speed;
     [HideInInspector] public float lifeTime;
-    [SerializeField] protected ProjectileBody[] thisProjectileChildren;
+    [SerializeField] protected GameObject line;
+    protected ProjectileBody[] thisProjectileChildren;
     protected float lifeTimer;
     [HideInInspector] public Vector3 target;
     [HideInInspector] public float damage;
@@ -15,6 +16,15 @@ public class Projectile : MonoBehaviour
     [HideInInspector] public float rayRange;
     [HideInInspector] public float rayDuration;
     [HideInInspector] public Vector3 rayOrigin;
+    [HideInInspector] public bool pierces;
+    private float rayTimer;
+    private bool clearLine;
+
+    private void Awake()
+    {
+        thisProjectileChildren = this.gameObject.GetComponentsInChildren<ProjectileBody>();
+    }
+
     public virtual void Start()
     {
         lifeTimer = lifeTime;
@@ -25,6 +35,7 @@ public class Projectile : MonoBehaviour
     public virtual void Update()
     {
         LifeTime();
+        if (isRay) ClearLine();
     }
 
     public virtual void ProjectileMovement()
@@ -35,6 +46,7 @@ public class Projectile : MonoBehaviour
         {
             thisProjectileChildren[i].thisProjectileRigidbody.velocity = this.transform.forward * speed;
             thisProjectileChildren[i].damage = damage;
+            thisProjectileChildren[i].pierces = pierces;
         }
     }
 
@@ -63,8 +75,38 @@ public class Projectile : MonoBehaviour
                 hit.collider.gameObject.GetComponent<Health>().DecreaseHP(damage);
             }
         }
-        if (!rayNeedsRange || (rayNeedsRange && itHit)) Debug.DrawRay(rayOrigin, (hit.point - rayOrigin).normalized * Vector3.Distance(rayOrigin, hit.point), Color.red, rayDuration);
-        else Debug.DrawRay(rayOrigin, (target - rayOrigin).normalized * distance, Color.red, rayDuration);
+        if (!rayNeedsRange || (rayNeedsRange && itHit)) HitscanDrawLine(rayOrigin, hit.point);
+        else
+        {
+            Vector3 lastLocation = rayOrigin + ((target - rayOrigin).normalized * distance);
+            HitscanDrawLine(rayOrigin, lastLocation);
+        }
+    }
+
+    private void HitscanDrawLine(Vector3 origin, Vector3 destination)
+    {
+        float distance = Vector3.Distance(origin, destination);
+        line.transform.localScale = new Vector3(line.transform.localScale.x, line.transform.localScale.y, distance);
+        float angle = Mathf.Atan2(destination.x - origin.x, destination.z - origin.z) * Mathf.Rad2Deg;
+        line.transform.rotation = Quaternion.Euler(new Vector3(0f, angle, 0f));
+        line.transform.position += (destination - origin).normalized * distance / 2;
+        line.gameObject.SetActive(true);
+        rayTimer = rayDuration;
+        clearLine = true;
+    }
+
+    private void ClearLine()
+    {
+        if (clearLine)
+        {
+            if (rayTimer > 0) rayTimer -= Time.deltaTime;
+            else
+            {
+                line.gameObject.SetActive(false);
+                rayTimer = rayDuration;
+                clearLine = false;
+            }
+        }
     }
 }
 

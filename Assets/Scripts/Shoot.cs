@@ -148,6 +148,7 @@ public class Shoot : MonoBehaviour
         if (!useAltDamage) proj.damage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileDamage;
         else proj.damage = bulletDamage;
         proj.lifeTime = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileLifetime;
+        proj.pierces = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectilePierces;
         if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.hitscanWeapon)
         {
             if (!isShotgun) proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed;
@@ -202,6 +203,7 @@ public class Shoot : MonoBehaviour
                 bulletDamage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileDamage + damageIncrease;
                 bulletDamage = Mathf.RoundToInt(bulletDamage);
                 ProjectileSpawn(true);
+                WeaponAmmoDecrease(1);
                 weaponUsed.weaponInfo[activeWeaponIndex].chargedTimer = weaponUsed.weaponInfo[activeWeaponIndex].weapon.chargeTime;
                 chargeText.text = string.Empty;
                 charging = false;
@@ -230,5 +232,10 @@ public class Shoot : MonoBehaviour
             ammoText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.weaponName + "\nAmmo: " + weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent + "/" + weaponUsed.weaponInfo[activeWeaponIndex].ammoCurrent;
             reloadCanvas.SetActive(weaponUsed.weaponInfo[activeWeaponIndex].isRecharging);
         }
+    }
+
+    public void RefullAmmo()
+    {
+        weaponUsed.weaponInfo[activeWeaponIndex].ammoCurrent = weaponUsed.weaponInfo[activeWeaponIndex].weapon.ammoMax;
     }
 }
