@@ -18,6 +18,7 @@ public class AbilityProjectile : Projectile
     [HideInInspector] public float durationTime;
     [HideInInspector] public float durationTimer;
     [HideInInspector] public GameObject originPoint;
+    [HideInInspector] public bool hitSomething;
     private PlayerReferences playerRefs;
 
     public override void Awake()
@@ -133,6 +134,11 @@ public class AbilityProjectile : Projectile
         return;
     }
 
+    public virtual void OnEnemyHit()
+    {
+        return;
+    }
+
     protected void DestroySignature()
     {
         GameObject.Destroy(signatureProjectile);
@@ -177,6 +183,7 @@ public class AbilityProjectile : Projectile
     private void StopMovement()
     {
         projectileRigidbody.velocity = Vector3.zero;
+        OnDeploy();
         if (stopTimeCheck) stopTimeCheck = false;
     }
 
@@ -196,9 +203,15 @@ public class AbilityProjectile : Projectile
             if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile();
             else
             {
+                hitSomething = true;
                 StopMovement();
                 if (usesDuration) durationActive = true;
             }
+        }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            hitSomething = true;
+            OnEnemyHit();
         }
     }
 }

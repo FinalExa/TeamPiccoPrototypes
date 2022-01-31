@@ -47,8 +47,4 @@ public class LinkAbility : AbilityProjectile
         rangeObj.SetActive(false);
         isActive = false;
     }
-
-
-
-
 }

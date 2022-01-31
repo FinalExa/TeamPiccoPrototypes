@@ -11,7 +11,6 @@ public class NewWall_Ability : AbilityProjectile
 
     public override void OnDeploy()
     {
-        base.OnDeploy();
     }
 
     public override void AbilityEffectDuration()

@@ -12,7 +12,6 @@ public class PalettiAbility : AbilityProjectile
 
     public override void OnDeploy()
     {
-        base.OnDeploy();
     }
 
     public override void AbilityEffectDuration()

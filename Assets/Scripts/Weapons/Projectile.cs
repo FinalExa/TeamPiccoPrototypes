@@ -152,7 +152,7 @@ public class Projectile : MonoBehaviour
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        if ((this.gameObject.CompareTag("ProjectilePlayer") || (this.gameObject.CompareTag("AbilityProjectile"))) && other.gameObject.GetComponent<Health>() && other.gameObject.CompareTag("Enemy") && !aoeDone)
+        if (this.gameObject.CompareTag("ProjectilePlayer") && other.gameObject.GetComponent<Health>() && other.gameObject.CompareTag("Enemy") && !aoeDone)
         {
             if (!hasAoe) other.gameObject.GetComponent<Health>().DecreaseHP(damage);
             else AoeBehaviour();

@@ -14,7 +14,13 @@ public class GrapplingHookAbility : AbilityProjectile
 
     public override void OnDeploy()
     {
-        base.OnDeploy();
+        if (hitSomething) GrappleToPoint();
+        else DestroyProjectile();
+    }
+
+    public override void OnEnemyHit()
+    {
+        GrappleToPoint();
     }
 
     public override void AbilityEffectBeforeReachingTarget()
@@ -22,14 +28,9 @@ public class GrapplingHookAbility : AbilityProjectile
         base.AbilityEffectBeforeReachingTarget();
     }
 
-    public override void DestroyProjectile()
+    private void GrappleToPoint()
     {
-        playerRef.gameObject.transform.position = new Vector3(this.transform.position.x, 0f, this.transform.position.z);
-        base.DestroyProjectile();
-    }
-
-    public override void AbilityEffectAfterDuration()
-    {
-        base.AbilityEffectAfterDuration();
+        playerRef.gameObject.transform.position = new Vector3(this.transform.position.x, playerRef.gameObject.transform.position.y, this.transform.position.z);
+        DestroyProjectile();
     }
 }

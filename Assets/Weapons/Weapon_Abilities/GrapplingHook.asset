@@ -17,14 +17,14 @@ MonoBehaviour:
   secondaryDamage: 0
   secondaryProjectileSpeed: 100
   secondaryStopsAfterSetAmountOfTime: 1
-  stopAfterSeconds: 3
+  stopAfterSeconds: 0.3
   secondaryStopsAtMousePosition: 0
   secondaryFlies: 0
   secondaryDurationToggle: 0
   secondaryDurationTime: 0
   playerIsStoppedDuringSecondaryDuration: 0
   secondaryCooldownToggle: 1
-  secondaryCooldownTime: 7
+  secondaryCooldownTime: 3
   secondaryLifetime: 20
   secondaryAmmoCost: 0
   normalShotsInteractWithSecondaryProjectile: 0

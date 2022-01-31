@@ -67,7 +67,7 @@ public class BlackHoleAbility : AbilityProjectile
     {
         for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[i].gameObject.CompareTag("Enemy"))
+            if (hits[i].gameObject.CompareTag("Enemy") && hits[i] != null)
             {
                 hits[i].gameObject.GetComponent<EnemyPattern>().enabled = true;
                 hits[i].gameObject.GetComponent<NavMeshAgent>().enabled = true;
