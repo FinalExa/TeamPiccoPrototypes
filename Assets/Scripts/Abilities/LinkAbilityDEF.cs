@@ -12,7 +12,6 @@ public class LinkAbilityDEF : AbilityProjectileBody
     public override void Start()
     {
         base.Start();
-
     }
 
     public override void AbilityEffectDuration()

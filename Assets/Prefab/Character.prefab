@@ -518,6 +518,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponInfo:
+  - weapon: {fileID: 11400000, guid: 029ed6c2ffbc5924ab70ef50dd799959, type: 2}
+    shootDelayTimer: 0
+    shootReady: 0
+    rechargeDelayTimer: 0
+    isRecharging: 0
+    ammoCurrent: 0
+    magazineCurrent: 0
+    projectileParent: {fileID: 0}
+    chargedTimer: 0
+    chargePercentage: 0
+    hitscanVisibleTimer: 0
+    secondaryCooldownTimer: 0
+    secondaryCooldownActive: 0
   - weapon: {fileID: 11400000, guid: f220f6a00345dd34988d075b620ad0db, type: 2}
     shootDelayTimer: 0
     shootReady: 0
