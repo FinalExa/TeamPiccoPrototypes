@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class LinkAbility : AbilityProjectileBody
+public class LinkAbilityDEF : AbilityProjectileBody
 {
     [SerializeField] private float linkRadius;
     [SerializeField] private GameObject rangeObj;
@@ -12,12 +12,18 @@ public class LinkAbility : AbilityProjectileBody
     public override void Start()
     {
         base.Start();
+
     }
 
     public override void AbilityEffectDuration()
     {
         ActivateRange(linkRadius);
         LinkEffect(this.transform.position, linkRadius);
+    }
+
+    public override void AbilityEffectAfterDuration()
+    {
+        DestroyProjectile(false);
     }
 
     private void LinkEffect(Vector3 position, float radius)
@@ -43,13 +49,5 @@ public class LinkAbility : AbilityProjectileBody
             rangeObj.SetActive(true);
         }
     }
-    private void DeactivateRange()
-    {
-        rangeObj.SetActive(false);
-        isActive = false;
-    }
-
-    
-
 
 }

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea5c93fe57e60e54ca09f6ea10ac6316, type: 3}
-  m_Name: LinkAbility
+  m_Name: Link
   m_EditorClassIdentifier: 
-  secondaryFireName: LinkAbility
-  secondaryProjectile: {fileID: 5814666638754323035, guid: e535d530a0fb9214aaef232fa36a2567, type: 3}
+  secondaryFireName: Link
+  secondaryProjectile: {fileID: 5814666638754323035, guid: d2935f286cebb37439fc34115bb6fa67, type: 3}
   secondaryDamage: 0
   secondaryProjectileSpeed: 90
-  secondaryStopsAfterSetAmountOfTime: 0
-  stopAfterSeconds: 0
+  secondaryStopsAfterSetAmountOfTime: 1
+  stopAfterSeconds: 1
   secondaryStopsAtMousePosition: 0
   secondaryFlies: 0
   secondaryDurationToggle: 1
   secondaryDurationTime: 5
   playerIsStoppedDuringSecondaryDuration: 0
   secondaryCooldownToggle: 1
-  secondaryCooldownTime: 2
+  secondaryCooldownTime: 15
   secondaryLifetime: 20
   secondaryAmmoCost: 0
   normalShotsInteractWithSecondaryProjectile: 0
