@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,10 +12,12 @@ public class BlackHoleAbility : AbilityProjectileBody
     private float blackHoleOffsetAddTotal;
     private bool isActive;
     private Collider[] hits;
+    private List<EnemyPattern> enemiesAbsorbed;
 
     public override void Start()
     {
         base.Start();
+        enemiesAbsorbed = new List<EnemyPattern>();
         blackHoleOffsetAddTotal = 0f;
     }
 
@@ -52,6 +53,14 @@ public class BlackHoleAbility : AbilityProjectileBody
                 hits[i].gameObject.transform.Translate(Time.fixedDeltaTime * blackHolePullSpeed * direction, Space.World);
             }
         }
+        foreach (Collider hit in hits)
+        {
+            if (hit.gameObject.GetComponent<EnemyPattern>() != null && !enemiesAbsorbed.Contains(hit.gameObject.GetComponent<EnemyPattern>()))
+            {
+                enemiesAbsorbed.Add(hit.gameObject.GetComponent<EnemyPattern>());
+            }
+        }
+        blackHoleOffsetAddTotal = blackHoleOffsetAddPerEnemy * enemiesAbsorbed.Count;
     }
 
     private void BlackHoleEffectStop()

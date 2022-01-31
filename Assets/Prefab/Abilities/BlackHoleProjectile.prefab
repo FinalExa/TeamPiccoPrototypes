@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisProjectileRigidbody: {fileID: 7819062070217293344}
   damage: 0
+  pierces: 0
   target: {x: 0, y: 0, z: 0}
   stopAfterTime: 0
   stopTimeCheck: 0
@@ -61,13 +62,14 @@ MonoBehaviour:
   afterDuration: 0
   stopsPlayer: 0
   interactsWithMainShots: 0
+  signatureProjectile: {fileID: 0}
   durationTime: 0
   durationTimer: 0
   originPoint: {fileID: 0}
   blackHoleRadius: 10
   blackHoleRadiusWhileTravelling: 5
   blackHolePullSpeed: 30
-  blackHoleOffsetAddPerEnemy: 0.5
+  blackHoleOffsetAddPerEnemy: 2
   rangeObj: {fileID: 8824982888763534307}
 --- !u!33 &8322204657353962034
 MeshFilter:
@@ -195,8 +197,6 @@ MonoBehaviour:
   speed: 0
   lifeTime: 0
   line: {fileID: 0}
-  thisProjectileChildren:
-  - {fileID: 3352299452925440981}
   target: {x: 0, y: 0, z: 0}
   damage: 0
   isRay: 0
@@ -204,6 +204,7 @@ MonoBehaviour:
   rayRange: 0
   rayDuration: 0
   rayOrigin: {x: 0, y: 0, z: 0}
+  pierces: 0
   stopTime: 0
 --- !u!54 &-3310621872110477516
 Rigidbody:
