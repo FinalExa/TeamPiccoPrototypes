@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wall
   m_EditorClassIdentifier: 
   secondaryFireName: Wall
-  secondaryProjectile: {fileID: 5814666638754323035, guid: 7f2d532c87738034dad8c8c1ff0dba6b, type: 3}
+  secondaryProjectile: {fileID: 5814666638754323035, guid: 994d095334afe944aad39fdf476af791, type: 3}
   secondaryDamage: 10
   secondaryProjectileSpeed: 50
   secondaryStopsAfterSetAmountOfTime: 0

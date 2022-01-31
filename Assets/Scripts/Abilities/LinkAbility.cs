@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LinkAbility : AbilityProjectileBody
+public class LinkAbility : AbilityProjectile
 {
     [SerializeField] private float linkRadius;
     [SerializeField] private GameObject rangeObj;
@@ -24,7 +24,6 @@ public class LinkAbility : AbilityProjectileBody
     {
         hits = Physics.OverlapSphere(position, radius);
     }
-
 
     public override void MainFireInteraction()
     {
@@ -49,7 +48,7 @@ public class LinkAbility : AbilityProjectileBody
         isActive = false;
     }
 
-    
+
 
 
 }

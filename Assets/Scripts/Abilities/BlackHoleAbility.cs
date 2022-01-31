@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BlackHoleAbility : AbilityProjectileBody
+public class BlackHoleAbility : AbilityProjectile
 {
     [SerializeField] private float blackHoleRadius;
     [SerializeField] private float blackHoleRadiusWhileTravelling;

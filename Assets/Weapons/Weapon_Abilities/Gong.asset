@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gong
   m_EditorClassIdentifier: 
   secondaryFireName: Gong
-  secondaryProjectile: {fileID: 5814666638754323035, guid: 0d6d243dcdc524d4da3202c9d8a5c030, type: 3}
+  secondaryProjectile: {fileID: 5814666638754323035, guid: 0f7749cee312f9b48b0fb09756971508, type: 3}
   secondaryDamage: 5
   secondaryProjectileSpeed: 0
   secondaryStopsAfterSetAmountOfTime: 0

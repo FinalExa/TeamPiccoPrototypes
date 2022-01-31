@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GrapplingHook
   m_EditorClassIdentifier: 
   secondaryFireName: Grappling Hook
-  secondaryProjectile: {fileID: 5814666638754323035, guid: baca346ef245fe34cbaa98d4fc9fbe85, type: 3}
+  secondaryProjectile: {fileID: 5814666638754323035, guid: 1e2b671438dc7ca448afbe74ab5ceff6, type: 3}
   secondaryDamage: 0
   secondaryProjectileSpeed: 100
   secondaryStopsAfterSetAmountOfTime: 1

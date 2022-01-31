@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GongAbility : AbilityProjectileBody
+public class GongAbility : AbilityProjectile
 {
 
     [SerializeField] private float gongRadius;
@@ -20,8 +20,9 @@ public class GongAbility : AbilityProjectileBody
         OnDeploy();
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
         if (isActive) FeedbackTimer();
     }
 

@@ -7,7 +7,8 @@ public class Projectile : MonoBehaviour
     [HideInInspector] public float speed;
     [HideInInspector] public float lifeTime;
     [SerializeField] protected GameObject line;
-    protected ProjectileBody[] thisProjectileChildren;
+    [SerializeField] protected GameObject range;
+    [HideInInspector] public Rigidbody projectileRigidbody;
     protected float lifeTimer;
     [HideInInspector] public Vector3 target;
     [HideInInspector] public float damage;
@@ -20,12 +21,14 @@ public class Projectile : MonoBehaviour
     [HideInInspector] public float rayDuration;
     [HideInInspector] public Vector3 rayOrigin;
     [HideInInspector] public bool pierces;
-    private float rayTimer;
-    private bool clearLine;
+    protected float aoeTimer;
+    protected bool aoeDone;
+    protected float rayTimer;
+    protected bool clearLine;
 
-    private void Awake()
+    public virtual void Awake()
     {
-        thisProjectileChildren = this.gameObject.GetComponentsInChildren<ProjectileBody>();
+        projectileRigidbody = this.gameObject.GetComponent<Rigidbody>();
     }
 
     public virtual void Start()
@@ -39,21 +42,53 @@ public class Projectile : MonoBehaviour
     {
         LifeTime();
         if (isRay) ClearLine();
+        if (aoeDone) ShowAoe();
+    }
+
+    public virtual void DestroyProjectile()
+    {
+        this.projectileRigidbody.velocity = Vector3.zero;
+        Destroy(this.gameObject);
+    }
+
+    private void AoeBehaviour()
+    {
+        List<EnemyPattern> enemies = new List<EnemyPattern>();
+        Collider[] hits = Physics.OverlapSphere(this.transform.position, aoe);
+        foreach (Collider hit in hits)
+        {
+            EnemyPattern pattern = hit.GetComponent<EnemyPattern>();
+            if (pattern != null && !enemies.Contains(pattern))
+            {
+                hit.GetComponent<Health>().DecreaseHP(damage);
+                enemies.Add(pattern);
+            }
+        }
+        StartAoeVisible();
+    }
+
+    private void StartAoeVisible()
+    {
+        aoeTimer = aoeVisible;
+        range.transform.localScale = new Vector3(aoe, aoe, aoe);
+        range.SetActive(true);
+        aoeDone = true;
+    }
+
+    private void ShowAoe()
+    {
+        if (aoeTimer > 0) aoeTimer -= Time.deltaTime;
+        else
+        {
+            range.SetActive(false);
+        }
     }
 
     public virtual void ProjectileMovement()
     {
         Vector3 direction = (target - this.transform.position).normalized;
         this.transform.rotation = Quaternion.LookRotation(direction);
-        for (int i = 0; i < thisProjectileChildren.Length; i++)
-        {
-            thisProjectileChildren[i].thisProjectileRigidbody.velocity = this.transform.forward * speed;
-            thisProjectileChildren[i].damage = damage;
-            thisProjectileChildren[i].pierces = pierces;
-            thisProjectileChildren[i].hasAoe = hasAoe;
-            thisProjectileChildren[i].aoe = aoe;
-            thisProjectileChildren[i].aoeVisible = aoeVisible;
-        }
+        projectileRigidbody.velocity = this.transform.forward * speed;
     }
 
     public virtual void LifeTime()
@@ -72,7 +107,7 @@ public class Projectile : MonoBehaviour
         Vector3 direction = (target - rayOrigin).normalized;
         RaycastHit hit;
         bool itHit = false;
-        for (int i = 0; i < thisProjectileChildren.Length; i++) thisProjectileChildren[i].gameObject.SetActive(false);
+        range.SetActive(false);
         if (Physics.Raycast(rayOrigin, direction, out hit, distance))
         {
             itHit = true;
@@ -112,6 +147,27 @@ public class Projectile : MonoBehaviour
                 rayTimer = rayDuration;
                 clearLine = false;
             }
+        }
+    }
+
+    public virtual void OnTriggerEnter(Collider other)
+    {
+        if ((this.gameObject.CompareTag("ProjectilePlayer") || (this.gameObject.CompareTag("AbilityProjectile"))) && other.gameObject.GetComponent<Health>() && other.gameObject.CompareTag("Enemy") && !aoeDone)
+        {
+            if (!hasAoe) other.gameObject.GetComponent<Health>().DecreaseHP(damage);
+            else AoeBehaviour();
+            DestroyProjectile();
+        }
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            if (hasAoe) AoeBehaviour();
+            DestroyProjectile();
+        }
+        if (other.gameObject.CompareTag("AbilityProjectile"))
+        {
+            if (hasAoe) AoeBehaviour();
+            other.gameObject.GetComponent<AbilityProjectile>().signatureProjectile = this.gameObject.transform.parent.gameObject;
+            other.gameObject.GetComponent<AbilityProjectile>().MainFireInteraction();
         }
     }
 }

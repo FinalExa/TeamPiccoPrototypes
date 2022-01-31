@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrapplingHookAbility : AbilityProjectileBody
+public class GrapplingHookAbility : AbilityProjectile
 {
     private PlayerReferences playerRef;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         playerRef = FindObjectOfType<PlayerReferences>();
     }
 
