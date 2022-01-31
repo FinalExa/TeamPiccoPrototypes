@@ -6,7 +6,7 @@ public class WallAbility : AbilityProjectileBody
 {
     private bool reachingTarget;
     private Vector3 startingPos;
-
+    //private SecondaryAbility myScript;
     public override void Start()
     {
         base.Start();
@@ -37,6 +37,7 @@ public class WallAbility : AbilityProjectileBody
         if (other.CompareTag("Enemy") && reachingTarget)
         {
             other.GetComponent<Health>().DecreaseHP(damage);
+            thisProjectileRigidbody.velocity = Vector3.zero;
         }
     }
 }

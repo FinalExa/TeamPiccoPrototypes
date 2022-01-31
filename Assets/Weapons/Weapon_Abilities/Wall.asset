@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondaryFireName: Wall
   secondaryProjectile: {fileID: 5814666638754323035, guid: 7f2d532c87738034dad8c8c1ff0dba6b, type: 3}
-  secondaryDamage: 30
+  secondaryDamage: 10
   secondaryProjectileSpeed: 50
+  secondaryStopsAfterSetAmountOfTime: 0
+  stopAfterSeconds: 0
   secondaryStopsAtMousePosition: 1
   secondaryFlies: 0
   secondaryDurationToggle: 1
-  secondaryDurationTime: 10
+  secondaryDurationTime: 5
   playerIsStoppedDuringSecondaryDuration: 0
   secondaryCooldownToggle: 1
   secondaryCooldownTime: 3
-  secondaryLifetime: 20
-  secondaryAmmoCost: 0
+  secondaryLifetime: 5
+  secondaryAmmoCost: 1
   normalShotsInteractWithSecondaryProjectile: 0
