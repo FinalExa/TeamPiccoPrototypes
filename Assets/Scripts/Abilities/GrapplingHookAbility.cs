@@ -4,30 +4,27 @@ using UnityEngine;
 
 public class GrapplingHookAbility : AbilityProjectileBody
 {
-    private PlayerReferences PlayerRef;
+    private PlayerReferences playerRef;
 
     private void Awake()
     {
-        PlayerRef = FindObjectOfType<PlayerReferences>();
+        playerRef = FindObjectOfType<PlayerReferences>();
     }
 
     public override void OnDeploy()
     {
         base.OnDeploy();
     }
-    
+
     public override void AbilityEffectBeforeReachingTarget()
     {
         base.AbilityEffectBeforeReachingTarget();
-
-
     }
 
-    public override void DestroyProjectile(bool hitEnemy)
+    public override void DestroyProjectile()
     {
-        PlayerRef.gameObject.transform.position = new Vector3(this.transform.position.x, 0f, this.transform.position.z);
-
-        base.DestroyProjectile(hitEnemy);
+        playerRef.gameObject.transform.position = new Vector3(this.transform.position.x, 0f, this.transform.position.z);
+        base.DestroyProjectile();
     }
 
     public override void AbilityEffectAfterDuration()
