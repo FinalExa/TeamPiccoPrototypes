@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondaryFireName: Gong
   secondaryProjectile: {fileID: 5814666638754323035, guid: 0d6d243dcdc524d4da3202c9d8a5c030, type: 3}
-  secondaryDamage: 10
+  secondaryDamage: 5
   secondaryProjectileSpeed: 0
   secondaryStopsAfterSetAmountOfTime: 0
   stopAfterSeconds: 0
   secondaryStopsAtMousePosition: 1
   secondaryFlies: 1
   secondaryDurationToggle: 1
-  secondaryDurationTime: 3
+  secondaryDurationTime: 10
   playerIsStoppedDuringSecondaryDuration: 0
   secondaryCooldownToggle: 1
   secondaryCooldownTime: 15
