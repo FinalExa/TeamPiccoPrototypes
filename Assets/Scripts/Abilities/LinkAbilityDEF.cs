@@ -23,7 +23,7 @@ public class LinkAbilityDEF : AbilityProjectileBody
 
     public override void AbilityEffectAfterDuration()
     {
-        DestroyProjectile(false);
+        DestroyProjectile();
     }
 
     private void LinkEffect(Vector3 position, float radius)
