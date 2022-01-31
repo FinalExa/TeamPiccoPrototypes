@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class GrapplingHookAbility : AbilityProjectileBody
 {
-    
+    public Transform ThisTransform;
+    public Transform PlayerTransform;
+    public float PullSpeed;
+
     
     public override void OnDeploy()
     {
@@ -14,10 +17,21 @@ public class GrapplingHookAbility : AbilityProjectileBody
     public override void AbilityEffectBeforeReachingTarget()
     {
         base.AbilityEffectBeforeReachingTarget();
+
+
     }
 
     public override void DestroyProjectile(bool hitEnemy)
     {
+        if (hitEnemy)
+        {
+            thisProjectileRigidbody.velocity = Vector3.zero;
+            thisProjectileRigidbody.angularVelocity = Vector3.zero;
+            thisProjectileRigidbody.Sleep();
+
+            PlayerTransform.Translate(ThisTransform.position * Time.deltaTime * PullSpeed);
+        }
+
         base.DestroyProjectile(hitEnemy);
     }
 

@@ -143,6 +143,9 @@ MonoBehaviour:
   durationTime: 0
   durationTimer: 0
   originPoint: {fileID: 0}
+  ThisTransform: {fileID: 6014446787522181176}
+  PlayerTransform: {fileID: 4976793914851956938, guid: 5491daebaf95a524c8c3e1bfba5dd285, type: 3}
+  PullSpeed: 10
 --- !u!1 &5814666638754323035
 GameObject:
   m_ObjectHideFlags: 0
