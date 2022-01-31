@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisProjectileRigidbody: {fileID: 7819062070217293344}
   damage: 0
+  pierces: 0
   target: {x: 0, y: 0, z: 0}
   stopAfterTime: 0
   stopTimeCheck: 0
@@ -146,10 +147,10 @@ MonoBehaviour:
   durationTime: 0
   durationTimer: 0
   originPoint: {fileID: 0}
-  gongRadius: 10
+  gongRadius: 20
   rangeObj: {fileID: 3821766808697073103}
   feedbackUptime: 0.2
-  repelDistance: 3
+  repelDistance: 20
 --- !u!33 &8322204657353962034
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -276,8 +277,6 @@ MonoBehaviour:
   speed: 0
   lifeTime: 0
   line: {fileID: 0}
-  thisProjectileChildren:
-  - {fileID: 4142856031569693932}
   target: {x: 0, y: 0, z: 0}
   damage: 0
   isRay: 0
@@ -285,6 +284,7 @@ MonoBehaviour:
   rayRange: 0
   rayDuration: 0
   rayOrigin: {x: 0, y: 0, z: 0}
+  pierces: 0
   stopTime: 0
 --- !u!54 &-3310621872110477516
 Rigidbody:
