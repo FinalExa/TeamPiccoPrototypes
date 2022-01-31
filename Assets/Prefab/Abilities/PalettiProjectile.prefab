@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6014446787522181176}
-  - component: {fileID: 3352299452925440981}
+  - component: {fileID: 8596255319163237024}
   - component: {fileID: 8322204657353962034}
   - component: {fileID: 1363740215615553181}
   - component: {fileID: 3250459953577688360}
@@ -31,12 +31,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children:
-  - {fileID: 7314548406345941252}
+  m_Children: []
   m_Father: {fileID: 6455833119315879679}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3352299452925440981
+--- !u!114 &8596255319163237024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,14 +44,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4881437851323851357}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 456efad1752ca6444bdcb1232f66bca5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d6273bcb736eb94fa094c3ab07240ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   thisProjectileRigidbody: {fileID: 7819062070217293344}
   damage: 0
-  hasAoe: 0
-  aoe: 0
-  aoeDone: 0
   pierces: 0
   target: {x: 0, y: 0, z: 0}
   stopAfterTime: 0
@@ -69,11 +65,7 @@ MonoBehaviour:
   durationTime: 0
   durationTimer: 0
   originPoint: {fileID: 0}
-  blackHoleRadius: 10
-  blackHoleRadiusWhileTravelling: 5
-  blackHolePullSpeed: 30
-  blackHoleOffsetAddPerEnemy: 2
-  rangeObj: {fileID: 8824982888763534307}
+  range: 10
 --- !u!33 &8322204657353962034
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -101,7 +93,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 35b9a0444ebf0744ab9f73fa1216b4ae, type: 2}
+  - {fileID: 2100000, guid: 078462b946ddf9344abfa4029f8da0b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,7 +142,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &5814666638754323035
 GameObject:
@@ -164,7 +156,7 @@ GameObject:
   - component: {fileID: 2214824227250686699}
   - component: {fileID: -3310621872110477516}
   m_Layer: 0
-  m_Name: BlackHoleProjectile
+  m_Name: PalettiProjectile
   m_TagString: AbilityProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,8 +194,6 @@ MonoBehaviour:
   line: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   damage: 0
-  hasAoe: 0
-  aoe: 0
   isRay: 0
   rayNeedsRange: 0
   rayRange: 0
@@ -227,70 +217,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!1001 &802962078583761305
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 6014446787522181176}
-    m_Modifications:
-    - target: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8168424644798218874, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-      propertyPath: m_Name
-      value: Range
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
---- !u!1 &8824982888763534307 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8168424644798218874, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-  m_PrefabInstance: {fileID: 802962078583761305}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7314548406345941252 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7973287535453300893, guid: 7e7b822e27f578a41ba4bda74d68b0be, type: 3}
-  m_PrefabInstance: {fileID: 802962078583761305}
-  m_PrefabAsset: {fileID: 0}

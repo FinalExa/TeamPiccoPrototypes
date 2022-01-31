@@ -10,33 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e7b8357ea365434aa337fa5833fd2b6, type: 3}
-  m_Name: BlackHoleSniper
+  m_Name: PalettiGun
   m_EditorClassIdentifier: 
-  weaponName: Sniper Rifle
-  shootDelay: 0.8
-  rechargeDelay: 1.9
-  ammoMax: 18
-  magazineSize: 2
-  projectileDamage: 30
-  projectileSpeed: 150
-  projectileLifetime: 9
+  weaponName: PalettiGun
+  shootDelay: 0.1
+  rechargeDelay: 1
+  ammoMax: 102
+  magazineSize: 3
+  projectileDamage: 10
+  projectileSpeed: 90
+  projectileLifetime: 20
   projectilePierces: 0
-  projectileHasAoe: 1
-  projectileAoe: 10
-  projectileAoeVisibleDuration: 1
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   endlessAmmo: 0
   automaticWeapon: 0
   shotgunWeapon: 0
-  shotgunProjectileNumber: 10
-  shotgunSpread: 8
+  shotgunProjectileNumber: 0
+  shotgunSpread: 0
   shotgunSpeedDifference: 0
-  chargedWeapon: 0
-  chargeTime: 0
-  chargedMaxDamage: 0
+  chargedWeapon: 1
+  chargeTime: 1
+  chargedMaxDamage: 30
   hitscanWeapon: 0
   hitscanLimitedRange: 0
-  hitscanRange: 10
-  hitscanVisibleTime: 0.2
+  hitscanRange: 0
+  hitscanVisibleTime: 0
   hasSecondaryFire: 1
-  secondaryAbility: {fileID: 11400000, guid: 82cdc7a56884ca9448bbd7ce19e653cf, type: 2}
+  secondaryAbility: {fileID: 11400000, guid: d78abd17aaf59314e8a69573d987e4e6, type: 2}
