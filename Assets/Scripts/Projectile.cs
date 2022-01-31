@@ -11,6 +11,9 @@ public class Projectile : MonoBehaviour
     protected float lifeTimer;
     [HideInInspector] public Vector3 target;
     [HideInInspector] public float damage;
+    [HideInInspector] public bool hasAoe;
+    [HideInInspector] public float aoe;
+    [HideInInspector] public float aoeVisible;
     [HideInInspector] public bool isRay;
     [HideInInspector] public bool rayNeedsRange;
     [HideInInspector] public float rayRange;
@@ -47,6 +50,9 @@ public class Projectile : MonoBehaviour
             thisProjectileChildren[i].thisProjectileRigidbody.velocity = this.transform.forward * speed;
             thisProjectileChildren[i].damage = damage;
             thisProjectileChildren[i].pierces = pierces;
+            thisProjectileChildren[i].hasAoe = hasAoe;
+            thisProjectileChildren[i].aoe = aoe;
+            thisProjectileChildren[i].aoeVisible = aoeVisible;
         }
     }
 

@@ -149,6 +149,9 @@ public class Shoot : MonoBehaviour
         else proj.damage = bulletDamage;
         proj.lifeTime = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileLifetime;
         proj.pierces = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectilePierces;
+        proj.hasAoe = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileHasAoe;
+        proj.aoe = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileAoe;
+        proj.aoeVisible = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileAoeVisibleDuration;
         if (!weaponUsed.weaponInfo[activeWeaponIndex].weapon.hitscanWeapon)
         {
             if (!isShotgun) proj.speed = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileSpeed;
