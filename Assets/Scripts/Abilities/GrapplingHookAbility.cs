@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class GrapplingHookAbility : AbilityProjectileBody
 {
-    public Transform ThisTransform;
-    public Transform PlayerTransform;
-    public float PullSpeed;
+    private PlayerReferences PlayerRef;
 
-    
+    private void Awake()
+    {
+        PlayerRef = FindObjectOfType<PlayerReferences>();
+    }
+
     public override void OnDeploy()
     {
         base.OnDeploy();
@@ -23,14 +25,7 @@ public class GrapplingHookAbility : AbilityProjectileBody
 
     public override void DestroyProjectile(bool hitEnemy)
     {
-        if (hitEnemy)
-        {
-            thisProjectileRigidbody.velocity = Vector3.zero;
-            thisProjectileRigidbody.angularVelocity = Vector3.zero;
-            thisProjectileRigidbody.Sleep();
-
-            PlayerTransform.Translate(ThisTransform.position * Time.deltaTime * PullSpeed);
-        }
+        PlayerRef.gameObject.transform.position = new Vector3(this.transform.position.x, 0f, this.transform.position.z);
 
         base.DestroyProjectile(hitEnemy);
     }
