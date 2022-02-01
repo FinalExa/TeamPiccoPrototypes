@@ -16,8 +16,8 @@ public class GongAbility : AbilityProjectile
     {
         base.Start();
         feedbackUptimer = feedbackUptime;
-        durationActive = true;
-        OnDeploy();
+        //durationActive = true;
+        //OnDeploy();
     }
 
     public override void Update()
@@ -34,7 +34,7 @@ public class GongAbility : AbilityProjectile
     public override void MainFireInteraction()
     {
         GongEffect(this.transform.position, gongRadius);
-        DestroySignature();
+        //DestroySignature();
     }
 
     private void GongEffect(Vector3 position, float radius)

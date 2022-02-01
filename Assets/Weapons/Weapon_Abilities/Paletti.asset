@@ -19,7 +19,7 @@ MonoBehaviour:
   secondaryStopsAfterSetAmountOfTime: 0
   stopAfterSeconds: 0.3
   secondaryStopsAtMousePosition: 1
-  secondaryFlies: 0
+  secondaryFlies: 1
   secondaryDurationToggle: 1
   secondaryDurationTime: 10
   playerIsStoppedDuringSecondaryDuration: 0
