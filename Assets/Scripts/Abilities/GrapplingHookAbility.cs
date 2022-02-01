@@ -2,36 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrapplingHookAbility : AbilityProjectileBody
+public class GrapplingHookAbility : AbilityProjectile
 {
-    private PlayerReferences PlayerRef;
+    private PlayerReferences playerRef;
 
-    private void Awake()
+    public override void Awake()
     {
-        PlayerRef = FindObjectOfType<PlayerReferences>();
+        base.Awake();
+        playerRef = FindObjectOfType<PlayerReferences>();
     }
 
     public override void OnDeploy()
     {
-        base.OnDeploy();
+        if (hitSomething) GrappleToPoint();
+        else DestroyProjectile();
     }
-    
+
+    public override void OnEnemyHit()
+    {
+        GrappleToPoint();
+    }
+
     public override void AbilityEffectBeforeReachingTarget()
     {
         base.AbilityEffectBeforeReachingTarget();
-
-
     }
 
-    public override void DestroyProjectile(bool hitEnemy)
+    private void GrappleToPoint()
     {
-        PlayerRef.gameObject.transform.position = new Vector3(this.transform.position.x, 0f, this.transform.position.z);
-
-        base.DestroyProjectile(hitEnemy);
-    }
-
-    public override void AbilityEffectAfterDuration()
-    {
-        base.AbilityEffectAfterDuration();
+        playerRef.gameObject.transform.position = new Vector3(this.transform.position.x, playerRef.gameObject.transform.position.y, this.transform.position.z);
+        DestroyProjectile();
     }
 }

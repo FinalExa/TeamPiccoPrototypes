@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlackHole
   m_EditorClassIdentifier: 
   secondaryFireName: Black Hole
-  secondaryProjectile: {fileID: 5814666638754323035, guid: c3193df0b2aaa4342a2575e6cf362ceb, type: 3}
+  secondaryProjectile: {fileID: 5814666638754323035, guid: 05fc3bf894a75ed4aa4dfb1d7f02ac88, type: 3}
   secondaryDamage: 0
   secondaryProjectileSpeed: 50
   secondaryStopsAfterSetAmountOfTime: 1

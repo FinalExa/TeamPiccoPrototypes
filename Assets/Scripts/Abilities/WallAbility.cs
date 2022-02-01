@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallAbility : AbilityProjectileBody
+public class WallAbility : AbilityProjectile
 {
     private bool reachingTarget;
     private Vector3 startingPos;
-
+    //private SecondaryAbility myScript;
     public override void Start()
     {
         base.Start();
@@ -28,7 +28,7 @@ public class WallAbility : AbilityProjectileBody
 
     public override void AbilityEffectAfterDuration()
     {
-        DestroyProjectile(false);
+        DestroyProjectile();
     }
 
     public override void OnTriggerEnter(Collider other)
@@ -37,6 +37,7 @@ public class WallAbility : AbilityProjectileBody
         if (other.CompareTag("Enemy") && reachingTarget)
         {
             other.GetComponent<Health>().DecreaseHP(damage);
+            projectileRigidbody.velocity = Vector3.zero;
         }
     }
 }
