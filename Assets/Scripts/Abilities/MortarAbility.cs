@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MortarAbility : AbilityProjectileBody
+public class MortarAbility : AbilityProjectile
 {
     [SerializeField] float mortarRadius;
     [SerializeField] private GameObject rangeObj;

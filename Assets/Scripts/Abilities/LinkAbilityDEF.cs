@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class LinkAbilityDEF : AbilityProjectileBody
+public class LinkAbilityDEF : AbilityProjectile
 {
     [SerializeField] private float linkRadius;
     [SerializeField] private GameObject rangeObj;
@@ -31,10 +31,10 @@ public class LinkAbilityDEF : AbilityProjectileBody
     }
 
 
-   //public override void MainFireInteraction()
-   //{
-   //   
-   //}
+    //public override void MainFireInteraction()
+    //{
+    //   
+    //}
 
     private void ActivateRange(float range)
     {
@@ -48,8 +48,4 @@ public class LinkAbilityDEF : AbilityProjectileBody
             rangeObj.SetActive(true);
         }
     }
-
-
-
-
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GongAbility : AbilityProjectileBody
+public class GongAbility : AbilityProjectile
 {
 
     [SerializeField] private float gongRadius;
@@ -16,12 +16,13 @@ public class GongAbility : AbilityProjectileBody
     {
         base.Start();
         feedbackUptimer = feedbackUptime;
-        durationActive = true;
-        OnDeploy();
+        //durationActive = true;
+        //OnDeploy();
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
         if (isActive) FeedbackTimer();
     }
 
@@ -33,7 +34,7 @@ public class GongAbility : AbilityProjectileBody
     public override void MainFireInteraction()
     {
         GongEffect(this.transform.position, gongRadius);
-        DestroySignature();
+        //DestroySignature();
     }
 
     private void GongEffect(Vector3 position, float radius)

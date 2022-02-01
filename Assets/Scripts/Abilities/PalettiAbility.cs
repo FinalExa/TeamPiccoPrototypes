@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PalettiAbility : AbilityProjectileBody
+public class PalettiAbility : AbilityProjectile
 {
 
     public override void AbilityEffectBeforeReachingTarget()
@@ -12,7 +12,6 @@ public class PalettiAbility : AbilityProjectileBody
 
     public override void OnDeploy()
     {
-        base.OnDeploy();
     }
 
     public override void AbilityEffectDuration()
@@ -32,6 +31,6 @@ public class PalettiAbility : AbilityProjectileBody
 
     public override void DestroyProjectile()
     {
-        thisProjectileRigidbody.velocity = Vector3.zero;
+        projectileRigidbody.velocity = Vector3.zero;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallAbility : AbilityProjectileBody
+public class WallAbility : AbilityProjectile
 {
     private bool reachingTarget;
     private Vector3 startingPos;
@@ -37,7 +37,7 @@ public class WallAbility : AbilityProjectileBody
         if (other.CompareTag("Enemy") && reachingTarget)
         {
             other.GetComponent<Health>().DecreaseHP(damage);
-            thisProjectileRigidbody.velocity = Vector3.zero;
+            projectileRigidbody.velocity = Vector3.zero;
         }
     }
 }

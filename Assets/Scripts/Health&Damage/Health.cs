@@ -107,9 +107,9 @@ public class Health : MonoBehaviour
     {
         if (isPlayer && other.gameObject.CompareTag("Projectile"))
         {
-            DecreaseHP(other.gameObject.GetComponent<ProjectileBody>().damage);
+            DecreaseHP(other.gameObject.GetComponent<Projectile>().damage);
             this.gameObject.GetComponent<PlayerReferences>().damageTaken.TakeDamage();
-            other.gameObject.GetComponent<ProjectileBody>().DestroyProjectile();
+            other.gameObject.GetComponent<Projectile>().DestroyProjectile();
         }
     }
 

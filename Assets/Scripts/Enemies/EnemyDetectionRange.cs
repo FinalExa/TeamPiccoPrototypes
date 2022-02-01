@@ -14,7 +14,7 @@ public class EnemyDetectionRange : MonoBehaviour
         detected = false;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (enemyPattern.canShootAtPlayer && !detected)
         {

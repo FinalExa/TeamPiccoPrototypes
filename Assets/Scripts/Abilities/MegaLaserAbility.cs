@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class MegaLaserAbility : AbilityProjectileBody
+public class MegaLaserAbility : AbilityProjectile
 {
     [SerializeField] private float timesTriggeredInDuration;
     private float timeOffset;
