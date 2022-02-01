@@ -124,6 +124,12 @@ public class Projectile : MonoBehaviour
             {
                 hit.collider.gameObject.GetComponent<Health>().DecreaseHP(damage);
             }
+            if (hit.collider.gameObject.CompareTag("AbilityProjectile"))
+            {
+                print("CIAO!");
+                if (hit.collider.gameObject.GetComponent<AbilityProjectile>() != null) hit.collider.gameObject.GetComponent<AbilityProjectile>().MainFireInteraction();
+                else if (hit.collider.gameObject.GetComponentInParent<AbilityProjectile>() != null) hit.collider.gameObject.GetComponentInParent<AbilityProjectile>().MainFireInteraction();
+            }
         }
         if (!rayNeedsRange || (rayNeedsRange && itHit)) HitscanDrawLine(rayOrigin, hit.point);
         else

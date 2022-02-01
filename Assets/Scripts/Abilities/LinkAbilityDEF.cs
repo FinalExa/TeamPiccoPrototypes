@@ -48,8 +48,4 @@ public class LinkAbilityDEF : AbilityProjectile
             rangeObj.SetActive(true);
         }
     }
-
-
-
-
 }

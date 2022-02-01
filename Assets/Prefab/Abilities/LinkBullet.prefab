@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8827009415319013238}
   m_Layer: 0
   m_Name: AbilityTrigger
-  m_TagString: Untagged
+  m_TagString: AbilityProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
   durationTime: 0
   durationTimer: 0
   originPoint: {fileID: 0}
+  hitSomething: 0
   linkRadius: 10
   rangeObj: {fileID: 8824982888763534307}
 --- !u!54 &-3310621872110477516
