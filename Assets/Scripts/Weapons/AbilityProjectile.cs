@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityProjectileBody : ProjectileBody
+public class AbilityProjectile : Projectile
 {
-    [HideInInspector] public Vector3 target;
     [HideInInspector] public bool stopAfterTime;
     [HideInInspector] public bool stopTimeCheck;
     [HideInInspector] public float stopTime;
@@ -19,28 +18,49 @@ public class AbilityProjectileBody : ProjectileBody
     [HideInInspector] public float durationTime;
     [HideInInspector] public float durationTimer;
     [HideInInspector] public GameObject originPoint;
+    [HideInInspector] public bool hitSomething;
     private PlayerReferences playerRefs;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         playerRefs = FindObjectOfType<PlayerReferences>();
     }
 
-    public virtual void Start()
+    public override void Update()
     {
+        base.Update();
+        if (stopTimeCheck) StopAfterTime();
+        else if (stopAtTarget) StopAtTarget();
+        else if (usesDuration) durationActive = true;
+        else if (!usesDuration) OnDeploy();
+    }
+
+    public void StopAfterTimeSetup()
+    {
+        stopAfterTime = true;
+    }
+
+    public void StopAtTargetLocation()
+    {
+        stopAtTarget = true;
+    }
+    public void SetDurationInfos(bool usesDuration, float durationTimeValue, bool stopPlayer, bool interactionWithMainShots, GameObject originPosition)
+    {
+        SetDurationTimer(usesDuration, durationTimeValue);
+        stopsPlayer = stopPlayer;
+        interactsWithMainShots = interactionWithMainShots;
+        originPoint = originPosition;
+    }
+
+    public override void Start()
+    {
+        base.Start();
         if (stopAfterTime)
         {
             stopTimeCheck = true;
             stopTimer = stopTime;
         }
-    }
-
-    private void Update()
-    {
-        if (stopTimeCheck) StopAfterTime();
-        else if (stopAtTarget) StopAtTarget();
-        else if (usesDuration) durationActive = true;
-        else if (!usesDuration) OnDeploy();
     }
 
     private void FixedUpdate()
@@ -114,6 +134,11 @@ public class AbilityProjectileBody : ProjectileBody
         return;
     }
 
+    public virtual void OnEnemyHit()
+    {
+        return;
+    }
+
     protected void DestroySignature()
     {
         GameObject.Destroy(signatureProjectile);
@@ -157,7 +182,8 @@ public class AbilityProjectileBody : ProjectileBody
 
     private void StopMovement()
     {
-        thisProjectileRigidbody.velocity = Vector3.zero;
+        projectileRigidbody.velocity = Vector3.zero;
+        OnDeploy();
         if (stopTimeCheck) stopTimeCheck = false;
     }
 
@@ -165,7 +191,7 @@ public class AbilityProjectileBody : ProjectileBody
     {
         if (collision.collider.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile(false);
+            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile();
             else StopMovement();
         }
     }
@@ -174,12 +200,18 @@ public class AbilityProjectileBody : ProjectileBody
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile(false);
+            if (!stopAtTarget && !stopAfterTime && !stopsPlayer) DestroyProjectile();
             else
             {
+                hitSomething = true;
                 StopMovement();
                 if (usesDuration) durationActive = true;
             }
+        }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            hitSomething = true;
+            OnEnemyHit();
         }
     }
 }

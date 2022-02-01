@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MortarAbility : AbilityProjectileBody
+public class MortarAbility : AbilityProjectile
 {
     [SerializeField] float mortarRadius;
     [SerializeField] private GameObject rangeObj;
@@ -16,7 +16,7 @@ public class MortarAbility : AbilityProjectileBody
     {
         MortarEffect(this.gameObject.transform.position, mortarRadius);
         DeactivateRange();
-        DestroyProjectile(false);
+        DestroyProjectile();
     }
 
     private void MortarEffect(Vector3 position, float radius)

@@ -59,7 +59,7 @@ public class SecondaryShoot : MonoBehaviour
         if (wpn.secondaryAbility.secondaryStopsAfterSetAmountOfTime)
         {
             proj.stopTime = wpn.secondaryAbility.stopAfterSeconds;
-            proj.StopAfterTime();
+            proj.StopAfterTimeSetup();
         }
         if (wpn.secondaryAbility.secondaryStopsAtMousePosition && !wpn.secondaryAbility.secondaryStopsAfterSetAmountOfTime) proj.StopAtTargetLocation();
         if (wpn.secondaryAbility.secondaryCooldownToggle) weaponUsed.weaponInfo[activeWeaponIndex].secondaryCooldownActive = true;

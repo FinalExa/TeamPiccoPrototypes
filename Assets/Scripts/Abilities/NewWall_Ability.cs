@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewWall_Ability : AbilityProjectileBody
-{    
+public class NewWall_Ability : AbilityProjectile
+{
     public override void AbilityEffectBeforeReachingTarget()
     {
         base.AbilityEffectBeforeReachingTarget();
@@ -11,7 +11,6 @@ public class NewWall_Ability : AbilityProjectileBody
 
     public override void OnDeploy()
     {
-        base.OnDeploy();
     }
 
     public override void AbilityEffectDuration()
