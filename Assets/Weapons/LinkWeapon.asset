@@ -21,8 +21,8 @@ MonoBehaviour:
   projectileSpeed: 90
   projectileLifetime: 20
   projectilePierces: 0
-  projectileHasAoe: 1
-  projectileAoe: 7
+  projectileHasAoe: 0
+  projectileAoe: 15
   projectileAoeVisibleDuration: 0
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   endlessAmmo: 0
@@ -37,6 +37,6 @@ MonoBehaviour:
   hitscanWeapon: 0
   hitscanLimitedRange: 0
   hitscanRange: 0
-  hitscanVisibleTime: 1
+  hitscanVisibleTime: 0.2
   hasSecondaryFire: 1
   secondaryAbility: {fileID: 11400000, guid: c0b9671c653443c4d812027a620c867b, type: 2}

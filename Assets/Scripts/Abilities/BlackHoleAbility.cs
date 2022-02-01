@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BlackHoleAbility : AbilityProjectileBody
+public class BlackHoleAbility : AbilityProjectile
 {
     [SerializeField] private float blackHoleRadius;
     [SerializeField] private float blackHoleRadiusWhileTravelling;
@@ -36,7 +36,7 @@ public class BlackHoleAbility : AbilityProjectileBody
     {
         BlackHoleEffectStop();
         DeactivateRange();
-        DestroyProjectile(false);
+        DestroyProjectile();
     }
 
     private void BlackHoleEffect(Vector3 position, float radius)
@@ -67,7 +67,7 @@ public class BlackHoleAbility : AbilityProjectileBody
     {
         for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[i].gameObject.CompareTag("Enemy"))
+            if (hits[i].gameObject.CompareTag("Enemy") && hits[i] != null)
             {
                 hits[i].gameObject.GetComponent<EnemyPattern>().enabled = true;
                 hits[i].gameObject.GetComponent<NavMeshAgent>().enabled = true;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Link
   m_EditorClassIdentifier: 
   secondaryFireName: Link
-  secondaryProjectile: {fileID: 5814666638754323035, guid: d2935f286cebb37439fc34115bb6fa67, type: 3}
+  secondaryProjectile: {fileID: 5814666638754323035, guid: 4a84717c99189b44b9116e16919fe82d, type: 3}
   secondaryDamage: 0
   secondaryProjectileSpeed: 110
   secondaryStopsAfterSetAmountOfTime: 0
