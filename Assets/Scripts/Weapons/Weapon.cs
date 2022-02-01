@@ -13,6 +13,9 @@ public class Weapon : ScriptableObject
     public float projectileSpeed;
     public float projectileLifetime;
     public bool projectilePierces;
+    public bool projectileHasAoe;
+    public float projectileAoe;
+    public float projectileAoeVisibleDuration;
     public GameObject projectile;
     [Header("Weapon Extra Options")]
     public bool endlessAmmo;

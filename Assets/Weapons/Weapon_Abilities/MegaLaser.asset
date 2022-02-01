@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: MegaLaser
   m_EditorClassIdentifier: 
   secondaryFireName: Mega Laser
-  secondaryProjectile: {fileID: 5814666638754323035, guid: 26902a40192141948b24a417852af81f, type: 3}
+  secondaryProjectile: {fileID: 5814666638754323035, guid: 0ff6d49478862554a91c89b4cf97b8f1, type: 3}
   secondaryDamage: 2
   secondaryProjectileSpeed: 0
+  secondaryStopsAfterSetAmountOfTime: 0
+  stopAfterSeconds: 0
   secondaryStopsAtMousePosition: 0
   secondaryFlies: 0
   secondaryDurationToggle: 1

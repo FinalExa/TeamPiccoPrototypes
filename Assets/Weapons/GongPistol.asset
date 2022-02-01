@@ -20,6 +20,10 @@ MonoBehaviour:
   projectileDamage: 2
   projectileSpeed: 100
   projectileLifetime: 1.5
+  projectilePierces: 0
+  projectileHasAoe: 0
+  projectileAoe: 0
+  projectileAoeVisibleDuration: 0
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   endlessAmmo: 0
   automaticWeapon: 0
