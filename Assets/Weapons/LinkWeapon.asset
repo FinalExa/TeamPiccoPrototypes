@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LinkWeapon
   m_EditorClassIdentifier: 
   weaponName: LinkWeapon
-  shootDelay: 0
+  shootDelay: 0.05
   rechargeDelay: 3
   ammoMax: 210
   magazineSize: 30
@@ -22,7 +22,7 @@ MonoBehaviour:
   projectileLifetime: 20
   projectilePierces: 0
   projectileHasAoe: 0
-  projectileAoe: 15
+  projectileAoe: 7
   projectileAoeVisibleDuration: 0
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   endlessAmmo: 0

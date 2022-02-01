@@ -15,16 +15,16 @@ MonoBehaviour:
   secondaryFireName: Link
   secondaryProjectile: {fileID: 5814666638754323035, guid: 4a84717c99189b44b9116e16919fe82d, type: 3}
   secondaryDamage: 0
-  secondaryProjectileSpeed: 90
-  secondaryStopsAfterSetAmountOfTime: 1
-  stopAfterSeconds: 1
-  secondaryStopsAtMousePosition: 0
+  secondaryProjectileSpeed: 110
+  secondaryStopsAfterSetAmountOfTime: 0
+  stopAfterSeconds: 20
+  secondaryStopsAtMousePosition: 1
   secondaryFlies: 0
   secondaryDurationToggle: 1
-  secondaryDurationTime: 5
+  secondaryDurationTime: 10
   playerIsStoppedDuringSecondaryDuration: 0
   secondaryCooldownToggle: 1
-  secondaryCooldownTime: 15
+  secondaryCooldownTime: 2
   secondaryLifetime: 20
   secondaryAmmoCost: 0
   normalShotsInteractWithSecondaryProjectile: 0
