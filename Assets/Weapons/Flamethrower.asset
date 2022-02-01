@@ -20,11 +20,15 @@ MonoBehaviour:
   projectileDamage: 1
   projectileSpeed: 25
   projectileLifetime: 0.6
-  projectile: {fileID: 1495253717480726450, guid: 7d23ce4680d73c748bcd761e56bed9f1, type: 3}
+  projectilePierces: 0
+  projectileHasAoe: 0
+  projectileAoe: 0
+  projectileAoeVisibleDuration: 0
+  projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   endlessAmmo: 0
   automaticWeapon: 1
   shotgunWeapon: 1
-  shotgunProjectileNumber: 5
+  shotgunProjectileNumber: 15
   shotgunSpread: 1.55
   shotgunSpeedDifference: 20
   chargedWeapon: 0

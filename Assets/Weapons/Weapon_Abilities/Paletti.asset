@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Paletti
   m_EditorClassIdentifier: 
   secondaryFireName: Paletti
-  secondaryProjectile: {fileID: 5814666638754323035, guid: e6f3b269ccdf19940a3dc4b8649eaafb, type: 3}
+  secondaryProjectile: {fileID: 5814666638754323035, guid: bd827bb54f0d8e94f93a6bbc0401845a, type: 3}
   secondaryDamage: 0
   secondaryProjectileSpeed: 90
   secondaryStopsAfterSetAmountOfTime: 0
   stopAfterSeconds: 0.3
   secondaryStopsAtMousePosition: 1
-  secondaryFlies: 0
+  secondaryFlies: 1
   secondaryDurationToggle: 1
   secondaryDurationTime: 10
   playerIsStoppedDuringSecondaryDuration: 0
