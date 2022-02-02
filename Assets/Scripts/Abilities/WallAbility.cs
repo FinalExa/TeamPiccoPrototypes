@@ -36,7 +36,7 @@ public class WallAbility : AbilityProjectile
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        if (other.CompareTag("Enemy") && reachingTarget)
+        if (other.CompareTag("Enemy") || other.CompareTag("Projectile") && reachingTarget)
         {
             other.GetComponent<Health>().DecreaseHP(damage);
             projectileRigidbody.velocity = Vector3.zero;
