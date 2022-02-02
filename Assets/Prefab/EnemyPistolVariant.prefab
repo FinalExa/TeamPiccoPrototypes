@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8138723754154361793}
   - component: {fileID: 8196914974345011287}
   - component: {fileID: 1661040557318456125}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3879403988285957613}
   - component: {fileID: 7648173519115936072}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ProjectileStartPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 2733700917984062089}
   - component: {fileID: 5895946944193532278}
   - component: {fileID: -2982296740507482438}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyPistolVariant
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 6521546234575124417}
   - component: {fileID: 3867116042856708118}
   - component: {fileID: 333012973540764197}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3910083687365122120}
   - component: {fileID: 6384285516124561856}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Range
   m_TagString: EnemyRange
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 3686299953331373898}
   - component: {fileID: 7087135058298828945}
   - component: {fileID: 4050360708156187777}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 'Canvas '
   m_TagString: Untagged
   m_Icon: {fileID: 0}

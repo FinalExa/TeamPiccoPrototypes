@@ -15,6 +15,8 @@ public class PillarsAbility : AbilityProjectile
     [SerializeField] private int pillarsMaxInScene;
     private PillarsAbility[] pillarsInScene;
     [HideInInspector] public int pillarId;
+    [SerializeField] private float rangeBetweenPillarsToActivateAbility;
+    [SerializeField] private PillarWall pillarWall;
 
     public override void AbilityEffectBeforeReachingTarget()
     {
@@ -24,6 +26,7 @@ public class PillarsAbility : AbilityProjectile
     public override void OnDeploy()
     {
         PillarsInScene();
+        PillarWalls();
         CalculateTimer();
         DamageArea(this.transform.position);
     }
@@ -87,13 +90,15 @@ public class PillarsAbility : AbilityProjectile
 
     private void DamageArea(Vector3 position)
     {
+        List<Health> healths = new List<Health>();
         Collider[] hits = Physics.OverlapSphere(position, singlePillarRange);
         foreach (Collider hit in hits)
         {
             Health enemy = hit.gameObject.GetComponent<Health>();
-            if (enemy != null && !enemy.isPlayer)
+            if (enemy != null && !enemy.isPlayer && !healths.Contains(enemy))
             {
                 enemy.DecreaseHP(damage);
+                healths.Add(enemy);
             }
         }
         RangeVisibleSetup();
@@ -122,4 +127,35 @@ public class PillarsAbility : AbilityProjectile
         durationTimer = durationTime;
     }
 
+    private void PillarWalls()
+    {
+        foreach (PillarsAbility pillar in pillarsInScene)
+        {
+            if (pillarId > 0 && pillar != this)
+            {
+                float distance = Vector3.Distance(this.gameObject.transform.position, pillar.gameObject.transform.position);
+                if (distance <= rangeBetweenPillarsToActivateAbility)
+                {
+                    if (Physics.Raycast(this.transform.position, (pillar.transform.position - this.transform.position).normalized, out RaycastHit hit, distance))
+                    {
+                        if (hit.collider.gameObject.GetComponent<PillarsAbility>() != null)
+                        {
+                            SpawnWall(pillar, distance);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void SpawnWall(PillarsAbility pillar, float distance)
+    {
+        PillarWall wallScript = Instantiate(pillarWall, this.gameObject.transform);
+        wallScript.wallStart = this;
+        wallScript.wallEnd = pillar;
+        GameObject wall = wallScript.gameObject;
+        wall.transform.localScale = new Vector3(wall.transform.localScale.x, wall.transform.localScale.y, distance);
+        wall.transform.forward = (pillar.gameObject.transform.position - this.transform.position).normalized;
+        wall.transform.position = this.transform.position + ((pillar.gameObject.transform.position - this.transform.position).normalized * distance) / 2;
+    }
 }
