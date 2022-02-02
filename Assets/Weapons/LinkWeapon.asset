@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: LinkWeapon
   m_EditorClassIdentifier: 
   weaponName: LinkWeapon
-  shootDelay: 0.05
+  shootDelay: 0.1
   rechargeDelay: 3
   ammoMax: 210
   magazineSize: 30
-  projectileDamage: 5
+  projectileDamage: 2
   projectileSpeed: 90
   projectileLifetime: 20
   projectilePierces: 0
