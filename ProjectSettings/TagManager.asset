@@ -17,14 +17,16 @@ TagManager:
   - Ammo
   - Health
   - Laser
+  - Hammer
+  - Turbine
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - AbilityBullet
   - Water
   - UI
-  - 
+  - PlayerBullet
   - 
   - 
   - 

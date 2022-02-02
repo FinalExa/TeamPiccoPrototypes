@@ -8,6 +8,7 @@ public class LinkAbilityDEF : AbilityProjectile
     [SerializeField] private GameObject rangeObj;
     private bool isActive;
     private Collider[] hits;
+    public GameObject Range;
 
     public override void Start()
     {
@@ -16,6 +17,7 @@ public class LinkAbilityDEF : AbilityProjectile
 
     public override void AbilityEffectDuration()
     {
+        Range.SetActive(true);
         ActivateRange(linkRadius);
         LinkEffect(this.transform.position, linkRadius);
     }
@@ -23,18 +25,13 @@ public class LinkAbilityDEF : AbilityProjectile
     public override void AbilityEffectAfterDuration()
     {
         DestroyProjectile();
+        Destroy(range);
     }
 
     private void LinkEffect(Vector3 position, float radius)
     {
         hits = Physics.OverlapSphere(position, radius);
     }
-
-
-    //public override void MainFireInteraction()
-    //{
-    //   
-    //}
 
     private void ActivateRange(float range)
     {
@@ -46,6 +43,16 @@ public class LinkAbilityDEF : AbilityProjectile
         {
             rangeObj.transform.localScale = new Vector3(range, range, range);
             rangeObj.SetActive(true);
+        }
+    }
+
+
+    public override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        if (other.CompareTag("Enemy"))
+        {
+            this.gameObject.transform.parent = other.gameObject.transform;
         }
     }
 }

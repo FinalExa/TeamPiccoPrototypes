@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e7b8357ea365434aa337fa5833fd2b6, type: 3}
-  m_Name: PalettiGun
+  m_Name: PillarGun
   m_EditorClassIdentifier: 
-  weaponName: PalettiGun
+  weaponName: PillarGun
   shootDelay: 0.1
   rechargeDelay: 1
   ammoMax: 102
@@ -21,6 +21,9 @@ MonoBehaviour:
   projectileSpeed: 90
   projectileLifetime: 20
   projectilePierces: 0
+  projectileHasAoe: 0
+  projectileAoe: 0
+  projectileAoeVisibleDuration: 0
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   endlessAmmo: 0
   automaticWeapon: 0

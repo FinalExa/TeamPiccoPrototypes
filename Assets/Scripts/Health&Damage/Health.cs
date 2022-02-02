@@ -120,5 +120,10 @@ public class Health : MonoBehaviour
             if (isPlayer) DecreaseHP(other.GetComponentInParent<LaserOptions>().laserDamageToPlayer);
             else DecreaseHP(other.GetComponentInParent<LaserOptions>().laserDamageToEnemies * Time.deltaTime);
         }
+        if (other.CompareTag("Turbine"))
+        {
+            if (isPlayer) DecreaseHP(other.GetComponent<TurbineOptions>().TurbineDamageToPlayer);
+            else DecreaseHP(other.GetComponent<TurbineOptions>().TurbineDamageToEnemies * Time.deltaTime);
+        }
     }
 }
