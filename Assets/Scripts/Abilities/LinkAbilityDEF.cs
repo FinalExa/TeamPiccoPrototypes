@@ -51,4 +51,13 @@ public class LinkAbilityDEF : AbilityProjectile
             rangeObj.SetActive(true);
         }
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            this.gameObject.transform.parent = other.transform;
+        }
+    }
 }
