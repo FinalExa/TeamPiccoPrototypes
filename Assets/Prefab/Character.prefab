@@ -531,7 +531,7 @@ MonoBehaviour:
     hitscanVisibleTimer: 0
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
-  - weapon: {fileID: 11400000, guid: bff2a8daa157f1942b06fccbca47b477, type: 2}
+  - weapon: {fileID: 11400000, guid: f220f6a00345dd34988d075b620ad0db, type: 2}
     shootDelayTimer: 0
     shootReady: 0
     rechargeDelayTimer: 0
