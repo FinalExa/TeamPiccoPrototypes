@@ -26,14 +26,14 @@ public class Projectile : MonoBehaviour
     protected float rayTimer;
     protected bool clearLine;
     protected MeshRenderer meshRenderer;
-    protected SphereCollider sphereCollider;
+    protected Collider projectileCollider;
     protected bool objectActive;
 
     public virtual void Awake()
     {
         projectileRigidbody = this.gameObject.GetComponent<Rigidbody>();
         meshRenderer = this.gameObject.GetComponent<MeshRenderer>();
-        sphereCollider = this.gameObject.GetComponent<SphereCollider>();
+        projectileCollider = this.gameObject.GetComponent<Collider>();
     }
 
     public virtual void Start()
@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
         else
         {
             meshRenderer.enabled = false;
-            sphereCollider.enabled = false;
+            projectileCollider.enabled = false;
             Hitscan();
         }
     }
@@ -60,7 +60,7 @@ public class Projectile : MonoBehaviour
     {
         this.projectileRigidbody.velocity = Vector3.zero;
         meshRenderer.enabled = false;
-        sphereCollider.enabled = false;
+        projectileCollider.enabled = false;
         objectActive = false;
     }
 
@@ -191,7 +191,7 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.CompareTag("AbilityProjectile") && other.gameObject.GetComponent<AbilityProjectile>() != null)
         {
             if (hasAoe) AoeBehaviour(this.transform.position);
-            other.gameObject.GetComponent<AbilityProjectile>().signatureProjectile = this.gameObject.transform.parent.gameObject;
+            other.gameObject.GetComponent<AbilityProjectile>().signatureProjectile = this.gameObject;
             other.gameObject.GetComponent<AbilityProjectile>().MainFireInteraction();
         }
     }

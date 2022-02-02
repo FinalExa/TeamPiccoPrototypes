@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHP;
-    [SerializeField] private bool isPlayer;
+    public bool isPlayer;
     private float currentHP;
     [SerializeField] private Text UIText;
     public float invincibilityTime;
