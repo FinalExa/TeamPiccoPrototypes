@@ -20,6 +20,7 @@ public class AbilityProjectile : Projectile
     [HideInInspector] public GameObject originPoint;
     [HideInInspector] public bool hitSomething;
     private PlayerReferences playerRefs;
+    private bool deployed;
 
     public override void Awake()
     {
@@ -33,7 +34,7 @@ public class AbilityProjectile : Projectile
         if (stopTimeCheck) StopAfterTime();
         else if (stopAtTarget) StopAtTarget();
         else if (usesDuration) durationActive = true;
-        else if (!usesDuration) OnDeploy();
+        else if (!usesDuration) DeployActivate();
     }
 
     public void StopAfterTimeSetup()
@@ -87,7 +88,7 @@ public class AbilityProjectile : Projectile
         }
         else
         {
-            OnDeploy();
+            DeployActivate();
             if (usesDuration) durationActive = true;
             StopMovement();
         }
@@ -129,6 +130,15 @@ public class AbilityProjectile : Projectile
         return;
     }
 
+    private void DeployActivate()
+    {
+        if (!deployed)
+        {
+            OnDeploy();
+            deployed = true;
+        }
+    }
+
     public virtual void OnDeploy()
     {
         return;
@@ -141,7 +151,7 @@ public class AbilityProjectile : Projectile
 
     protected void DestroySignature()
     {
-        GameObject.Destroy(signatureProjectile);
+        signatureProjectile.GetComponent<Projectile>().DestroyProjectile();
     }
 
     private void StopPlayer()
@@ -172,7 +182,7 @@ public class AbilityProjectile : Projectile
         {
             StopMovement();
             if (usesDuration) durationActive = true;
-            OnDeploy();
+            DeployActivate();
         }
         else
         {
@@ -183,7 +193,7 @@ public class AbilityProjectile : Projectile
     private void StopMovement()
     {
         projectileRigidbody.velocity = Vector3.zero;
-        OnDeploy();
+        DeployActivate();
         if (stopTimeCheck) stopTimeCheck = false;
     }
 

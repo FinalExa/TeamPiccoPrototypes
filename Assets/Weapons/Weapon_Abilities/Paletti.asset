@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondaryFireName: Paletti
   secondaryProjectile: {fileID: 5814666638754323035, guid: bd827bb54f0d8e94f93a6bbc0401845a, type: 3}
-  secondaryDamage: 0
+  secondaryDamage: 5
   secondaryProjectileSpeed: 90
   secondaryStopsAfterSetAmountOfTime: 0
   stopAfterSeconds: 0.3
@@ -24,7 +24,7 @@ MonoBehaviour:
   secondaryDurationTime: 10
   playerIsStoppedDuringSecondaryDuration: 0
   secondaryCooldownToggle: 1
-  secondaryCooldownTime: 10
+  secondaryCooldownTime: 2
   secondaryLifetime: 40
   secondaryAmmoCost: 0
   normalShotsInteractWithSecondaryProjectile: 0
