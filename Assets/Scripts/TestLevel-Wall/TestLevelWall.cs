@@ -4,26 +4,17 @@ using UnityEngine;
 
 public class TestLevelWall : MonoBehaviour
 {
-    public GameObject room1, room2;
+    public GameObject roomToActive, room2ToDeactive, triggetToActive;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (room2.activeSelf == true && room1.activeSelf == true && other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            room1.SetActive(false);
-            room2.SetActive(true);
+            roomToActive.SetActive(true);
+            room2ToDeactive.SetActive(false);
+            triggetToActive.SetActive(true);
+            this.gameObject.SetActive(false);
         }
 
-        if (room1.activeSelf && room2.activeSelf == true && other.gameObject.tag == "Player")
-        {
-            room1.SetActive(true);
-            room2.SetActive(false);
-        }
-
-        //if (room2.activeSelf == false && other.gameObject.tag == "Player")
-        //{
-        //    room1.SetActive(false);
-        //    room2.SetActive(true);
-        //}
     }
 }
