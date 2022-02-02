@@ -27,6 +27,7 @@ public class Projectile : MonoBehaviour
     protected bool clearLine;
     protected MeshRenderer meshRenderer;
     protected SphereCollider sphereCollider;
+    protected bool objectActive;
 
     public virtual void Awake()
     {
@@ -37,6 +38,7 @@ public class Projectile : MonoBehaviour
 
     public virtual void Start()
     {
+        objectActive = true;
         lifeTimer = lifeTime;
         if (!isRay) ProjectileMovement();
         else
@@ -57,13 +59,15 @@ public class Projectile : MonoBehaviour
     public virtual void DestroyProjectile()
     {
         this.projectileRigidbody.velocity = Vector3.zero;
-        Destroy(this.gameObject);
+        meshRenderer.enabled = false;
+        sphereCollider.enabled = false;
+        objectActive = false;
     }
 
-    private void AoeBehaviour()
+    private void AoeBehaviour(Vector3 startPos)
     {
         List<EnemyPattern> enemies = new List<EnemyPattern>();
-        Collider[] hits = Physics.OverlapSphere(this.transform.position, aoe);
+        Collider[] hits = Physics.OverlapSphere(startPos, aoe);
         foreach (Collider hit in hits)
         {
             EnemyPattern pattern = hit.GetComponent<EnemyPattern>();
@@ -73,13 +77,14 @@ public class Projectile : MonoBehaviour
                 enemies.Add(pattern);
             }
         }
-        StartAoeVisible();
+        StartAoeVisible(startPos);
     }
 
-    private void StartAoeVisible()
+    private void StartAoeVisible(Vector3 startPos)
     {
         aoeTimer = aoeVisible;
         range.transform.localScale = new Vector3(aoe, aoe, aoe);
+        range.transform.position = startPos;
         range.SetActive(true);
         aoeDone = true;
     }
@@ -122,13 +127,18 @@ public class Projectile : MonoBehaviour
             itHit = true;
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
-                hit.collider.gameObject.GetComponent<Health>().DecreaseHP(damage);
+                if (!hasAoe) hit.collider.gameObject.GetComponent<Health>().DecreaseHP(damage);
+                else AoeBehaviour(hit.point);
             }
             if (hit.collider.gameObject.CompareTag("AbilityProjectile"))
             {
                 print("CIAO!");
                 if (hit.collider.gameObject.GetComponent<AbilityProjectile>() != null) hit.collider.gameObject.GetComponent<AbilityProjectile>().MainFireInteraction();
                 else if (hit.collider.gameObject.GetComponentInParent<AbilityProjectile>() != null) hit.collider.gameObject.GetComponentInParent<AbilityProjectile>().MainFireInteraction();
+            }
+            if (hit.collider.gameObject.CompareTag("Wall") && hasAoe)
+            {
+                AoeBehaviour(hit.point);
             }
         }
         if (!rayNeedsRange || (rayNeedsRange && itHit)) HitscanDrawLine(rayOrigin, hit.point);
@@ -170,20 +180,19 @@ public class Projectile : MonoBehaviour
         if (this.gameObject.CompareTag("ProjectilePlayer") && other.gameObject.GetComponent<Health>() && other.gameObject.CompareTag("Enemy") && !aoeDone)
         {
             if (!hasAoe) other.gameObject.GetComponent<Health>().DecreaseHP(damage);
-            else AoeBehaviour();
+            else AoeBehaviour(this.transform.position);
             DestroyProjectile();
         }
         if (other.gameObject.CompareTag("Wall"))
         {
-            if (hasAoe) AoeBehaviour();
+            if (hasAoe) AoeBehaviour(this.transform.position);
             DestroyProjectile();
         }
         if (other.gameObject.CompareTag("AbilityProjectile"))
         {
-            if (hasAoe) AoeBehaviour();
+            if (hasAoe) AoeBehaviour(this.transform.position);
             other.gameObject.GetComponent<AbilityProjectile>().signatureProjectile = this.gameObject.transform.parent.gameObject;
             other.gameObject.GetComponent<AbilityProjectile>().MainFireInteraction();
         }
     }
 }
-
