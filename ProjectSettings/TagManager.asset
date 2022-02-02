@@ -17,6 +17,8 @@ TagManager:
   - Ammo
   - Health
   - Laser
+  - Hammer
+  - Turbine
   layers:
   - Default
   - TransparentFX

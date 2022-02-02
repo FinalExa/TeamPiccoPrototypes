@@ -5,6 +5,7 @@ using UnityEngine;
 public class LaserOptions : MonoBehaviour
 {
     [SerializeField] private GameObject laser;
+    public float speed = 50.0f;
     public float laserDamageToPlayer;
     public float laserDamageToEnemies;
     [SerializeField] private bool isIntermittent;
