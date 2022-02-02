@@ -78,11 +78,11 @@ MonoBehaviour:
   durationTime: 0
   durationTimer: 0
   originPoint: {fileID: 0}
+  hitSomething: 0
   blackHoleRadius: 10
   blackHoleRadiusWhileTravelling: 5
   blackHolePullSpeed: 30
   blackHoleOffsetAddPerEnemy: 2
-  rangeObj: {fileID: 8824982888763534307}
 --- !u!54 &-3310621872110477516
 Rigidbody:
   m_ObjectHideFlags: 0

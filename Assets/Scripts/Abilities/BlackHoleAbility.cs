@@ -8,7 +8,6 @@ public class BlackHoleAbility : AbilityProjectile
     [SerializeField] private float blackHoleRadiusWhileTravelling;
     [SerializeField] private float blackHolePullSpeed;
     [SerializeField] private float blackHoleOffsetAddPerEnemy;
-    [SerializeField] private GameObject rangeObj;
     private float blackHoleOffsetAddTotal;
     private bool isActive;
     private Collider[] hits;
@@ -79,7 +78,7 @@ public class BlackHoleAbility : AbilityProjectile
     {
     }
 
-    private void ActivateRange(float range)
+    private void ActivateRange(float rangeValue)
     {
         if (!isActive)
         {
@@ -87,13 +86,13 @@ public class BlackHoleAbility : AbilityProjectile
         }
         else
         {
-            rangeObj.transform.localScale = new Vector3(range, range, range);
-            rangeObj.SetActive(true);
+            range.transform.localScale = new Vector3(rangeValue, rangeValue, rangeValue);
+            range.SetActive(true);
         }
     }
     private void DeactivateRange()
     {
-        rangeObj.SetActive(false);
+        range.SetActive(false);
         isActive = false;
     }
 }
