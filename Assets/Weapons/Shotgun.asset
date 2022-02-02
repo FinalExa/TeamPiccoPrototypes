@@ -17,16 +17,20 @@ MonoBehaviour:
   rechargeDelay: 1.5
   ammoMax: 36
   magazineSize: 4
-  projectileDamage: 3
+  projectileDamage: 6
   projectileSpeed: 90
   projectileLifetime: 0.3
+  projectilePierces: 0
+  projectileHasAoe: 0
+  projectileAoe: 0
+  projectileAoeVisibleDuration: 0
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   endlessAmmo: 0
   automaticWeapon: 0
   shotgunWeapon: 1
-  shotgunProjectileNumber: 8
-  shotgunSpread: 2.8
-  shotgunSpeedDifference: 20
+  shotgunProjectileNumber: 24
+  shotgunSpread: 2.5
+  shotgunSpeedDifference: 5
   chargedWeapon: 0
   chargeTime: 0
   chargedMaxDamage: 0
