@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea5c93fe57e60e54ca09f6ea10ac6316, type: 3}
-  m_Name: Paletti
+  m_Name: Pillars
   m_EditorClassIdentifier: 
-  secondaryFireName: Paletti
+  secondaryFireName: Pillars
   secondaryProjectile: {fileID: 5814666638754323035, guid: bd827bb54f0d8e94f93a6bbc0401845a, type: 3}
   secondaryDamage: 5
   secondaryProjectileSpeed: 90

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PalettiAbility : AbilityProjectile
+public class PillarsAbility : AbilityProjectile
 {
     [SerializeField] private float singlePillarRange;
     [SerializeField] private int timesActivatedInDuration;
@@ -13,7 +13,7 @@ public class PalettiAbility : AbilityProjectile
     private float activationTime;
     private float activationTimer;
     [SerializeField] private int pillarsMaxInScene;
-    private PalettiAbility[] pillarsInScene;
+    private PillarsAbility[] pillarsInScene;
     [HideInInspector] public int pillarId;
 
     public override void AbilityEffectBeforeReachingTarget()
@@ -61,13 +61,13 @@ public class PalettiAbility : AbilityProjectile
 
     private void PillarsCheck()
     {
-        pillarsInScene = FindObjectsOfType<PalettiAbility>();
+        pillarsInScene = FindObjectsOfType<PillarsAbility>();
         pillarId = pillarsInScene.Length - 1;
     }
 
     private void PillarsCleanup()
     {
-        foreach (PalettiAbility pillar in pillarsInScene)
+        foreach (PillarsAbility pillar in pillarsInScene)
         {
             if (pillar.pillarId == 0) GameObject.Destroy(pillar.gameObject);
             else pillar.pillarId--;

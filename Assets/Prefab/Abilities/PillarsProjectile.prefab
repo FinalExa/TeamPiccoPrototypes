@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3419536073322452454}
   - component: {fileID: 1680112908894418891}
   m_Layer: 0
-  m_Name: PalettiProjectile
+  m_Name: PillarsProjectile
   m_TagString: AbilityProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
