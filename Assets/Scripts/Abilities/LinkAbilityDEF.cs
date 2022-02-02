@@ -33,12 +33,6 @@ public class LinkAbilityDEF : AbilityProjectile
         hits = Physics.OverlapSphere(position, radius);
     }
 
-
-    //public override void MainFireInteraction()
-    //{
-    //   
-    //}
-
     private void ActivateRange(float range)
     {
         if (!isActive)
@@ -53,11 +47,12 @@ public class LinkAbilityDEF : AbilityProjectile
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    public override void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
         if (other.CompareTag("Enemy"))
         {
-            this.gameObject.transform.parent = other.transform;
+            this.gameObject.transform.parent = other.gameObject.transform;
         }
     }
 }
