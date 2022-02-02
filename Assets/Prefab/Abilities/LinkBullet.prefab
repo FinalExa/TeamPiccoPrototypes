@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8918449962042798290}
   - component: {fileID: 3393355617815153506}
   - component: {fileID: 8827009415319013238}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AbilityTrigger
   m_TagString: AbilityProjectile
   m_Icon: {fileID: 0}
@@ -58,8 +58,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCollider: {fileID: 3393355617815153506}
-  ColliderAoe: 7
-  ColliderAoePlus: 15
+  ColliderAoe: 20
+  ColliderAoePlus: 40
   MyAoe: {fileID: 11400000, guid: df4c6a2cdcfd20842a4adce0870edb43, type: 2}
 --- !u!1 &5814666638754323035
 GameObject:
