@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d948547495d82e43a1534397e71642d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TurbineTrap: {fileID: 0}
+  TurbineTrap: {fileID: 1999621640085859188}
   TurbineRotationSpeed: 50
   TurbineDamageToPlayer: 0.1
   TurbineDamageToEnemies: 0

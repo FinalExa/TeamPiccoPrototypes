@@ -12,15 +12,14 @@ public class TurbineOptions : MonoBehaviour
     [SerializeField] private bool intermittentStatus;
     [SerializeField] private float intermittentActiveCooldown;
     [SerializeField] private float intermittentDeactiveCooldown;
-    private float intermittentTimer;// Start is called before the first frame update
+    private float intermittentTimer;
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.down * TurbineRotationSpeed * Time.deltaTime);
+        TurbineTrap.transform.Rotate(Vector3.down * TurbineRotationSpeed * Time.deltaTime);
     }
 }
