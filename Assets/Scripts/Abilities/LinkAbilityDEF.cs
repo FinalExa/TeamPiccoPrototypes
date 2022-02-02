@@ -8,6 +8,7 @@ public class LinkAbilityDEF : AbilityProjectile
     [SerializeField] private GameObject rangeObj;
     private bool isActive;
     private Collider[] hits;
+    public GameObject Range;
 
     public override void Start()
     {
@@ -16,6 +17,7 @@ public class LinkAbilityDEF : AbilityProjectile
 
     public override void AbilityEffectDuration()
     {
+        Range.SetActive(true);
         ActivateRange(linkRadius);
         LinkEffect(this.transform.position, linkRadius);
     }
