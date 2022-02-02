@@ -41,7 +41,7 @@ public class PalettiAbility : AbilityProjectile
 
     public override void DestroyProjectile()
     {
-        projectileRigidbody.velocity = Vector3.zero;
+        GameObject.Destroy(this.gameObject);
     }
 
     private void CalculateTimer()
