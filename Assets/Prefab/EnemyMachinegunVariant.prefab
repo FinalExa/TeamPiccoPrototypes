@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8843207864057268455, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
       propertyPath: distanceFromPlayer
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8843207864057268455, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
       propertyPath: closenessFromPlayer

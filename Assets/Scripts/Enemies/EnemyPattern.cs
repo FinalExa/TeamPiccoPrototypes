@@ -8,7 +8,6 @@ public class EnemyPattern : MonoBehaviour
     public bool alerted;
     private Shoot shoot;
     [SerializeField] private float distanceFromPlayer;
-    [SerializeField] private float closenessFromPlayer;
     [SerializeField] private GameObject projectileStartPos;
     private PlayerReferences playerRef;
     private NavMeshAgent thisNavMesh;
@@ -30,12 +29,12 @@ public class EnemyPattern : MonoBehaviour
 
     private void Update()
     {
+        canShootAtPlayer = CheckOcclusionWithPlayer();
         Alert();
     }
 
     private void FixedUpdate()
     {
-        canShootAtPlayer = CheckOcclusionWithPlayer();
     }
 
     private void Alert()
