@@ -22,7 +22,6 @@ public class EnemyPattern : MonoBehaviour
     }
     private void Start()
     {
-        alerted = false;
         shoot.enabled = false;
         canShootAtPlayer = false;
     }
