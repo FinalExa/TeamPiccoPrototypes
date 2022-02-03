@@ -22,8 +22,8 @@ public class EnemyPattern : MonoBehaviour
     }
     private void Start()
     {
-        shoot.enabled = false;
-        canShootAtPlayer = false;
+        //shoot.enabled = false;
+        //canShootAtPlayer = false;
     }
 
     private void Update()
@@ -53,7 +53,7 @@ public class EnemyPattern : MonoBehaviour
             }
             else
             {
-                shoot.enabled = false;
+                //shoot.enabled = false;
                 thisNavMesh.SetDestination(playerRef.transform.position);
             }
         }
