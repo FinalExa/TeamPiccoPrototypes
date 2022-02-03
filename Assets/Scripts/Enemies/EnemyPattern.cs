@@ -32,10 +32,6 @@ public class EnemyPattern : MonoBehaviour
         Alert();
     }
 
-    private void FixedUpdate()
-    {
-    }
-
     private void Alert()
     {
         if (alerted && thisNavMesh.enabled)
