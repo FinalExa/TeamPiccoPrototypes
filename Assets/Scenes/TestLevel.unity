@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2186,7 +2186,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183443533}
   m_LocalRotation: {x: -0.17670347, y: 0.81949127, z: -0.42660016, w: -0.3394442}
-  m_LocalPosition: {x: 177, y: 46, z: 17}
+  m_LocalPosition: {x: 19, y: 46, z: 17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4049,6 +4049,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1387944110}
     m_Modifications:
+    - target: {fileID: 308648315138542766, guid: f5f3a8f3e03352e45a088741893e694f, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 308648315138542766, guid: f5f3a8f3e03352e45a088741893e694f, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949407048137070875, guid: f5f3a8f3e03352e45a088741893e694f, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461701755460725738, guid: f5f3a8f3e03352e45a088741893e694f, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461701755460725738, guid: f5f3a8f3e03352e45a088741893e694f, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4175740798157350739, guid: f5f3a8f3e03352e45a088741893e694f, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6237885965165023322, guid: f5f3a8f3e03352e45a088741893e694f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4096,6 +4120,14 @@ PrefabInstance:
     - target: {fileID: 6237885965165023323, guid: f5f3a8f3e03352e45a088741893e694f, type: 3}
       propertyPath: m_Name
       value: RoomTest2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685000082297076605, guid: f5f3a8f3e03352e45a088741893e694f, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685000082297076605, guid: f5f3a8f3e03352e45a088741893e694f, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5f3a8f3e03352e45a088741893e694f, type: 3}
@@ -4218,7 +4250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4976793914851956938, guid: 5491daebaf95a524c8c3e1bfba5dd285, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 160
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4976793914851956938, guid: 5491daebaf95a524c8c3e1bfba5dd285, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4289,6 +4321,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1387944110}
     m_Modifications:
+    - target: {fileID: 82704083112317379, guid: 9b5606e19493b4c4b9d95150559dfc41, type: 3}
+      propertyPath: intermittentStatus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82704083112317379, guid: 9b5606e19493b4c4b9d95150559dfc41, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2338049756850457128, guid: 9b5606e19493b4c4b9d95150559dfc41, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573523508851015518, guid: 9b5606e19493b4c4b9d95150559dfc41, type: 3}
+      propertyPath: intermittentStatus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573523508851015518, guid: 9b5606e19493b4c4b9d95150559dfc41, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573523508851015518, guid: 9b5606e19493b4c4b9d95150559dfc41, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808459059111190239, guid: 9b5606e19493b4c4b9d95150559dfc41, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808459059111190239, guid: 9b5606e19493b4c4b9d95150559dfc41, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7863607341516625606, guid: 9b5606e19493b4c4b9d95150559dfc41, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4346,6 +4410,78 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1387944110}
     m_Modifications:
+    - target: {fileID: 1151062421230515113, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentStatus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151062421230515113, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151062421230515113, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450636728235730686, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentStatus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450636728235730686, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450636728235730686, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029077517742959442, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentStatus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029077517742959442, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029077517742959442, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887273820700081853, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentStatus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887273820700081853, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887273820700081853, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112289024356829804, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentStatus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112289024356829804, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112289024356829804, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577380628540688490, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentStatus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577380628540688490, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentActiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577380628540688490, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
+      propertyPath: intermittentDeactiveCooldown
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8728948439950980588, guid: 94c4834516ac7e146897cb32349bd018, type: 3}
       propertyPath: m_Name
       value: RoomTest3
