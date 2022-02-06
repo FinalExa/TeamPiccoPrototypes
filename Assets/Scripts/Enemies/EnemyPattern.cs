@@ -13,6 +13,7 @@ public class EnemyPattern : MonoBehaviour
     private NavMeshAgent thisNavMesh;
     [HideInInspector] public bool canShootAtPlayer;
     [SerializeField] private bool canAlertNearbyEnemies;
+    [SerializeField] private bool alertOthersWorksThroughWalls;
     [HideInInspector] public bool canAlert;
     [SerializeField] private float alertNearbyEnemiesRange;
 
@@ -66,7 +67,7 @@ public class EnemyPattern : MonoBehaviour
 
     private bool CheckOcclusionWithPlayer()
     {
-        Vector3 startPos = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+        Vector3 startPos = this.transform.position;
         Vector3 direction = (playerRef.transform.position - startPos).normalized;
         bool canSeePlayer = false;
         if (Physics.Raycast(startPos, direction, out RaycastHit hit, Mathf.Infinity))
@@ -76,14 +77,8 @@ public class EnemyPattern : MonoBehaviour
                 canSeePlayer = true;
                 thisNavMesh.enabled = true;
             }
-            else if (hit.collider.gameObject.CompareTag("Laser"))
-            {
-                thisNavMesh.enabled = false;
-            }
-            else
-            {
-                thisNavMesh.enabled = true;
-            }
+            else if (hit.collider.gameObject.CompareTag("Laser")) thisNavMesh.enabled = false;
+            else thisNavMesh.enabled = true;
         }
         return canSeePlayer;
     }
@@ -97,8 +92,25 @@ public class EnemyPattern : MonoBehaviour
             EnemyPattern enemyPattern = enemy.GetComponent<EnemyPattern>();
             if (enemyPattern != null)
             {
-                enemyPattern.canAlert = false;
-                enemyPattern.alerted = true;
+                if (alertOthersWorksThroughWalls)
+                {
+                    enemyPattern.canAlert = false;
+                    enemyPattern.alerted = true;
+                }
+                else
+                {
+                    Vector3 startPos = this.transform.position;
+                    Vector3 direction = (enemyPattern.gameObject.transform.position - startPos).normalized;
+                    if (Physics.Raycast(startPos, direction, out RaycastHit hit, Mathf.Infinity))
+                    {
+                        EnemyPattern hitObj = hit.collider.gameObject.GetComponent<EnemyPattern>();
+                        if (hitObj == enemyPattern)
+                        {
+                            enemyPattern.canAlert = false;
+                            enemyPattern.alerted = true;
+                        }
+                    }
+                }
             }
         }
     }
