@@ -8,11 +8,14 @@ public class EnemyPattern : MonoBehaviour
     public bool alerted;
     private Shoot shoot;
     [SerializeField] private float distanceFromPlayer;
-    [SerializeField] private float closenessFromPlayer;
     [SerializeField] private GameObject projectileStartPos;
     private PlayerReferences playerRef;
     private NavMeshAgent thisNavMesh;
     [HideInInspector] public bool canShootAtPlayer;
+    [SerializeField] private bool canAlertNearbyEnemies;
+    [SerializeField] private bool alertOthersWorksThroughWalls;
+    [HideInInspector] public bool canAlert;
+    [SerializeField] private float alertNearbyEnemiesRange;
 
     private void Awake()
     {
@@ -23,25 +26,22 @@ public class EnemyPattern : MonoBehaviour
     }
     private void Start()
     {
-        alerted = false;
         shoot.enabled = false;
         canShootAtPlayer = false;
+        if (canAlertNearbyEnemies) canAlert = true;
     }
 
     private void Update()
     {
-        Alert();
-    }
-
-    private void FixedUpdate()
-    {
         canShootAtPlayer = CheckOcclusionWithPlayer();
+        Alert();
     }
 
     private void Alert()
     {
         if (alerted && thisNavMesh.enabled)
         {
+            if (canAlert && canAlertNearbyEnemies) AlertNearbyEnemies();
             if (canShootAtPlayer)
             {
                 shoot.enabled = true;
@@ -67,7 +67,7 @@ public class EnemyPattern : MonoBehaviour
 
     private bool CheckOcclusionWithPlayer()
     {
-        Vector3 startPos = new Vector3(this.transform.position.x, this.transform.position.y + 1f, this.transform.position.z);
+        Vector3 startPos = this.transform.position;
         Vector3 direction = (playerRef.transform.position - startPos).normalized;
         bool canSeePlayer = false;
         if (Physics.Raycast(startPos, direction, out RaycastHit hit, Mathf.Infinity))
@@ -77,15 +77,41 @@ public class EnemyPattern : MonoBehaviour
                 canSeePlayer = true;
                 thisNavMesh.enabled = true;
             }
-            else if (hit.collider.gameObject.CompareTag("Laser"))
-            {
-                thisNavMesh.enabled = false;
-            }
-            else
-            {
-                thisNavMesh.enabled = true;
-            }
+            else if (hit.collider.gameObject.CompareTag("Laser")) thisNavMesh.enabled = false;
+            else thisNavMesh.enabled = true;
         }
         return canSeePlayer;
+    }
+
+    private void AlertNearbyEnemies()
+    {
+        canAlert = false;
+        Collider[] enemies = Physics.OverlapSphere(this.transform.position, alertNearbyEnemiesRange);
+        foreach (Collider enemy in enemies)
+        {
+            EnemyPattern enemyPattern = enemy.GetComponent<EnemyPattern>();
+            if (enemyPattern != null)
+            {
+                if (alertOthersWorksThroughWalls)
+                {
+                    enemyPattern.canAlert = false;
+                    enemyPattern.alerted = true;
+                }
+                else
+                {
+                    Vector3 startPos = this.transform.position;
+                    Vector3 direction = (enemyPattern.gameObject.transform.position - startPos).normalized;
+                    if (Physics.Raycast(startPos, direction, out RaycastHit hit, Mathf.Infinity))
+                    {
+                        EnemyPattern hitObj = hit.collider.gameObject.GetComponent<EnemyPattern>();
+                        if (hitObj == enemyPattern)
+                        {
+                            enemyPattern.canAlert = false;
+                            enemyPattern.alerted = true;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -63,9 +63,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7488026599981649021, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
+      propertyPath: dropChance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488026599981649021, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
+      propertyPath: dropHealth
+      value: 
+      objectReference: {fileID: 572457958621333393, guid: 78aa30a6958b16e429be4dfe7f23f32b, type: 3}
     - target: {fileID: 8843207864057268455, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
       propertyPath: distanceFromPlayer
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8843207864057268455, guid: 96b5587ade2b99a4289eea0fed6ba339, type: 3}
       propertyPath: closenessFromPlayer

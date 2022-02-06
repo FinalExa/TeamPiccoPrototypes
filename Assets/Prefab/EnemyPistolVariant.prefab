@@ -262,7 +262,7 @@ MonoBehaviour:
   invincibilityTime: 0
   dropHealth: {fileID: 572457958621333393, guid: 78aa30a6958b16e429be4dfe7f23f32b, type: 3}
   dropAmmo: {fileID: 2040722665342141187, guid: 66614c7a5dd6ffe4aa203629f9c8ffa4, type: 3}
-  dropChance: 70
+  dropChance: 0
 --- !u!114 &8843207864057268455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,10 +276,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alerted: 0
-  distanceFromPlayer: 50
-  closenessFromPlayer: 30
+  distanceFromPlayer: 20
   projectileStartPos: {fileID: 1023044744484094521}
   canShootAtPlayer: 0
+  canAlertNearbyEnemies: 1
+  alertOthersWorksThroughWalls: 0
+  canAlert: 0
+  alertNearbyEnemiesRange: 30
 --- !u!54 &3746685406685054688
 Rigidbody:
   m_ObjectHideFlags: 0

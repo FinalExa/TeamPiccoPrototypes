@@ -127,12 +127,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 4285573081519433601}
+  speed: 50
   laserDamageToPlayer: 1
   laserDamageToEnemies: 10
   isIntermittent: 1
   intermittentStatus: 0
-  intermittentActiveCooldown: 3
-  intermittentDeactiveCooldown: 2
+  intermittentActiveCooldown: 1
+  intermittentDeactiveCooldown: 1
 --- !u!1 &4285573081519433601
 GameObject:
   m_ObjectHideFlags: 0
