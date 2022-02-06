@@ -12,6 +12,9 @@ public class EnemyPattern : MonoBehaviour
     private PlayerReferences playerRef;
     private NavMeshAgent thisNavMesh;
     [HideInInspector] public bool canShootAtPlayer;
+    [SerializeField] private bool canAlertNearbyEnemies;
+    [HideInInspector] public bool canAlert;
+    [SerializeField] private float alertNearbyEnemiesRange;
 
     private void Awake()
     {
@@ -24,6 +27,7 @@ public class EnemyPattern : MonoBehaviour
     {
         shoot.enabled = false;
         canShootAtPlayer = false;
+        if (canAlertNearbyEnemies) canAlert = true;
     }
 
     private void Update()
@@ -36,6 +40,7 @@ public class EnemyPattern : MonoBehaviour
     {
         if (alerted && thisNavMesh.enabled)
         {
+            if (canAlert && canAlertNearbyEnemies) AlertNearbyEnemies();
             if (canShootAtPlayer)
             {
                 shoot.enabled = true;
@@ -81,5 +86,20 @@ public class EnemyPattern : MonoBehaviour
             }
         }
         return canSeePlayer;
+    }
+
+    private void AlertNearbyEnemies()
+    {
+        canAlert = false;
+        Collider[] enemies = Physics.OverlapSphere(this.transform.position, alertNearbyEnemiesRange);
+        foreach (Collider enemy in enemies)
+        {
+            EnemyPattern enemyPattern = enemy.GetComponent<EnemyPattern>();
+            if (enemyPattern != null)
+            {
+                enemyPattern.canAlert = false;
+                enemyPattern.alerted = true;
+            }
+        }
     }
 }
