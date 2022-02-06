@@ -61,7 +61,7 @@ public class EnemyPattern : MonoBehaviour
 
     private bool CheckOcclusionWithPlayer()
     {
-        Vector3 startPos = new Vector3(this.transform.position.x, this.transform.position.y + 1f, this.transform.position.z);
+        Vector3 startPos = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
         Vector3 direction = (playerRef.transform.position - startPos).normalized;
         bool canSeePlayer = false;
         if (Physics.Raycast(startPos, direction, out RaycastHit hit, Mathf.Infinity))
