@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class KeepStartRotation : MonoBehaviour
 {
-    private Quaternion rotation;
-
-    private void Awake()
-    {
-        rotation = this.transform.rotation;
-    }
+    [SerializeField] private Vector3 rotation;
 
     private void Update()
     {
-        this.transform.rotation = rotation;
+        this.transform.rotation = Quaternion.Euler(rotation);
     }
 }
