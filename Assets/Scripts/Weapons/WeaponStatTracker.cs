@@ -25,6 +25,11 @@ public class WeaponStatTracker : MonoBehaviour
 
     private void Start()
     {
+        GenerateWeapons();
+    }
+
+    private void GenerateWeapons()
+    {
         for (int i = 0; i < weaponInfo.Length; i++)
         {
             weaponInfo[i].shootDelayTimer = weaponInfo[i].weapon.shootDelay;
