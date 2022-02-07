@@ -45,11 +45,11 @@ public class Shoot : MonoBehaviour
         if (playerRef.playerInputs.RKey == true && weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent != weaponUsed.weaponInfo[activeWeaponIndex].weapon.magazineSize) weaponUsed.weaponInfo[activeWeaponIndex].isRecharging = true;
         UpdateText();
         ChargeShot();
+        if (!weaponUsed.weaponInfo[activeWeaponIndex].shootReady) ShootTimer();
     }
 
     private void FixedUpdate()
     {
-        if (!weaponUsed.weaponInfo[activeWeaponIndex].shootReady) ShootTimer();
         if (weaponUsed.weaponInfo[activeWeaponIndex].isRecharging) RechargeTimer();
     }
 
@@ -74,7 +74,7 @@ public class Shoot : MonoBehaviour
             if (autoFirstShootStop) autoFirstShootStop = false;
             else ProjectileSpawn(false);
         }
-        if (weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer > 0) weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer -= Time.fixedDeltaTime;
+        if (weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer > 0) weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer -= Time.deltaTime;
         else
         {
             weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer = weaponUsed.weaponInfo[activeWeaponIndex].weapon.shootDelay;

@@ -6,6 +6,11 @@ using UnityEngine.AI;
 public class EnemyPattern : MonoBehaviour
 {
     public bool alerted;
+    private bool alertedFirstFramePassed;
+    private bool alertedFirstFrameCanvasActive;
+    [SerializeField] private GameObject alertedCanvas;
+    [SerializeField] private float alertedCanvasActiveDuration;
+    private float alertedCanvasDurationTimer;
     private Shoot shoot;
     [SerializeField] private float distanceFromPlayer;
     [SerializeField] private GameObject projectileStartPos;
@@ -28,6 +33,7 @@ public class EnemyPattern : MonoBehaviour
     {
         shoot.enabled = false;
         canShootAtPlayer = false;
+        alertedCanvasDurationTimer = alertedCanvasActiveDuration;
         if (canAlertNearbyEnemies) canAlert = true;
     }
 
@@ -35,12 +41,14 @@ public class EnemyPattern : MonoBehaviour
     {
         canShootAtPlayer = CheckOcclusionWithPlayer();
         Alert();
+        AlertedCanvas();
     }
 
     private void Alert()
     {
         if (alerted && thisNavMesh.enabled)
         {
+            if (!alertedFirstFramePassed) AlertedFirstFrame();
             if (canAlert && canAlertNearbyEnemies) AlertNearbyEnemies();
             if (canShootAtPlayer)
             {
@@ -111,6 +119,26 @@ public class EnemyPattern : MonoBehaviour
                         }
                     }
                 }
+            }
+        }
+    }
+
+    private void AlertedFirstFrame()
+    {
+        alertedFirstFrameCanvasActive = true;
+        alertedCanvas.gameObject.SetActive(true);
+        alertedFirstFramePassed = true;
+    }
+
+    private void AlertedCanvas()
+    {
+        if (alertedFirstFrameCanvasActive)
+        {
+            if (alertedCanvasDurationTimer > 0) alertedCanvasDurationTimer -= Time.deltaTime;
+            else
+            {
+                alertedCanvas.gameObject.SetActive(false);
+                alertedFirstFrameCanvasActive = false;
             }
         }
     }

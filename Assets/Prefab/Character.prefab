@@ -471,6 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeWeaponIndex: 0
+  isPlayer: 1
 --- !u!114 &8839056874508986754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa2beb4e0561cb45847245aff3be578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeWeaponIndex: 0
   autoInput: 0
   autoFirstShootStop: 0
   projectileStartPosition: {fileID: 2368323287208570982}
@@ -797,6 +799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291115f50542db144a30773047e1b974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotation: {x: 0, y: 0, z: 0}
 --- !u!223 &7597181368178251606
 Canvas:
   m_ObjectHideFlags: 0

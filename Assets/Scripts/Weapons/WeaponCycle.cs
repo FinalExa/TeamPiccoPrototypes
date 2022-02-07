@@ -7,6 +7,7 @@ public class WeaponCycle : MonoBehaviour
     private WeaponStatTracker weaponUsed;
     private PlayerReferences playerRef;
     [HideInInspector] public int activeWeaponIndex;
+    [SerializeField] private bool isPlayer;
     private void Awake()
     {
         playerRef = FindObjectOfType<PlayerReferences>();
@@ -20,7 +21,7 @@ public class WeaponCycle : MonoBehaviour
 
     private void Update()
     {
-        WeaponChange();
+        if (isPlayer) WeaponChange();
     }
 
     private void WeaponChange()
