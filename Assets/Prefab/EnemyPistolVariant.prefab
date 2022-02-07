@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2733700917984062092}
   - component: {fileID: 2488468583081216940}
+  - component: {fileID: -237221258469616098}
   - component: {fileID: 7195649034900898036}
   - component: {fileID: -8989108024156747980}
   - component: {fileID: -6906413286637633626}
@@ -195,6 +196,33 @@ MonoBehaviour:
     hitscanVisibleTimer: 0
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
+  - weapon: {fileID: 11400000, guid: a150d2fc200da0b4eb87dfcfbac3c8f5, type: 2}
+    shootDelayTimer: 0
+    shootReady: 0
+    rechargeDelayTimer: 0
+    isRecharging: 0
+    ammoCurrent: 0
+    magazineCurrent: 0
+    projectileParent: {fileID: 0}
+    chargedTimer: 0
+    chargePercentage: 0
+    hitscanVisibleTimer: 0
+    secondaryCooldownTimer: 0
+    secondaryCooldownActive: 0
+--- !u!114 &-237221258469616098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2733700917984062088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7153541f1e765c5428fe8fd9d1aaec07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceWeaponsEnabled: 0
+  distanceValue: 20
 --- !u!114 &7195649034900898036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeWeaponIndex: 0
+  isPlayer: 0
 --- !u!114 &-8989108024156747980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +310,7 @@ MonoBehaviour:
   distanceFromPlayer: 20
   projectileStartPos: {fileID: 1023044744484094521}
   canShootAtPlayer: 0
-  canAlertNearbyEnemies: 1
+  canAlertNearbyEnemies: 0
   alertOthersWorksThroughWalls: 0
   canAlert: 0
   alertNearbyEnemiesRange: 30
