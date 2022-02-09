@@ -29,6 +29,11 @@ public class EnemyPattern : MonoBehaviour
     [SerializeField] private float waitBeforeSearchTime;
     private float waitBeforeSearchTimer;
     private bool isInsideShootRange;
+    [SerializeField] private float switchTimeMin;
+    [SerializeField] private float switchTimeMax;
+    private float switchTimer;
+    [SerializeField] private float switchDistanceMin;
+    [SerializeField] private float switchDistanceMax;
 
     private void Awake()
     {
@@ -72,8 +77,9 @@ public class EnemyPattern : MonoBehaviour
                 if (waitBeforeSearchingAgain) StopWaitingBeforeSearching();
                 if (lockSearch) lockSearch = false;
                 shoot.enabled = true;
-                if (currentDistanceFromPlayer < distanceFromPlayerMin)
+                if (currentDistanceFromPlayer < distanceFromPlayerMin && !isInsideShootRange)
                 {
+                    //if (isInsideShootRange) isInsideShootRange = false;
                     thisNavMesh.isStopped = false;
                     Vector3 direction = (this.transform.position - playerRef.transform.position).normalized;
                     Vector3 outOfRangePoint = playerRef.transform.position + (direction * distanceFromPlayerMin);
@@ -81,13 +87,21 @@ public class EnemyPattern : MonoBehaviour
                 }
                 else if (currentDistanceFromPlayer > distanceFromPlayerMax)
                 {
+                    if (isInsideShootRange) isInsideShootRange = false;
                     thisNavMesh.isStopped = false;
                     thisNavMesh.SetDestination(playerRef.transform.position);
                 }
                 else
                 {
-                    thisNavMesh.isStopped = true;
-                    if (!isInsideShootRange) isInsideShootRange = true;
+                    if (!isInsideShootRange)
+                    {
+                        switchTimer = Random.Range(switchTimeMin, switchTimeMax);
+                        isInsideShootRange = true;
+                    }
+                    else
+                    {
+                        SwitchTimer();
+                    }
                 }
             }
             else
@@ -104,13 +118,30 @@ public class EnemyPattern : MonoBehaviour
 
     private void WaitBeforeSearchingAgain()
     {
-        if (waitBeforeSearchTimer > 0) waitBeforeSearchTimer -= Time.deltaTime;
+        if (waitBeforeSearchTimer > 0)
+        {
+            thisNavMesh.isStopped = true;
+            waitBeforeSearchTimer -= Time.deltaTime;
+        }
         else
         {
             lockSearch = true;
             shoot.enabled = false;
             StopWaitingBeforeSearching();
             thisNavMesh.SetDestination(playerRef.transform.position);
+        }
+    }
+
+    private void SwitchTimer()
+    {
+        if (switchTimer > 0) switchTimer -= Time.deltaTime;
+        else
+        {
+            print("Done");
+            Vector3 randomDirection = Random.insideUnitCircle.normalized;
+            Vector3 randomLocation = this.transform.position + (randomDirection * Random.Range(switchDistanceMin, switchDistanceMax));
+            thisNavMesh.SetDestination(randomLocation);
+            isInsideShootRange = false;
         }
     }
 
