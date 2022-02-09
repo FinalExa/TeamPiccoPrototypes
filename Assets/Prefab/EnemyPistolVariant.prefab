@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa2beb4e0561cb45847245aff3be578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoInput: 1
+  isEnemy: 1
   autoFirstShootStop: 0
   projectileStartPosition: {fileID: 1023044744484094521}
   reloadCanvas: {fileID: 0}
