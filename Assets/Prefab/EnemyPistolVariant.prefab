@@ -165,7 +165,6 @@ Transform:
   m_Children:
   - {fileID: 3879403988285957613}
   - {fileID: 114494468674010135}
-  - {fileID: 3910083687365122120}
   - {fileID: 9021919949869932345}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -307,6 +306,7 @@ MonoBehaviour:
   alerted: 0
   alertedCanvas: {fileID: 3706378463469404194}
   alertedCanvasActiveDuration: 0.3
+  rangeToSpotPlayer: 40
   distanceFromPlayer: 20
   projectileStartPos: {fileID: 1023044744484094521}
   canShootAtPlayer: 0
@@ -314,6 +314,8 @@ MonoBehaviour:
   alertOthersWorksThroughWalls: 0
   canAlert: 0
   alertNearbyEnemiesRange: 30
+  currentDistanceFromPlayer: 0
+  waitBeforeSearchTime: 1
 --- !u!54 &3746685406685054688
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -537,7 +539,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.6}
   m_Children: []
   m_Father: {fileID: 2733700917984062092}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6521546234575124417
 MeshFilter:
@@ -601,52 +603,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000005, y: 1, z: 1.0000005}
   m_Center: {x: -0.000022888189, y: 0, z: 0.000011444093}
---- !u!1 &7064587015122755806
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3910083687365122120}
-  - component: {fileID: 6384285516124561856}
-  m_Layer: 0
-  m_Name: Range
-  m_TagString: EnemyRange
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3910083687365122120
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064587015122755806}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2733700917984062092}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6384285516124561856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064587015122755806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ef16540c490f44da1118aa4801693f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPattern: {fileID: 8843207864057268455}
-  detectionRange: 40
-  colliders: []
 --- !u!1 &8796631964980363955
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class EnemyPattern : MonoBehaviour
     [SerializeField] private float alertedCanvasActiveDuration;
     private float alertedCanvasDurationTimer;
     private Shoot shoot;
+    [SerializeField] private float rangeToSpotPlayer;
     [SerializeField] private float distanceFromPlayer;
     [SerializeField] private GameObject projectileStartPos;
     private PlayerReferences playerRef;
@@ -21,6 +22,11 @@ public class EnemyPattern : MonoBehaviour
     [SerializeField] private bool alertOthersWorksThroughWalls;
     [HideInInspector] public bool canAlert;
     [SerializeField] private float alertNearbyEnemiesRange;
+    [HideInInspector] public float currentDistanceFromPlayer;
+    private bool waitBeforeSearchingAgain;
+    private bool lockSearch;
+    [SerializeField] private float waitBeforeSearchTime;
+    private float waitBeforeSearchTimer;
 
     private void Awake()
     {
@@ -34,14 +40,23 @@ public class EnemyPattern : MonoBehaviour
         shoot.enabled = false;
         canShootAtPlayer = false;
         alertedCanvasDurationTimer = alertedCanvasActiveDuration;
+        waitBeforeSearchTimer = waitBeforeSearchTime;
         if (canAlertNearbyEnemies) canAlert = true;
     }
 
     private void Update()
     {
+        currentDistanceFromPlayer = Vector3.Distance(playerRef.transform.position, this.transform.position);
         canShootAtPlayer = CheckOcclusionWithPlayer();
+        CheckForPlayerInRange();
         Alert();
         AlertedCanvas();
+        if (waitBeforeSearchingAgain) WaitBeforeSearchingAgain();
+    }
+
+    private void CheckForPlayerInRange()
+    {
+        if (currentDistanceFromPlayer <= rangeToSpotPlayer && !alerted && canShootAtPlayer) alerted = true;
     }
 
     private void Alert()
@@ -52,12 +67,13 @@ public class EnemyPattern : MonoBehaviour
             if (canAlert && canAlertNearbyEnemies) AlertNearbyEnemies();
             if (canShootAtPlayer)
             {
+                if (waitBeforeSearchingAgain) StopWaitingBeforeSearching();
+                if (lockSearch) lockSearch = false;
                 shoot.enabled = true;
-                float distance = Vector3.Distance(playerRef.transform.position, this.transform.position);
-                if (distance <= distanceFromPlayer)
+                if (currentDistanceFromPlayer <= distanceFromPlayer)
                 {
                     thisNavMesh.isStopped = false;
-                    thisNavMesh.SetDestination(this.transform.forward - playerRef.transform.position);
+                    thisNavMesh.SetDestination((playerRef.transform.position - this.transform.position).normalized * (distanceFromPlayer - currentDistanceFromPlayer));
                 }
                 else
                 {
@@ -67,10 +83,33 @@ public class EnemyPattern : MonoBehaviour
             }
             else
             {
-                shoot.enabled = false;
-                thisNavMesh.SetDestination(playerRef.transform.position);
+                if (!lockSearch)
+                {
+                    shoot.enabled = true;
+                    thisNavMesh.isStopped = true;
+                    waitBeforeSearchingAgain = true;
+                }
             }
         }
+    }
+
+    private void WaitBeforeSearchingAgain()
+    {
+        if (waitBeforeSearchTimer > 0) waitBeforeSearchTimer -= Time.deltaTime;
+        else
+        {
+            lockSearch = true;
+            shoot.enabled = false;
+            StopWaitingBeforeSearching();
+            thisNavMesh.SetDestination(playerRef.transform.position);
+        }
+    }
+
+    private void StopWaitingBeforeSearching()
+    {
+        thisNavMesh.isStopped = false;
+        waitBeforeSearchTimer = waitBeforeSearchTime;
+        waitBeforeSearchingAgain = false;
     }
 
     private bool CheckOcclusionWithPlayer()
@@ -134,7 +173,10 @@ public class EnemyPattern : MonoBehaviour
     {
         if (alertedFirstFrameCanvasActive)
         {
-            if (alertedCanvasDurationTimer > 0) alertedCanvasDurationTimer -= Time.deltaTime;
+            if (alertedCanvasDurationTimer > 0)
+            {
+                alertedCanvasDurationTimer -= Time.deltaTime;
+            }
             else
             {
                 alertedCanvas.gameObject.SetActive(false);
