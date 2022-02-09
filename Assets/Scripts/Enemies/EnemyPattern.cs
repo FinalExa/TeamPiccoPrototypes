@@ -13,7 +13,8 @@ public class EnemyPattern : MonoBehaviour
     private float alertedCanvasDurationTimer;
     private Shoot shoot;
     [SerializeField] private float rangeToSpotPlayer;
-    [SerializeField] private float distanceFromPlayer;
+    [SerializeField] private float distanceFromPlayerMin;
+    [SerializeField] private float distanceFromPlayerMax;
     [SerializeField] private GameObject projectileStartPos;
     private PlayerReferences playerRef;
     private NavMeshAgent thisNavMesh;
@@ -27,6 +28,7 @@ public class EnemyPattern : MonoBehaviour
     private bool lockSearch;
     [SerializeField] private float waitBeforeSearchTime;
     private float waitBeforeSearchTimer;
+    private bool isInsideShootRange;
 
     private void Awake()
     {
@@ -70,15 +72,22 @@ public class EnemyPattern : MonoBehaviour
                 if (waitBeforeSearchingAgain) StopWaitingBeforeSearching();
                 if (lockSearch) lockSearch = false;
                 shoot.enabled = true;
-                if (currentDistanceFromPlayer <= distanceFromPlayer)
+                if (currentDistanceFromPlayer < distanceFromPlayerMin)
                 {
                     thisNavMesh.isStopped = false;
-                    thisNavMesh.SetDestination((playerRef.transform.position - this.transform.position).normalized * (distanceFromPlayer - currentDistanceFromPlayer));
+                    Vector3 direction = (this.transform.position - playerRef.transform.position).normalized;
+                    Vector3 outOfRangePoint = playerRef.transform.position + (direction * distanceFromPlayerMin);
+                    thisNavMesh.SetDestination(outOfRangePoint);
                 }
-                else
+                else if (currentDistanceFromPlayer > distanceFromPlayerMax)
                 {
                     thisNavMesh.isStopped = false;
                     thisNavMesh.SetDestination(playerRef.transform.position);
+                }
+                else
+                {
+                    thisNavMesh.isStopped = true;
+                    if (!isInsideShootRange) isInsideShootRange = true;
                 }
             }
             else

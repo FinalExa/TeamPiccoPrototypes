@@ -307,7 +307,8 @@ MonoBehaviour:
   alertedCanvas: {fileID: 3706378463469404194}
   alertedCanvasActiveDuration: 0.3
   rangeToSpotPlayer: 40
-  distanceFromPlayer: 20
+  distanceFromPlayerMin: 20
+  distanceFromPlayerMax: 35
   projectileStartPos: {fileID: 1023044744484094521}
   canShootAtPlayer: 0
   canAlertNearbyEnemies: 0
