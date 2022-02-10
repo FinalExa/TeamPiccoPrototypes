@@ -13,13 +13,19 @@ MonoBehaviour:
   m_Name: PistolEnemy
   m_EditorClassIdentifier: 
   weaponName: PistolEnemy
-  shootDelay: 0.5
-  rechargeDelay: 1.5
-  ammoMax: 72
+  shootDelay: 0.2
+  rechargeDelay: 1
+  enemyRechargeDelayRangeMin: 2
+  enemyRechargeDelayRangeMax: 5
+  ammoMax: 3
   magazineSize: 3
   projectileDamage: 0.6
-  projectileSpeed: 50
+  projectileSpeed: 70
   projectileLifetime: 2
+  projectilePierces: 0
+  projectileHasAoe: 0
+  projectileAoe: 0
+  projectileAoeVisibleDuration: 0
   projectile: {fileID: 5814666638754323035, guid: f70949fb2ecb1ba448843a39fd41d193, type: 3}
   endlessAmmo: 1
   automaticWeapon: 0

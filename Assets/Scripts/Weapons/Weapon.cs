@@ -7,6 +7,8 @@ public class Weapon : ScriptableObject
     public string weaponName;
     public float shootDelay;
     public float rechargeDelay;
+    public float enemyRechargeDelayRangeMin;
+    public float enemyRechargeDelayRangeMax;
     public int ammoMax;
     public int magazineSize;
     public float projectileDamage;

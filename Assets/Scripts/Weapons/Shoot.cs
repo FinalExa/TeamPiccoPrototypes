@@ -6,11 +6,13 @@ public class Shoot : MonoBehaviour
     private WeaponStatTracker weaponUsed;
     private WeaponCycle weaponCycle;
     private int activeWeaponIndex;
+    private bool clickInput;
+    private Vector3 target;
     private bool lockUntilNextClick;
     private bool charging;
     private PlayerReferences playerRef;
     private float bulletDamage;
-    [SerializeField] private bool autoInput;
+    [SerializeField] private bool isEnemy;
     [SerializeField] private bool autoFirstShootStop;
     [SerializeField] private GameObject projectileStartPosition;
     [SerializeField] private GameObject reloadCanvas;
@@ -26,21 +28,17 @@ public class Shoot : MonoBehaviour
 
     private void Start()
     {
-        if (!autoInput)
+        for (int i = 0; i < weaponUsed.weaponInfo.Length; i++)
         {
-            for (int i = 0; i < weaponUsed.weaponInfo.Length; i++)
-            {
-                weaponUsed.weaponInfo[i].shootReady = true;
-            }
-            chargeText.text = string.Empty;
+            weaponUsed.weaponInfo[i].shootReady = true;
         }
-        else autoFirstShootStop = true;
+        if (!isEnemy) chargeText.text = string.Empty;
     }
 
     private void Update()
     {
         activeWeaponIndex = weaponCycle.activeWeaponIndex;
-        if (!autoInput) InputCheck();
+        InputCheck();
         if (lockUntilNextClick) LockUntilNextClick();
         if (playerRef.playerInputs.RKey == true && weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent != weaponUsed.weaponInfo[activeWeaponIndex].weapon.magazineSize) weaponUsed.weaponInfo[activeWeaponIndex].isRecharging = true;
         UpdateText();
@@ -55,7 +53,7 @@ public class Shoot : MonoBehaviour
 
     private void LockUntilNextClick()
     {
-        if (playerRef.playerInputs.LeftClickInput == false)
+        if (clickInput == false || isEnemy)
         {
             lockUntilNextClick = false;
         }
@@ -69,29 +67,23 @@ public class Shoot : MonoBehaviour
 
     private void ShootTimer()
     {
-        if (weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer == weaponUsed.weaponInfo[activeWeaponIndex].weapon.shootDelay && autoInput)
-        {
-            if (autoFirstShootStop) autoFirstShootStop = false;
-            else ProjectileSpawn(false);
-        }
         if (weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer > 0) weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer -= Time.deltaTime;
         else
         {
             weaponUsed.weaponInfo[activeWeaponIndex].shootDelayTimer = weaponUsed.weaponInfo[activeWeaponIndex].weapon.shootDelay;
-            if (!autoInput) weaponUsed.weaponInfo[activeWeaponIndex].shootReady = true;
+            weaponUsed.weaponInfo[activeWeaponIndex].shootReady = true;
         }
     }
 
     private void RechargeTimer()
     {
-        if (weaponUsed.weaponInfo[activeWeaponIndex].rechargeDelayTimer == weaponUsed.weaponInfo[activeWeaponIndex].weapon.rechargeDelay && autoInput) ProjectileSpawn(false);
         if (weaponUsed.weaponInfo[activeWeaponIndex].rechargeDelayTimer > 0)
         {
             weaponUsed.weaponInfo[activeWeaponIndex].rechargeDelayTimer -= Time.fixedDeltaTime;
         }
         else
         {
-            weaponUsed.weaponInfo[activeWeaponIndex].rechargeDelayTimer = weaponUsed.weaponInfo[activeWeaponIndex].weapon.rechargeDelay;
+            RechargeTime();
             if (weaponUsed.weaponInfo[activeWeaponIndex].ammoCurrent >= weaponUsed.weaponInfo[activeWeaponIndex].weapon.magazineSize)
             {
                 if (weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent == 0)
@@ -111,10 +103,7 @@ public class Shoot : MonoBehaviour
                 weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent = weaponUsed.weaponInfo[activeWeaponIndex].ammoCurrent;
                 weaponUsed.weaponInfo[activeWeaponIndex].ammoCurrent = 0;
             }
-            if (!autoInput)
-            {
-                weaponUsed.weaponInfo[activeWeaponIndex].isRecharging = false;
-            }
+            weaponUsed.weaponInfo[activeWeaponIndex].isRecharging = false;
         }
     }
 
@@ -135,16 +124,8 @@ public class Shoot : MonoBehaviour
     {
         GameObject projectile = Instantiate(weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectile, ProjectilePositionCalculate(), Quaternion.identity, weaponUsed.weaponInfo[activeWeaponIndex].projectileParent.transform);
         Projectile proj = projectile.GetComponent<Projectile>();
-        if (!autoInput)
-        {
-            if (!isShotgun) proj.target = new Vector3(playerRef.mousePos.VectorPointToShoot.x, projectileStartPosition.transform.position.y, playerRef.mousePos.VectorPointToShoot.z);
-            else proj.target = playerRef.mousePos.VectorPointToShoot + new Vector3(Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread), 0, Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread));
-        }
-        else
-        {
-            if (!isShotgun) proj.target = playerRef.gameObject.transform.position;
-            else proj.target = playerRef.gameObject.transform.position + new Vector3(Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread), 0, Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread));
-        }
+        if (!isShotgun) proj.target = target;
+        else proj.target = target + new Vector3(Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread), 0, Random.Range(-weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread, weaponUsed.weaponInfo[activeWeaponIndex].weapon.shotgunSpread));
         if (!useAltDamage) proj.damage = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileDamage;
         else proj.damage = bulletDamage;
         proj.lifeTime = weaponUsed.weaponInfo[activeWeaponIndex].weapon.projectileLifetime;
@@ -169,7 +150,17 @@ public class Shoot : MonoBehaviour
 
     private void InputCheck()
     {
-        if (playerRef.playerInputs.LeftClickInput == true && weaponUsed.weaponInfo[activeWeaponIndex].shootReady && !weaponUsed.weaponInfo[activeWeaponIndex].isRecharging && weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent > 0 && !lockUntilNextClick)
+        if (!isEnemy)
+        {
+            clickInput = playerRef.playerInputs.LeftClickInput;
+            target = new Vector3(playerRef.mousePos.VectorPointToShoot.x, projectileStartPosition.transform.position.y, playerRef.mousePos.VectorPointToShoot.z);
+        }
+        else
+        {
+            clickInput = true;
+            target = new Vector3(playerRef.gameObject.transform.position.x, projectileStartPosition.transform.position.y, playerRef.gameObject.transform.position.z);
+        }
+        if (clickInput == true && weaponUsed.weaponInfo[activeWeaponIndex].shootReady && !weaponUsed.weaponInfo[activeWeaponIndex].isRecharging && weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent > 0 && !lockUntilNextClick)
         {
             if (weaponUsed.weaponInfo[activeWeaponIndex].weapon.chargedWeapon && !weaponUsed.weaponInfo[activeWeaponIndex].weapon.automaticWeapon) charging = true;
             else
@@ -185,7 +176,7 @@ public class Shoot : MonoBehaviour
     {
         if (charging)
         {
-            if (playerRef.playerInputs.LeftClickInput == true)
+            if (clickInput == true)
             {
                 if (weaponUsed.weaponInfo[activeWeaponIndex].chargedTimer > 0)
                 {
@@ -228,9 +219,15 @@ public class Shoot : MonoBehaviour
         }
     }
 
+    private void RechargeTime()
+    {
+        if (!isEnemy) weaponUsed.weaponInfo[activeWeaponIndex].rechargeDelayTimer = weaponUsed.weaponInfo[activeWeaponIndex].weapon.rechargeDelay;
+        else weaponUsed.weaponInfo[activeWeaponIndex].rechargeDelayTimer = Random.Range(weaponUsed.weaponInfo[activeWeaponIndex].weapon.enemyRechargeDelayRangeMin, weaponUsed.weaponInfo[activeWeaponIndex].weapon.enemyRechargeDelayRangeMax);
+    }
+
     private void UpdateText()
     {
-        if (!autoInput)
+        if (!isEnemy)
         {
             ammoText.text = weaponUsed.weaponInfo[activeWeaponIndex].weapon.weaponName + "\nAmmo: " + weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent + "/" + weaponUsed.weaponInfo[activeWeaponIndex].ammoCurrent;
             reloadCanvas.SetActive(weaponUsed.weaponInfo[activeWeaponIndex].isRecharging);
