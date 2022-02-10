@@ -26,7 +26,7 @@ MonoBehaviour:
   projectileHasAoe: 1
   projectileAoe: 5
   projectileAoeVisibleDuration: 1
-  projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
+  projectile: {fileID: 7929353653963883404, guid: 33252deeecba4bd448df62b513f698fa, type: 3}
   endlessAmmo: 0
   automaticWeapon: 1
   shotgunWeapon: 0
