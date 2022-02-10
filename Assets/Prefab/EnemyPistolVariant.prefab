@@ -311,10 +311,10 @@ MonoBehaviour:
   distanceFromPlayerMax: 35
   projectileStartPos: {fileID: 1023044744484094521}
   canShootAtPlayer: 0
-  canAlertNearbyEnemies: 0
+  canAlertNearbyEnemies: 1
   alertOthersWorksThroughWalls: 0
   canAlert: 0
-  alertNearbyEnemiesRange: 30
+  alertNearbyEnemiesRange: 25
   currentDistanceFromPlayer: 0
   waitBeforeSearchTime: 1
   switchTimeMin: 1
