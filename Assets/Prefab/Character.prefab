@@ -393,32 +393,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponInfo:
-  - weapon: {fileID: 11400000, guid: 029ed6c2ffbc5924ab70ef50dd799959, type: 2}
-    shootDelayTimer: 0
-    shootReady: 0
-    rechargeDelayTimer: 0
-    isRecharging: 0
-    ammoCurrent: 0
-    magazineCurrent: 0
-    projectileParent: {fileID: 0}
-    chargedTimer: 0
-    chargePercentage: 0
-    hitscanVisibleTimer: 0
-    secondaryCooldownTimer: 0
-    secondaryCooldownActive: 0
-  - weapon: {fileID: 11400000, guid: f220f6a00345dd34988d075b620ad0db, type: 2}
-    shootDelayTimer: 0
-    shootReady: 0
-    rechargeDelayTimer: 0
-    isRecharging: 0
-    ammoCurrent: 0
-    magazineCurrent: 0
-    projectileParent: {fileID: 0}
-    chargedTimer: 0
-    chargePercentage: 0
-    hitscanVisibleTimer: 0
-    secondaryCooldownTimer: 0
-    secondaryCooldownActive: 0
   - weapon: {fileID: 11400000, guid: df4c6a2cdcfd20842a4adce0870edb43, type: 2}
     shootDelayTimer: 0
     shootReady: 0
@@ -433,19 +407,6 @@ MonoBehaviour:
     secondaryCooldownTimer: 0
     secondaryCooldownActive: 0
   - weapon: {fileID: 11400000, guid: c2f57a5305efa5642a74222fc1db9f10, type: 2}
-    shootDelayTimer: 0
-    shootReady: 0
-    rechargeDelayTimer: 0
-    isRecharging: 0
-    ammoCurrent: 0
-    magazineCurrent: 0
-    projectileParent: {fileID: 0}
-    chargedTimer: 0
-    chargePercentage: 0
-    hitscanVisibleTimer: 0
-    secondaryCooldownTimer: 0
-    secondaryCooldownActive: 0
-  - weapon: {fileID: 11400000, guid: bff2a8daa157f1942b06fccbca47b477, type: 2}
     shootDelayTimer: 0
     shootReady: 0
     rechargeDelayTimer: 0
@@ -484,8 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa2beb4e0561cb45847245aff3be578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeWeaponIndex: 0
-  autoInput: 0
+  isEnemy: 0
   autoFirstShootStop: 0
   projectileStartPosition: {fileID: 2368323287208570982}
   reloadCanvas: {fileID: 0}
