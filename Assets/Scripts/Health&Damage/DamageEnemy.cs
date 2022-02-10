@@ -5,6 +5,12 @@ using UnityEngine;
 public class DamageEnemy : DamageTaken
 {
     [HideInInspector] public Vector3 startingPos;
+    private EnemyPattern enemyPattern;
+    protected override void Awake()
+    {
+        base.Awake();
+        enemyPattern = this.gameObject.GetComponent<EnemyPattern>();
+    }
     protected override void Start()
     {
         base.Start();
@@ -13,11 +19,16 @@ public class DamageEnemy : DamageTaken
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.CompareTag(hostileTag) || other.gameObject.CompareTag("Melee")) && !other.gameObject.CompareTag("Player"))
+        if ((other.gameObject.CompareTag(hostileTag) && !other.gameObject.CompareTag("Player")))
         {
             thisRB.velocity = Vector3.zero;
             if (!other.gameObject.CompareTag("Melee")) Destroy(other.gameObject);
-            if (!isDamaged) TakeDamage();
+            if (!isDamaged)
+            {
+                enemyPattern.alerted = true;
+                TakeDamage();
+            }
+
         }
 
     }
