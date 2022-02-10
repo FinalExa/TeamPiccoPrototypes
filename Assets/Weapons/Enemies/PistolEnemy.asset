@@ -18,7 +18,7 @@ MonoBehaviour:
   enemyRechargeDelayRangeMin: 1
   enemyRechargeDelayRangeMax: 3
   ammoMax: 5
-  magazineSize: 5
+  magazineSize: 3
   projectileDamage: 0.6
   projectileSpeed: 50
   projectileLifetime: 2

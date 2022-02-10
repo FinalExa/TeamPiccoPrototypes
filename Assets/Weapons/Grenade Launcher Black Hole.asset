@@ -13,30 +13,32 @@ MonoBehaviour:
   m_Name: Grenade Launcher Black Hole
   m_EditorClassIdentifier: 
   weaponName: Grenade Launcher
-  shootDelay: 0.8
-  rechargeDelay: 1.9
-  ammoMax: 18
-  magazineSize: 2
-  projectileDamage: 30
-  projectileSpeed: 150
-  projectileLifetime: 9
+  shootDelay: 0.5
+  rechargeDelay: 1.2
+  enemyRechargeDelayRangeMin: 0
+  enemyRechargeDelayRangeMax: 0
+  ammoMax: 40
+  magazineSize: 8
+  projectileDamage: 8
+  projectileSpeed: 60
+  projectileLifetime: 10
   projectilePierces: 0
   projectileHasAoe: 1
-  projectileAoe: 10
+  projectileAoe: 5
   projectileAoeVisibleDuration: 1
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   endlessAmmo: 0
-  automaticWeapon: 0
+  automaticWeapon: 1
   shotgunWeapon: 0
-  shotgunProjectileNumber: 10
-  shotgunSpread: 8
+  shotgunProjectileNumber: 0
+  shotgunSpread: 0
   shotgunSpeedDifference: 0
   chargedWeapon: 0
   chargeTime: 0
   chargedMaxDamage: 0
   hitscanWeapon: 0
   hitscanLimitedRange: 0
-  hitscanRange: 10
-  hitscanVisibleTime: 0.2
+  hitscanRange: 0
+  hitscanVisibleTime: 0
   hasSecondaryFire: 1
   secondaryAbility: {fileID: 11400000, guid: 82cdc7a56884ca9448bbd7ce19e653cf, type: 2}
