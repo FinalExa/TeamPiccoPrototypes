@@ -314,7 +314,7 @@ MonoBehaviour:
   canAlertNearbyEnemies: 1
   alertOthersWorksThroughWalls: 0
   canAlert: 0
-  alertNearbyEnemiesRange: 25
+  alertNearbyEnemiesRange: 15
   currentDistanceFromPlayer: 0
   waitBeforeSearchTime: 1
   switchTimeMin: 1

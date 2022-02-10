@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myCollider: {fileID: 3393355617815153506}
   ColliderAoe: 20
-  ColliderAoePlus: 40
+  ColliderAoePlus: 30
   MyAoe: {fileID: 11400000, guid: df4c6a2cdcfd20842a4adce0870edb43, type: 2}
 --- !u!1 &5814666638754323035
 GameObject:
@@ -141,7 +141,7 @@ MonoBehaviour:
   durationTimer: 0
   originPoint: {fileID: 0}
   hitSomething: 0
-  linkRadius: 10
+  linkRadius: 5
   rangeObj: {fileID: 8824982888763534307}
   Range: {fileID: 2346412524252491466}
 --- !u!54 &-3310621872110477516

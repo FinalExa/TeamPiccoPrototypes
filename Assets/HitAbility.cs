@@ -5,7 +5,7 @@ using UnityEngine;
 public class HitAbility : MonoBehaviour
 {
     public SphereCollider myCollider;
-    public float ColliderAoe,ColliderAoePlus;
+    public float ColliderAoe, ColliderAoePlus;
     public Weapon MyAoe;
     private PlayerReferences myPlayer;
     void Start()
@@ -28,7 +28,6 @@ public class HitAbility : MonoBehaviour
         if (other.CompareTag("ProjectilePlayer") && myPlayer.playerInputs.LeftClickInput == true)
         {
             MyAoe.projectileAoe = ColliderAoePlus;
-            Debug.Log("HIT");
         }
 
     }

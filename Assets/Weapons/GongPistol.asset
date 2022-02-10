@@ -15,9 +15,11 @@ MonoBehaviour:
   weaponName: Gong Pistol
   shootDelay: 0.1
   rechargeDelay: 0.3
+  enemyRechargeDelayRangeMin: 0
+  enemyRechargeDelayRangeMax: 0
   ammoMax: 80
   magazineSize: 8
-  projectileDamage: 2
+  projectileDamage: 5
   projectileSpeed: 100
   projectileLifetime: 1.5
   projectilePierces: 0
@@ -26,7 +28,7 @@ MonoBehaviour:
   projectileAoeVisibleDuration: 0
   projectile: {fileID: 5814666638754323035, guid: f623ef4f92e2bf347ba8ecc03f34e2da, type: 3}
   endlessAmmo: 0
-  automaticWeapon: 0
+  automaticWeapon: 1
   shotgunWeapon: 0
   shotgunProjectileNumber: 0
   shotgunSpread: 0

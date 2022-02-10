@@ -48,8 +48,9 @@ public class GongAbility : AbilityProjectile
                 GameObject enemy = hits[i].gameObject;
                 enemy.GetComponent<Health>().DecreaseHP(damage);
                 //Vector3 direction = (signatureProjectile.GetComponent<Rigidbody>().velocity).normalized * repelDistance;
-                Vector3 direction = (this.transform.position.normalized + (enemy.transform.position - this.transform.position).normalized) * repelDistance;
-                enemy.transform.Translate(direction);
+                Vector3 direction = (enemy.transform.position - this.transform.position).normalized;
+                Vector3 repelPoint = this.transform.position + (direction * repelDistance);
+                enemy.transform.Translate(repelPoint);
                 curEnemy = enemy;
             }
         }
