@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GongPistol
   m_EditorClassIdentifier: 
   weaponName: Gong Pistol
-  shootDelay: 0.1
-  rechargeDelay: 0.3
+  shootDelay: 0.3
+  rechargeDelay: 0.5
   enemyRechargeDelayRangeMin: 0
   enemyRechargeDelayRangeMax: 0
   ammoMax: 160

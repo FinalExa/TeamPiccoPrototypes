@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: HookShotgun
   m_EditorClassIdentifier: 
   weaponName: Hook Shotgun
-  shootDelay: 0.3
+  shootDelay: 0.5
   rechargeDelay: 2
   enemyRechargeDelayRangeMin: 0
   enemyRechargeDelayRangeMax: 0
   ammoMax: 48
   magazineSize: 8
-  projectileDamage: 5.5
+  projectileDamage: 2.7
   projectileSpeed: 110
-  projectileLifetime: 0.2
+  projectileLifetime: 0.4
   projectilePierces: 0
   projectileHasAoe: 0
   projectileAoe: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   endlessAmmo: 0
   automaticWeapon: 0
   shotgunWeapon: 1
-  shotgunProjectileNumber: 12
+  shotgunProjectileNumber: 15
   shotgunSpread: 4.5
   shotgunSpeedDifference: 40
   chargedWeapon: 0

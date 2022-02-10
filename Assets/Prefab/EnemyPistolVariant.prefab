@@ -254,6 +254,7 @@ MonoBehaviour:
   reloadCanvas: {fileID: 0}
   ammoText: {fileID: 0}
   chargeText: {fileID: 0}
+  enemiesShootInstantly: 0
 --- !u!114 &-6906413286637633626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +317,7 @@ MonoBehaviour:
   canAlert: 0
   alertNearbyEnemiesRange: 15
   currentDistanceFromPlayer: 0
-  waitBeforeSearchTime: 1
+  waitBeforeSearchTime: 0.3
   switchTimeMin: 1
   switchTimeMax: 1.5
   switchDistanceMin: 20

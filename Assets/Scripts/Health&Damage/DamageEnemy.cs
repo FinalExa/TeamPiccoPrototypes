@@ -25,7 +25,7 @@ public class DamageEnemy : DamageTaken
             if (!other.gameObject.CompareTag("Melee")) Destroy(other.gameObject);
             if (!isDamaged)
             {
-                enemyPattern.alerted = true;
+                //enemyPattern.alerted = true;
                 TakeDamage();
             }
 

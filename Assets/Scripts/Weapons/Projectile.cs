@@ -188,7 +188,7 @@ public class Projectile : MonoBehaviour
             if (hasAoe) AoeBehaviour(this.transform.position);
             DestroyProjectile();
         }
-        if (other.gameObject.CompareTag("AbilityProjectile") && other.gameObject.GetComponent<AbilityProjectile>() != null)
+        if (other.gameObject.CompareTag("AbilityProjectile") && other.gameObject.GetComponent<AbilityProjectile>() != null && this.CompareTag("ProjectilePlayer"))
         {
             if (hasAoe) AoeBehaviour(this.transform.position);
             other.gameObject.GetComponent<AbilityProjectile>().signatureProjectile = this.gameObject;
