@@ -18,6 +18,7 @@ public class Shoot : MonoBehaviour
     [SerializeField] private GameObject reloadCanvas;
     [SerializeField] private Text ammoText;
     [SerializeField] private Text chargeText;
+    [SerializeField] private bool enemiesShootInstantly;
 
     private void Awake()
     {
@@ -32,7 +33,21 @@ public class Shoot : MonoBehaviour
         {
             weaponUsed.weaponInfo[i].shootReady = true;
         }
+        activeWeaponIndex = 0;
         if (!isEnemy) chargeText.text = string.Empty;
+        else
+        {
+            EnemiesShootInstantly();
+        }
+    }
+
+    private void EnemiesShootInstantly()
+    {
+        if (!enemiesShootInstantly)
+        {
+            weaponUsed.weaponInfo[activeWeaponIndex].magazineCurrent = 0;
+            weaponUsed.weaponInfo[activeWeaponIndex].isRecharging = true;
+        }
     }
 
     private void Update()

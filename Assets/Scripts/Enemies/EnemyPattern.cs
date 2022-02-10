@@ -162,10 +162,7 @@ public class EnemyPattern : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Player"))
             {
                 canSeePlayer = true;
-                thisNavMesh.enabled = true;
             }
-            else if (hit.collider.gameObject.CompareTag("Laser")) thisNavMesh.enabled = false;
-            else thisNavMesh.enabled = true;
         }
         return canSeePlayer;
     }
